@@ -26,8 +26,8 @@
 
 👤 **Yuri**
 
-* Github: [@BryanCMBarbosa](https://github.com/BryanCMBarbosa)
-* LinkedIn: [Bryan Barbosa](www.linkedin.com/in/bryancmbarbosa)
+* Github: 
+* LinkedIn:
 
 
 
@@ -35,7 +35,7 @@
 
 
 # Como rodar o projeto em ambiente linux
-** Certifique-se de bla bla bla
+** Certifique-se de bla bla bla **
 
 1. Navegue até a pasta blablabla
 ```
@@ -48,7 +48,7 @@ chmod blablabla
 ```
 
 # Como rodar o projeto no Windows
-** Certifique-se de bla bla bla
+** Certifique-se de bla bla bla **
 
 1. Navegue até a pasta blablabla
 ```
