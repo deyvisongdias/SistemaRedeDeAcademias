@@ -5,15 +5,9 @@
  */
 package com.mycompany.trabalhooo;
 
-/**
- *
- * @author deive
- */
-public class Main(){
+
+public class main(){
     public static void main(String[] args) {
-        //pensar no metodo de login
-        
-   
         
     }
 }
