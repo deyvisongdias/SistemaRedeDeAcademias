@@ -23,7 +23,7 @@ public class Cliente {
     private String senha;
 //  private Ficha ficha;
 
-    private double mensalidade = 500.0;//Tem que ser definido em algum lugar, 
+    private double mensalidade = 80.0;//Tem que ser definido em algum lugar, 
                                        // faz mais sentido ser definido pelo adm
     //Colocar Ficha depois
     //Construtor de um cliente novo
@@ -88,13 +88,27 @@ public class Cliente {
     public void setStatusMatricula(Boolean statusMatricula) {
         this.statusMatricula = statusMatricula;
     }
-   
+
+    public String getSenha() {
+        return senha;
+    }
+
+    /*
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+   */
+    
+    
     public void updateVencimento(){//atualiza pagamento
         Calendar cal = Calendar.getInstance();
         cal.setTime(dataMatricula);
         cal.add(Calendar.MONTH, 1);
         vencimento = cal.getTime();
     }
+    
+    
+    
     
     //Fazer alguma verificação
     public void updateSenha(String novaSenha){

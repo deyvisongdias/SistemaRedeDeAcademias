@@ -21,6 +21,7 @@ import java.util.logging.Logger; //Não faço ideia o que é isso, nem como paro
 /**
  *
  * @author Yuri
+ * @author Deyvison
  */
 public class Program {
 
