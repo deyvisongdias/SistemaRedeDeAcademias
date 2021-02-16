@@ -35,40 +35,28 @@
 
 
 # Como rodar o projeto em ambiente linux
-** Certifique-se de bla bla bla **
+**Certifique-se de ...**
 
-1. Navegue até a pasta blablabla
+1. Navegue até a pasta ...
 ```
-cd blablabla
+cd (nome da pasta)
 ```
 
-2. Digite o comando blablabla 
+2. Digite o comando ...
 ```
-chmod blablabla
+chmod ...
 ```
 
 # Como rodar o projeto no Windows
-** Certifique-se de bla bla bla **
+**Certifique-se de ...**
 
 1. Navegue até a pasta blablabla
 ```
-cd blablabla
+cd (nome da pasta)
 ```
 
-2. Digite o comando blablabla 
+2. Digite o comando ... 
 ```
-chmod blablabla
+chmod ...
 ```
 
-
-
-	------------- Sistema de academia---------------
-Ideias:
-• Classe para cada academia da rede;
-• Essa classe tem acesso aos dados do aluno
-• Tipos de matrícula;
-• Classe pagamento;
-• Equipamentos(defeito, novos);
-• Ficha dos alunos(salvar em arquivo), cadastrar nova ficha;
-• Acesso ao aluno(acesso a ficha, reportar problema, consultar pagamento);
-• Parada da catraca
