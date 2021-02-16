@@ -26,8 +26,8 @@
 
 👤 **Yuri**
 
-* Github: 
-* LinkedIn:
+* Github: [@Yuri-1525](https://github.com/Yuri-1525)
+* LinkedIn: [Yuri de Oliveira](https://www.linkedin.com/in/yuri-oliveira-635843204/)
 
 
 
