@@ -16,7 +16,7 @@
 
 👤 **Deyvison**
 
-* Github: deyvisongdias
+* Github: @deyvisongdias
 * LinkedIn: 
 
 👤 **Pedro Henrique**
