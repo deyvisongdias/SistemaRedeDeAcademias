@@ -23,9 +23,9 @@ public class Cliente {
     private String senha;
 //  private Ficha ficha;
 
-    private double mensalidade;//Tem que ser definido em algum lugar, 
-                                       // faz mais sentido ser definido pelo adm
-    //Colocar Ficha depois
+    private double mensalidade;
+    
+    //!!!! Colocar Ficha depois !!!!
     //Construtor de um cliente novo
     public Cliente(String nome,int cpf, Date dataMatricula,String senha) {
         contId++;
