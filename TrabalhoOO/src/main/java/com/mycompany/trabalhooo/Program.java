@@ -21,7 +21,6 @@ import java.util.logging.Logger; //Não faço ideia o que é isso, nem como paro
 /**
  *
  * @author Yuri
- * @author Deyvison
  */
 public class Program {
 
@@ -36,7 +35,7 @@ public class Program {
         
         String nome, senha;
         int cpf;
-        
+        //!!!! Não esquece de ajustar a Mensalidade !!!!
         if (clientesBD.exists()) {// verifica se já existe um "banco de dados" dos clientes, se existir,
                                  //adiciona todos em uma lista, transformar em função todo esse bloco depois
             try (BufferedReader br = new BufferedReader(new FileReader(pathCliente))) {
