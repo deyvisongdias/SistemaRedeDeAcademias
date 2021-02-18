@@ -15,15 +15,11 @@ import java.text.SimpleDateFormat;
 public class ClienteEmpresarial extends Cliente{
 
     private double desconto;
-    
-    static int contId = 0; 
-    static int contMatriculas = 0;
-    
-    private double mensalidade;
-    
-    public ClienteEmpresarial(String nome, int cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula, String senha,double desconto) {
-        super(nome, cpf, dataMatricula, vencimento, id, statusMatricula, senha);
-        this.desconto=desconto;
+    //!!!! Verificar a sequência dos parâmetros depois que ajustar a mensalidade no txt !!!!
+    public ClienteEmpresarial(String nome, int cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula, String senha,double desconto,double mensalidade) {
+        super(nome, cpf, dataMatricula, vencimento, id, statusMatricula, senha,mensalidade);
+        this.desconto = desconto;
+        this.ajustarMensalidade(desconto);
     }
     
     public ClienteEmpresarial(String nome, int cpf, Date dataMatricula, String senha,double desconto) {
@@ -31,15 +27,9 @@ public class ClienteEmpresarial extends Cliente{
         this.desconto=desconto;
     }
 
-    public double getMensalidade() {
-        desconto=mensalidade*desconto;
-        mensalidade+=desconto;
-        return mensalidade;
-    }
-
-    public void setMensalidade(double mensalidade) {
-        
-        this.mensalidade = mensalidade;
+    
+    public void ajustarMensalidade(double mensalidade) {
+        this.mensalidade -= mensalidade * desconto / 100;
     }
 
     public double getDesconto() {
