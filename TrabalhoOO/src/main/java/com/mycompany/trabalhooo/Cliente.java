@@ -23,7 +23,7 @@ public class Cliente {
     private String senha;
 //  private Ficha ficha;
 
-    private double mensalidade = 80.0;//Tem que ser definido em algum lugar, 
+    private double mensalidade;//Tem que ser definido em algum lugar, 
                                        // faz mais sentido ser definido pelo adm
     //Colocar Ficha depois
     //Construtor de um cliente novo
@@ -51,6 +51,7 @@ public class Cliente {
         this.id = id;
         this.statusMatricula = statusMatricula;
         this.senha = senha;
+        mensalidade = 80.0;
     }
 
     public int getId() {
