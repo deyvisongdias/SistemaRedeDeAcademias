@@ -39,10 +39,13 @@ public class Cliente {
         this.id = contId;
         this.statusMatricula = true;
         this.senha = senha;
+        mensalidade = 80.0;
     }
     
     //Construtor de um cliente que já existe, com o construtor de cima, dados como vencimento e statusMatricula
     //poderiam se perder. Usado quando lê os dados de um arquivo
+    
+    //!!!!!Ajustar o arquivo txt pra incluir a mensalidade nesse construtor, talvez seja necessário mudar na classe Program também!!!!
     public Cliente(String nome, int cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,String senha) {
         this.nome = nome;
         this.cpf = cpf;
@@ -51,7 +54,7 @@ public class Cliente {
         this.id = id;
         this.statusMatricula = statusMatricula;
         this.senha = senha;
-        mensalidade = 80.0;
+        
     }
 
     public int getId() {
