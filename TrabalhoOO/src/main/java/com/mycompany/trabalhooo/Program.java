@@ -18,10 +18,6 @@ import java.util.Scanner;
 import java.util.logging.Level; //Não faço ideia o que é isso, nem como parou aqui
 import java.util.logging.Logger; //Não faço ideia o que é isso, nem como parou aqui
 
-/**
- *
- * @author Yuri
- */
 public class Program {
 
     public static void main(String[] args) {
