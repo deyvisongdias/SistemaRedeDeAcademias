@@ -1,3 +1,8 @@
+/*Deiverson Mourão Alves Pedroso (201965123A) 
+Deyvison Gregório Dias   (201835017)
+Pedro Henrique Almeida Cardoso Reis (201835039)
+Yuri de Oliveira (201835010)*/
+
 
 package com.mycompany.trabalhooo;
 
@@ -17,14 +22,14 @@ public class ClienteEmpresarial extends Cliente{
     private double desconto;
     //!!!! Verificar a sequência dos parâmetros depois que ajustar a mensalidade no txt !!!!
     public ClienteEmpresarial(String nome, int cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula, String senha,double desconto,double mensalidade) {
-        super(nome, cpf, dataMatricula, vencimento, id, statusMatricula, senha,mensalidade);
+        super(nome, cpf, dataMatricula, vencimento, id, statusMatricula, senha, mensalidade);
         this.desconto = desconto;
         this.ajustarMensalidade(desconto);
     }
     
     public ClienteEmpresarial(String nome, int cpf, Date dataMatricula, String senha,double desconto) {
         super(nome, cpf, dataMatricula, senha);
-        this.desconto=desconto;
+        this.desconto = desconto;
     }
 
     

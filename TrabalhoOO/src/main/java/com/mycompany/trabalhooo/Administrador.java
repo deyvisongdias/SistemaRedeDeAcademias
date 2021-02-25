@@ -1,3 +1,7 @@
+/*Deiverson Mourão Alves Pedroso (201965123A) 
+Deyvison Gregório Dias   (201835017)
+Pedro Henrique Almeida Cardoso Reis (201835039)
+Yuri de Oliveira (201835010)*/
 
 package com.mycompany.trabalhooo;
 
@@ -7,6 +11,7 @@ import java.util.List;
 public class Administrador {
     
     private List<Cliente> clientes = new ArrayList<>();
+    private Ficha ficha; //Necessario colocar uma ficha para o adm editar/remover?
     private Aparelhos aparelhos;
     private String nome;
     private String password;

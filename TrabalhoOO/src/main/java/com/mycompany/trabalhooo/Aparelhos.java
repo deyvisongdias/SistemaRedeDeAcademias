@@ -1,3 +1,7 @@
+/*Deiverson Mourão Alves Pedroso (201965123A) 
+Deyvison Gregório Dias   (201835017)
+Pedro Henrique Almeida Cardoso Reis (201835039)
+Yuri de Oliveira (201835010)*/
 
 package com.mycompany.trabalhooo;
 
@@ -29,7 +33,7 @@ public class Aparelhos {
     }
     
      public String toString(){
-         return "Nome :"+nome+"\nNumeracao :"+numeracao;
+         return ("Nome :" + nome + "\nNumeracao :" + numeracao);
      }
     
     

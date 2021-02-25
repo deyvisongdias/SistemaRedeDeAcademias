@@ -1,5 +1,13 @@
+/*Deiverson Mourão Alves Pedroso (201965123A) 
+Deyvison Gregório Dias   (201835017)
+Pedro Henrique Almeida Cardoso Reis (201835039)
+Yuri de Oliveira (201835010)*/
+
+
 package com.mycompany.trabalhooo;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,16 +22,16 @@ public class Cliente {
     static int contMatriculas = 0; //  Ativas
 
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private int id;
     private String nome;
     private int cpf;
     private Date dataMatricula;
-    private Date vencimento;
-    private int id;
     private Boolean statusMatricula;
+    private Date vencimento;
     private String senha;
-//  private Ficha ficha;
-
     private double mensalidade;
+    private List <Ficha> ficha = new ArrayList<>(); //Necessario colocar isso?
+
     
     //!!!! Colocar Ficha depois !!!!
     //Construtor de um cliente novo
