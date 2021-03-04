@@ -18,76 +18,131 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+//import java.util.ArrayList;
+import java.util.Map;
+//import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level; //Não faço ideia o que é isso, nem como parou aqui
-import java.util.logging.Logger; //Não faço ideia o que é isso, nem como parou aqui
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Program {
-
+    private static Scanner sc = new Scanner(System.in); //apenas pra teste
     public static void main(String[] args) {
-
+        int updatedId = 0;
         File clientesBD = new File("clientes.txt");
-        String pathCliente = clientesBD.getAbsolutePath(); 
-        Cliente cliente;
-        List<Cliente> clientes = new ArrayList<>();
-        Scanner sc = new Scanner(System.in); //apenas pra teste
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String pathCliente = clientesBD.getAbsolutePath();
+        Map<String, Cliente> clientes = new HashMap<>();
         
-        String nome, senha;
-        int cpf;
-        //!!!! Não esquece de ajustar a Mensalidade !!!!
-        if (clientesBD.exists()) {// verifica se já existe um "banco de dados" dos clientes, se existir,
-                                 //adiciona todos em uma lista, transformar em função todo esse bloco depois
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        String nome;
+        String cpf = "";
+
+        // VERIFICAR SE A PARCELA INFORMADA É <= AO LIMITE PARCELAS
+//        //!!!! Não esquece de ajustar a Mensalidade !!!!
+        if (clientesBD.exists()) {// verifica se já existe um "banco de dados" dos clientes, se existir, adiciona todos em uma lista
             try (BufferedReader br = new BufferedReader(new FileReader(pathCliente))) {
                 String line = br.readLine();
                 while (line != null) {
-                    String[] fields = line.split(",");// Tô usando virgula pra separar cada atributo do cliente no arquivo, talvez mudar;
+                    String[] fields = line.split(",");
                     try {//Esse try é usado nas datas, elas lançam exceção
                         //Arquivo vai ordenar os dados na mesma ordem do construtor.
                         //Obs: se o atributo de split mudar, colocar o mesmo na função writeFile
-                        clientes.add(new Cliente(fields[0],         //nome
-                                Integer.parseInt(fields[1]),        //cpf
-                                sdf.parse(fields[2]),               //matrícula
-                                sdf.parse(fields[3]),               //vencimento
-                                Integer.parseInt(fields[4]),        //id
-                                Boolean.parseBoolean(fields[5]),    //status pagamento
-                                fields[6]));                        //senha
+                        if (fields[0] == "mensal") {
+                            clientes.put(fields[2],                                            // cpf como chave
+                                    new Cliente(fields[0],                                     //tipo plano
+                                            fields[1],                                         //nome
+                                            fields[2],                                         //cpf
+                                            sdf.parse(fields[3]),                              //matrícula
+                                            sdf.parse(fields[4]),                              //vencimento
+                                            Integer.parseInt(fields[5]),                       //id
+                                            Boolean.parseBoolean(fields[6]),                   //status pagamento
+                                            Double.parseDouble(fields[7])));                   //mensalidade      
+                                        
+                        } else if (fields[0] == "trimestral") {
+                            clientes.put(fields[2],                                             // cpf como chave
+                                    new ClienteTrimestral(fields[0],                            //tipo plano
+                                            fields[1],                                          //nome
+                                            fields[2],                                          //cpf
+                                            sdf.parse(fields[3]),                               //matrícula
+                                            sdf.parse(fields[4]),                               //vencimento
+                                            Integer.parseInt(fields[5]),                        //id
+                                            Boolean.parseBoolean(fields[6]),                    //status pagamento
+                                            Double.parseDouble(fields[7]),                      //mensalidade    
+                                            Integer.parseInt(fields[8]),                        //nº parcelas
+                                            Double.parseDouble(fields[9])));                    // valor das parcelas
+//                                            sdf.parse(fields[10])));                          //Renovação do plano
+                        }
                     } catch (ParseException ex) {
                         Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     line = br.readLine();
                 }
-            } 
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        } 
-        else { //cria o arquivo se não exister nenhum
+        } else { //cria o arquivo se não exister nenhum
             try {
                 clientesBD.createNewFile();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        
-        //Inserção de dados, também transformar em função
+
+//        Inserção de dados, faltando o tipo
+        System.out.println("Informe o tipo de plano (mensal/trimestral)");
+        String tipo = sc.next();
+        System.out.println();
         System.out.println("Nome:");
         nome = sc.next();
         System.out.println("Cpf"); 
-        cpf = sc.nextInt();
-        System.out.println("Senha:");
-        senha = sc.next();
-        cliente = new Cliente(nome, cpf, new Date(), senha);
-        cliente.writeFile(clientesBD);
-        clientes.add(cliente);
-        
-        
-        for (Cliente c : clientes) {
-            System.out.println(c);
+        cpf = sc.next();
+        Cliente cliente;
+        if(tipo.equals("mensal")){// Por algum motivo, tipo == "mensal" sempre retornava false
+             cliente = new Cliente(tipo,nome, cpf, new Date()); //FALTANDO TIPO DE CLIENTE, criar uma função que verifica o tipo
+             clientes.put(cpf,cliente);  
+        }
+        else{
+            System.out.println("Deseja pagar o plano à vista? (s|n)");
+            char res = sc.next().toLowerCase().charAt(0);//Só pra garantir
+            if(res == 's'){
+                cliente = new ClienteTrimestral(tipo, nome, cpf, new Date());
+            }
+            else{
+                int parcelas = verificaParcelas(tipo);
+                cliente = new ClienteTrimestral(tipo, nome, cpf, new Date(), parcelas);
+            }
+        }
+         clientes.put(cpf, cliente);
+         cliente.writeFile(clientesBD);
+//        Cliente c = new ClienteTrimestral("normal","normal" , "normal", new Date(), 3);
+//        System.out.println(c.getMensalidade());
+
+        for(int i = 0; i < clientes.size(); i++){
+            System.out.println(clientes);
         }
         sc.close();
     }
+    public static int verificaParcelas(String tipoPlano){
+        int maxParcelas;
+        int parcelas = -1;
+        switch(tipoPlano){
+            case "trimestral":
+                maxParcelas = 3;
+                break;
+            case "anual":
+                maxParcelas = 12;
+                break;
+            default:
+                System.out.println("Plano inválido"); //placeholder
+                return -1;
+        }
+        while(parcelas <= 0 || parcelas > maxParcelas){
+            System.out.println("Em quantas vezes deseja parcelar?");
+            parcelas = sc.nextInt();
+        }
+        return parcelas;
+    }
 }
+
