@@ -97,6 +97,12 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public void setVencimento(Date vencimento) {
+        this.vencimento = vencimento;
+    }
+    
+    
+
     public void setStatusMatricula(Boolean statusMatricula) {
         this.statusMatricula = statusMatricula;
     }

@@ -8,28 +8,26 @@ package com.mycompany.trabalhooo;//pacote
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Administrador {
     
-    private List<Cliente> clientes = new ArrayList<>();
-    private Ficha ficha; //Necessario colocar uma ficha para o adm editar/remover?
-    private Aparelhos aparelhos;
+    //identificação
     private String nome;
-    private String password;
+    private String senha;
+    
+    List <Aparelhos> lista=new ArrayList<>();//lista de Aparelhos
 
-    public Administrador(String nome, String password) {
+    //construtores
+    public Administrador(String nome, String senha) {
         this.nome = nome;
-        this.password = password;
+        this.senha = senha;
     }
 
-    public List<Cliente> getClientes() {
-        return clientes;
+    public Administrador() {
     }
 
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-
+    //Getters e Setters
+    
     public String getNome() {
         return nome;
     }
@@ -38,27 +36,26 @@ public class Administrador {
         this.nome = nome;
     }
 
-    public String getPassword() {
-        return password;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public List<Aparelhos> getLista() {
+        return lista;
     }
 
-    public Aparelhos getAparelhos() {
-        return aparelhos;
+    public void setLista(List<Aparelhos> lista) {
+        this.lista = lista;
     }
-
-    public void setAparelhos(Aparelhos aparelhos) {
-        this.aparelhos = aparelhos;
-    }
-
     
-    public String toString(){
+    //Metodos
+    
+    public void verificaFuncionamento(Aparelhos aparelho)
+    {
+        System.out.println(aparelho.toString()); 
         
-        return "Nome :"+nome;    
     }
+    
     
     
     

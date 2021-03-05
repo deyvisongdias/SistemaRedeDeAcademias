@@ -10,6 +10,7 @@ public class Aparelhos {
     
     private String nome;
     private String numeracao;
+    private boolean estadoFuncionamento;
 
     public Aparelhos(String nome, String numeracao) {
         this.nome = nome;
@@ -33,7 +34,12 @@ public class Aparelhos {
     }
     
      public String toString(){
-         return ("Nome :" + nome + "\nNumeracao :" + numeracao);
+         String st="Interditado";
+         if(estadoFuncionamento==true)
+         {
+             st="Em funcionamento";
+         }
+         return "Nome :" + nome + "\nNumeracao :" + numeracao+"\nEstado de funcinamento :"+st;
      }
     
     
