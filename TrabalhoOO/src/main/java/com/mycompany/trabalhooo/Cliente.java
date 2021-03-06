@@ -1,97 +1,128 @@
-/*Deiverson Mourão Alves Pedroso (201965123A) 
-Deyvison Gregório Dias   (201835017)
-Pedro Henrique Almeida Cardoso Reis (201835039)
-Yuri de Oliveira (201835010)*/
-
-
 package com.mycompany.trabalhooo;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.io.File;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
 public class Cliente {
-
-    static int contId = 0; // Vai ser usada pra achar a ficha
-    static int contMatriculas = 0; //  Ativas
-
-    private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private int id;
-    private String nome;
-    private int cpf;
-    private Date dataMatricula;
-    private Boolean statusMatricula;
-    private Date vencimento;
-    private String senha;
-    private double mensalidade;
-    private List <Ficha> ficha = new ArrayList<>(); //Necessario colocar isso?
-
+    //falta a senha ou vai ser o cpf mesmo
+    static int contId = 0; // usado pra achar a ficha 
     
-    //!!!! Colocar Ficha depois !!!!
+    private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private String tipoPlano;
+    private String nome;
+    private String cpf;
+    private Date dataMatricula;
+    private Date vencimento;
+    private int id;
+    private Boolean statusMatricula;
+    private double valorPlano;
+    private String telefone;
+    private int duracaoPlano;
+    private int desconto;
+    
     //Construtor de um cliente novo
-    public Cliente(String nome,int cpf, Date dataMatricula,String senha) {
-        contId++;
+    public Cliente(String tipoPlano,String nome,String cpf, Date dataMatricula, String telefone) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dataMatricula);
         cal.add(Calendar.MONTH, 1);
+        this.tipoPlano = tipoPlano;
         this.nome = nome;
         this.cpf = cpf;  
         this.dataMatricula = dataMatricula; 
+        this.telefone = telefone;
         vencimento = cal.getTime();
+        contId++;
         this.id = contId;
         this.statusMatricula = true;
-        this.senha = senha;
-        mensalidade = 80.0;
+        valorPlano = 80;
+        duracaoPlano = 1;
+        desconto = 0;
     }
     
-    //Construtor de um cliente que já existe, com o construtor de cima, dados como vencimento e statusMatricula
-    //poderiam se perder. Usado quando lê os dados de um arquivo
-    
-    //!!!!!Ajustar o arquivo txt pra incluir a mensalidade nesse construtor, talvez seja necessário mudar na classe Program também!!!!
-    public Cliente(String nome, int cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,String senha) {
+    //Construtor de um cliente já cadastrado
+    public Cliente(String tipoPlano,String nome, String cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,double valorPlano, String telefone){
+        this.tipoPlano = tipoPlano;
         this.nome = nome;
         this.cpf = cpf;
         this.dataMatricula = dataMatricula;
         this.vencimento = vencimento;
         this.id = id;
         this.statusMatricula = statusMatricula;
-        this.senha = senha;
-        
+        this.valorPlano = valorPlano;
+        contId = id;
+        this.telefone = telefone;
+        duracaoPlano = 1;
+        desconto = 0;
     }
 
-    public int getId() {
-        return id;
+    public int getDesconto() {
+        return desconto;
     }
 
-    public int getCpf() {
-        return cpf;
+    public void setDesconto(int desconto) {
+        this.desconto = desconto;
     }
 
-    public String getNome() {
-        return nome;
+//    public String getTelefone() {
+//        return telefone;
+//    }
+//    
+//    public void setTelefone(String telefone) {
+//        this.telefone = telefone;
+//    }
+//
+    public int getDuracaoPlano() {
+        return duracaoPlano;
     }
+
+    public void setDuracaoPlano(int duracaoPlano) {
+        this.duracaoPlano = duracaoPlano;
+    }
+
+//    public String getTipoPlano(){
+//        return tipoPlano;
+//    }
+//    
+//    public int getId() {
+//        return id;
+//    }
+//    
+//    public String getCpf() {
+//        return cpf;
+//    }
 
     public String getDataMatricula() {
         return sdf.format(dataMatricula);
     }
-
-    public String getVencimento() {
-        return sdf.format(vencimento);
+    
+    public double getValorPlano() {
+        return valorPlano;
     }
-
+    
+     public void setValorPlano(double valorPlano){
+        this.valorPlano = valorPlano;
+    }  
+    
+//    public String getNome() {
+//        return nome;
+//    }
+//    
+//    public void setNome(String nome) {
+//        this.nome = nome;
+//    }
+    
     public Boolean getStatusMatricula() {
-        return statusMatricula;
+        return statusMatricula;                    
     }
 
-    public double getMensalidade() {
-        return mensalidade;
-    }
+
+ 
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -103,39 +134,28 @@ public class Cliente {
     
     
 
+
     public void setStatusMatricula(Boolean statusMatricula) {
         this.statusMatricula = statusMatricula;
     }
-
-    public String getSenha() {
-        return senha;
+      
+    public String getVencimento() {
+        return sdf.format(vencimento);
     }
-
-    /*
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-   */
     
-    
-    public void updateVencimento(){//atualiza pagamento
+    public void updateVencimento(){//atualiza data do pagamento
         Calendar cal = Calendar.getInstance();
-        cal.setTime(dataMatricula);
-        cal.add(Calendar.MONTH, 1);
+            try {
+                cal.setTime(sdf.parse(this.getDataMatricula()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        cal.add(Calendar.MONTH, duracaoPlano);
         vencimento = cal.getTime();
     }
     
-    
-    
-    
-    //Fazer alguma verificação
-    public void updateSenha(String novaSenha){
-        
-    }
-    
-    public void writeFile(File file){//Testando como transferir os dados pro arquivo
-        String dados = nome + "," + cpf + "," + getDataMatricula() + "," + getVencimento() + "," + 
-               id + "," + statusMatricula + "," + senha;
+    public void writeFile(File file){
+        String dados = this.toString();
         String path = file.getAbsolutePath();
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(path,true))){
             bw.write(dados);
@@ -147,7 +167,8 @@ public class Cliente {
     }
     
     @Override
-    public String toString(){//Facilitar visualização, colocar mais dados depois
-        return "Nome: " + nome + " Cpf: " + cpf + " Vencimento: " + vencimento;
+    public String toString(){
+        return tipoPlano + "|" + nome + "|" + cpf + "|" + getDataMatricula() + "|" + getVencimento() + "|" + 
+               id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone;
     }
 }
