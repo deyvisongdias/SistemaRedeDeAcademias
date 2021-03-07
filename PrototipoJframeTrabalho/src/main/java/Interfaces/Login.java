@@ -7,6 +7,7 @@ package Interfaces;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import Objetos.Program;
 
 /**
  *
@@ -68,7 +69,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
@@ -76,12 +77,12 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,7 +92,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,13 +124,19 @@ public class Login extends javax.swing.JFrame {
         {
             new ControleDeAdms().setVisible(true);
             this.dispose();
-        } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é adm
+        } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é treinador
         {
-            new JanelaDeAdmn().setVisible(true);
+            new Treinador().setVisible(true);
             this.dispose();
-        } else if (!(usuario.equals("")) && !senha.equals(""))//verifica se é cliente {
+        } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é recepcionista
         {
-            new JanelaDeCliente().setVisible(true);
+            new Recepçao().setVisible(true);
+            this.dispose();
+        } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+        {
+          JanelaDeCliente janela=  new JanelaDeCliente();
+          janela.setVisible(true);
+          janela.enviarCliente(Program.clientes.get(senha));
             this.dispose();
         } else
             JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
@@ -142,16 +149,21 @@ public class Login extends javax.swing.JFrame {
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String usuario = txtUser.getText();
-            String senha = new String(txtSenha.getPassword())   ;
+            String senha = new String(txtSenha.getPassword());
+
             if (((usuario.equals("")) || senha.equals("")) || ((usuario.equals("")) || senha.equals(""))) {
-                JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em em branco.");
+                JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
             } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
             {
                 new ControleDeAdms().setVisible(true);
                 this.dispose();
             } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é adm
             {
-                new JanelaDeAdmn().setVisible(true);
+                new Treinador().setVisible(true);
+                this.dispose();
+            } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é adm
+            {
+                new Recepçao().setVisible(true);
                 this.dispose();
             } else if (!(usuario.equals("")) && !senha.equals(""))//verifica se é cliente {
             {
@@ -160,8 +172,9 @@ public class Login extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
             }
-
         }
+
+
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     /**
