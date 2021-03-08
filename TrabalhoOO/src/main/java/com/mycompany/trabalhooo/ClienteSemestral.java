@@ -4,11 +4,16 @@ import java.util.Date;
 
 public class ClienteSemestral extends Cliente{
     
-    public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone) {
-        super(tipoPlano, nome, cpf, dataMatricula, telefone);
+   
+    
+    public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,int numeroParcelas,int valorParcelado)
+    {
+        super(tipoPlano, nome, cpf, dataMatricula, telefone,numeroParcelas,valorParcelado);
         this.setDuracaoPlano(6);
         this.setDesconto(10);
         this.updateVencimento();
+        this.setNumeroParcelas(0);
+        this.setValorParcelado(0);
     }
     
     //Cliente já cadastrado
@@ -18,6 +23,8 @@ public class ClienteSemestral extends Cliente{
         this.setDuracaoPlano(6);
         this.setDesconto(10);
     }
+    
+    
     
    @Override
     public String toString(){ 

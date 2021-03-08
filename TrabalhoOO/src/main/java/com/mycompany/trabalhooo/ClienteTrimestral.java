@@ -11,11 +11,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ClienteTrimestral extends Cliente{
+    
+        
+        
         private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         private int duracaoPlano = 3;
         private double desconto = 5; //desconto em porcentagem
-        private int numParcelas;
-        private double valorParcela;
 //        private Date renovacaoPlano;
         
     //Cadastro de um cliente com pagamento à vista
@@ -74,21 +75,6 @@ public class ClienteTrimestral extends Cliente{
         this.desconto = desconto;
     }
 
-    public int getNumParcelas() {
-        return numParcelas;
-    }
-
-    public void setNumParcelas(int numParcelas) {
-        this.numParcelas = numParcelas;
-    }
-
-    public double getValorParcela() {
-        return valorParcela;
-    }
-
-    public void setValorParcela(double valorParcela) {
-        this.valorParcela = valorParcela;
-    }
 
 //    public String getRenovacaoPlano() {
 //        return sdf.format(renovacaoPlano);
@@ -97,6 +83,9 @@ public class ClienteTrimestral extends Cliente{
 //    public void setRenovacaoPlano(Date renovacaoPlano) {
 //        this.renovacaoPlano = renovacaoPlano;
 //    }
+    
+    //Getters e Setters numeroParcelas
+
     
     @Override
     public void setValorPlano(double desconto){

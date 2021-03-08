@@ -25,6 +25,9 @@ public class Cliente {
     private String telefone;
     private int duracaoPlano;
     private int desconto;
+    //parte para usar a interface de pagamento
+     private int numeroParcelas=0;
+     private int valorParcelado=0;
     
     //Construtor de um cliente novo
     public Cliente(String tipoPlano,String nome,String cpf, Date dataMatricula, String telefone) {
@@ -84,10 +87,9 @@ public class Cliente {
     public void setDuracaoPlano(int duracaoPlano) {
         this.duracaoPlano = duracaoPlano;
     }
-
-//    public String getTipoPlano(){
-//        return tipoPlano;
-//    }
+    public String getTipoPlano(){
+        return tipoPlano;
+    }
 //    
 //    public int getId() {
 //        return id;
@@ -130,6 +132,24 @@ public class Cliente {
 
     public void setVencimento(Date vencimento) {
         this.vencimento = vencimento;
+    }
+    
+    //parte implementada para aplicaçao da interface de pagamento
+    
+    public int getNumeroParcelas() {
+        return numeroParcelas;
+    }
+
+    public void setNumeroParcelas(int numeroParcelas) {
+        this.numeroParcelas = numeroParcelas;
+    }
+
+    public int getValorParcelado() {
+        return valorParcelado*numeroParcelas;
+    }
+
+    public void setValorParcelado(int valorParcelado) {
+        this.valorParcelado = valorParcelado*numeroParcelas;
     }
     
     
