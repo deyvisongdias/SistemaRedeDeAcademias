@@ -8,6 +8,7 @@ import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class Cliente {
     //falta a senha ou vai ser o cpf mesmo
@@ -23,11 +24,13 @@ public class Cliente {
     private Boolean statusMatricula;
     private double valorPlano;
     private String telefone;
-    private int duracaoPlano;
     private int desconto;
+    private String sexo;
+    private int valorParcela = 0;
+    private int numeroParcelas = 1;
     
     //Construtor de um cliente novo
-    public Cliente(String tipoPlano,String nome,String cpf, Date dataMatricula, String telefone) {
+    public Cliente(String tipoPlano,String nome,String cpf, Date dataMatricula, String telefone,String sexo) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dataMatricula);
         cal.add(Calendar.MONTH, 1);
@@ -41,12 +44,12 @@ public class Cliente {
         this.id = contId;
         this.statusMatricula = true;
         valorPlano = 80;
-        duracaoPlano = 1;
         desconto = 0;
+        this.sexo = sexo;
     }
     
     //Construtor de um cliente já cadastrado
-    public Cliente(String tipoPlano,String nome, String cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,double valorPlano, String telefone){
+    public Cliente(String tipoPlano,String nome, String cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,double valorPlano, String telefone,String sexo){
         this.tipoPlano = tipoPlano;
         this.nome = nome;
         this.cpf = cpf;
@@ -57,8 +60,8 @@ public class Cliente {
         this.valorPlano = valorPlano;
         contId = id;
         this.telefone = telefone;
-        duracaoPlano = 1;
         desconto = 0;
+         this.sexo = sexo;
     }
 
     public int getDesconto() {
@@ -69,33 +72,41 @@ public class Cliente {
         this.desconto = desconto;
     }
 
-//    public String getTelefone() {
-//        return telefone;
-//    }
-//    
-//    public void setTelefone(String telefone) {
-//        this.telefone = telefone;
-//    }
-//
-    public int getDuracaoPlano() {
-        return duracaoPlano;
+    public String getTelefone() {
+        return telefone;
+    }
+    
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public void setDuracaoPlano(int duracaoPlano) {
-        this.duracaoPlano = duracaoPlano;
+    public String getTipoPlano(){
+        return tipoPlano;
     }
 
-//    public String getTipoPlano(){
-//        return tipoPlano;
-//    }
-//    
-//    public int getId() {
-//        return id;
-//    }
-//    
-//    public String getCpf() {
-//        return cpf;
-//    }
+    public int getValorParcela() {
+        return valorParcela;
+    }
+
+    public void setValorParcela(int valorParcela) {
+        this.valorParcela = valorParcela;
+    }
+
+    public int getNumeroParcelas() {
+        return numeroParcelas;
+    }
+
+    public void setNumeroParcelas(int numeroParcelas) {
+        this.numeroParcelas = numeroParcelas;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public String getCpf() {
+        return cpf;
+    }
 
     public String getDataMatricula() {
         return sdf.format(dataMatricula);
@@ -109,31 +120,17 @@ public class Cliente {
         this.valorPlano = valorPlano;
     }  
     
-//    public String getNome() {
-//        return nome;
-//    }
-//    
-//    public void setNome(String nome) {
-//        this.nome = nome;
-//    }
-    
-    public Boolean getStatusMatricula() {
-        return statusMatricula;                    
+    public String getNome() {
+        return nome;
     }
-
-
- 
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public void setVencimento(Date vencimento) {
-        this.vencimento = vencimento;
+    
+    public Boolean getStatusMatricula() {
+        return statusMatricula;
     }
-    
-    
-
 
     public void setStatusMatricula(Boolean statusMatricula) {
         this.statusMatricula = statusMatricula;
@@ -150,7 +147,7 @@ public class Cliente {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-        cal.add(Calendar.MONTH, duracaoPlano);
+        cal.add(Calendar.MONTH, numeroParcelas);
         vencimento = cal.getTime();
     }
     
@@ -165,10 +162,34 @@ public class Cliente {
             e.printStackTrace();
         }
     }
-    
+ 
     @Override
     public String toString(){
         return tipoPlano + "|" + nome + "|" + cpf + "|" + getDataMatricula() + "|" + getVencimento() + "|" + 
                id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone;
+    }
+     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.cpf);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        return true;
     }
 }
