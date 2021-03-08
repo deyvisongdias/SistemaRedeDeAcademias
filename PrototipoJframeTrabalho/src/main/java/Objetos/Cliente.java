@@ -20,7 +20,7 @@ import java.util.Objects;
  * @author deive
  */
 public class Cliente {
-     //falta a senha ou vai ser o cpf mesmo
+    //falta a senha ou vai ser o cpf mesmo
     static int contId = 0; // usado pra achar a ficha 
     
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -33,38 +33,10 @@ public class Cliente {
     private Boolean statusMatricula;
     private double valorPlano;
     private String telefone;
-    private int duracaoPlano;
     private int desconto;
     private String sexo;
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.cpf);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Cliente other = (Cliente) obj;
-        if (!Objects.equals(this.cpf, other.cpf)) {
-            return false;
-        }
-        return true;
-    }
+    private int valorParcela = 0;
+    private int numeroParcelas = 1;
     
     //Construtor de um cliente novo
     public Cliente(String tipoPlano,String nome,String cpf, Date dataMatricula, String telefone,String sexo) {
@@ -81,17 +53,12 @@ public class Cliente {
         this.id = contId;
         this.statusMatricula = true;
         valorPlano = 80;
-        duracaoPlano = 1;
         desconto = 0;
-        this.sexo=sexo;
+        this.sexo = sexo;
     }
     
     //Construtor de um cliente já cadastrado
-    public Cliente(String tipoPlano,String nome, String cpf, Date dataMatricula,
-            Date vencimento, int id, Boolean statusMatricula,double valorPlano, String telefone,String sexo){
-        
-        
-        
+    public Cliente(String tipoPlano,String nome, String cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,double valorPlano, String telefone,String sexo){
         this.tipoPlano = tipoPlano;
         this.nome = nome;
         this.cpf = cpf;
@@ -102,9 +69,8 @@ public class Cliente {
         this.valorPlano = valorPlano;
         contId = id;
         this.telefone = telefone;
-        duracaoPlano = 1;
         desconto = 0;
-        this.sexo=sexo;
+         this.sexo = sexo;
     }
 
     public int getDesconto() {
@@ -115,33 +81,41 @@ public class Cliente {
         this.desconto = desconto;
     }
 
-//    public String getTelefone() {
-//        return telefone;
-//    }
-//    
-//    public void setTelefone(String telefone) {
-//        this.telefone = telefone;
-//    }
-//
-    public int getDuracaoPlano() {
-        return duracaoPlano;
+    public String getTelefone() {
+        return telefone;
+    }
+    
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public void setDuracaoPlano(int duracaoPlano) {
-        this.duracaoPlano = duracaoPlano;
+    public String getTipoPlano(){
+        return tipoPlano;
     }
 
-//    public String getTipoPlano(){
-//        return tipoPlano;
-//    }
-//    
-//    public int getId() {
-//        return id;
-//    }
-//    
-//    public String getCpf() {
-//        return cpf;
-//    }
+    public int getValorParcela() {
+        return valorParcela;
+    }
+
+    public void setValorParcela(int valorParcela) {
+        this.valorParcela = valorParcela;
+    }
+
+    public int getNumeroParcelas() {
+        return numeroParcelas;
+    }
+
+    public void setNumeroParcelas(int numeroParcelas) {
+        this.numeroParcelas = numeroParcelas;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public String getCpf() {
+        return cpf;
+    }
 
     public String getDataMatricula() {
         return sdf.format(dataMatricula);
@@ -158,10 +132,10 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
-//    
-//    public void setNome(String nome) {
-//        this.nome = nome;
-//    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
     
     public Boolean getStatusMatricula() {
         return statusMatricula;
@@ -182,7 +156,7 @@ public class Cliente {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-        cal.add(Calendar.MONTH, duracaoPlano);
+        cal.add(Calendar.MONTH, numeroParcelas);
         vencimento = cal.getTime();
     }
     
@@ -197,10 +171,34 @@ public class Cliente {
             e.printStackTrace();
         }
     }
-    
+ 
     @Override
     public String toString(){
         return tipoPlano + "|" + nome + "|" + cpf + "|" + getDataMatricula() + "|" + getVencimento() + "|" + 
-               id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone+"|"+sexo;
+               id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone;
+    }
+     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.cpf);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        return true;
     }
 }

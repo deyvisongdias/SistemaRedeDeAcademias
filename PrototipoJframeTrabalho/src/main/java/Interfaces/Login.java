@@ -134,9 +134,9 @@ public class Login extends javax.swing.JFrame {
             this.dispose();
         } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
-          JanelaDeCliente janela=  new JanelaDeCliente();
-          janela.setVisible(true);
-          janela.enviarCliente(Program.clientes.get(senha));
+            JanelaDeCliente janela = new JanelaDeCliente();
+            janela.setVisible(true);
+            janela.enviarCliente(Program.clientes.get(senha));
             this.dispose();
         } else
             JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
@@ -157,17 +157,19 @@ public class Login extends javax.swing.JFrame {
             {
                 new ControleDeAdms().setVisible(true);
                 this.dispose();
-            } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é adm
+            } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é treinador
             {
                 new Treinador().setVisible(true);
                 this.dispose();
-            } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é adm
+            } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é recepcionista
             {
                 new Recepçao().setVisible(true);
                 this.dispose();
-            } else if (!(usuario.equals("")) && !senha.equals(""))//verifica se é cliente {
+            } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
             {
-                new JanelaDeCliente().setVisible(true);
+                JanelaDeCliente janela = new JanelaDeCliente();
+                janela.setVisible(true);
+                janela.enviarCliente(Program.clientes.get(senha));
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");

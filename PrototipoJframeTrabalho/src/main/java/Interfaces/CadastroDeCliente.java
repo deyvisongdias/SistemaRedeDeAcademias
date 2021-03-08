@@ -230,7 +230,7 @@ public class CadastroDeCliente extends javax.swing.JFrame {
             }
 
         } else {
-            JOptionPane.showConfirmDialog(this, "Dados incompletos ");
+            JOptionPane.showConfirmDialog(this, "Dados incompletos ou ja existentes no banco de dados ");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

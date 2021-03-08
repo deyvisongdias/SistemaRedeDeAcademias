@@ -13,27 +13,26 @@ import java.util.Date;
  * @author deive
  */
 
-public class ClienteTrimestral extends Cliente {
-
+public class ClienteTrimestral extends Cliente{
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-    public ClienteTrimestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo) {
+    
+    public ClienteTrimestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo){
         super(tipoPlano, nome, cpf, dataMatricula, telefone,sexo);
-        this.setDuracaoPlano(3);
         this.setDesconto(5);
-        this.updateVencimento();
+        this.updateVencimento();  
+        this.setNumeroParcelas(3);
     }
-
+    
     //Leitura do txt
-    public ClienteTrimestral(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, 
-            int id, Boolean statusMatricula, double mensalidade, String telefone,String sexo) {
-        super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade, telefone, sexo);
-        this.setDuracaoPlano(3);
+    public ClienteTrimestral(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, int id,
+            Boolean statusMatricula, double mensalidade,String telefone,String sexo) {
+        super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
+        this.setNumeroParcelas(3);
         this.setDesconto(5);
     }
-
+    
     @Override
-    public String toString() {
+    public String toString(){ 
         return super.toString() + "|" + this.getDesconto();
     }
-}
+ }
