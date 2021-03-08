@@ -5,6 +5,8 @@
  */
 package Interfaces;
 
+import java.awt.Dimension;
+import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,15 +37,16 @@ public class CriarFicha extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jtxtExr = new javax.swing.JTextField();
-        jbSalvar = new javax.swing.JButton();
+        jbAdcionar = new javax.swing.JButton();
         JcbAp = new javax.swing.JComboBox<>();
-        jSerieRep = new javax.swing.JFormattedTextField();
         jbApagar = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jBAtt = new javax.swing.JButton();
+        jSerieRep = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtableFicha = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("cadastra na ficha"));
@@ -54,20 +57,14 @@ public class CriarFicha extends javax.swing.JFrame {
 
         jLabel12.setText("Series/Repetiçao:");
 
-        jbSalvar.setText("Salvar");
-        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+        jbAdcionar.setText("Adicionar");
+        jbAdcionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalvarActionPerformed(evt);
+                jbAdcionarActionPerformed(evt);
             }
         });
 
-        JcbAp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
-
-        try {
-            jSerieRep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##-##-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        JcbAp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
 
         jbApagar.setText("Apagar");
         jbApagar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +73,19 @@ public class CriarFicha extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Atualizar");
+        jBAtt.setText("Atualizar");
+        jBAtt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAttActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -86,46 +95,52 @@ public class CriarFicha extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton6)
-                        .addGap(43, 43, 43)
-                        .addComponent(jbApagar))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JcbAp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jtxtExr, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(45, 45, 45)
+                            .addComponent(jtxtExr, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jBAtt)
+                        .addGap(31, 31, 31)
+                        .addComponent(jbApagar)
+                        .addGap(32, 32, 32)
+                        .addComponent(jbAdcionar)))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jSerieRep, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSerieRep))
+                    .addComponent(jButton1))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbSalvar)
-                            .addComponent(jbApagar)
-                            .addComponent(jButton6))
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel12)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JcbAp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtExr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSerieRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(101, 101, 101))))
+                            .addComponent(jtxtExr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jSerieRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbAdcionar)
+                            .addComponent(jbApagar)
+                            .addComponent(jBAtt)
+                            .addComponent(jButton1))
+                        .addGap(44, 44, 44))))
         );
 
         jtableFicha.setModel(new javax.swing.table.DefaultTableModel(
@@ -135,7 +150,28 @@ public class CriarFicha extends javax.swing.JFrame {
             new String [] {
                 "#Aparelho", "Exercicio", "Séries/Rep", "Carga"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtableFicha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtableFichaMouseClicked(evt);
+            }
+        });
+        jtableFicha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtableFichaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtableFichaKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtableFicha);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,22 +184,30 @@ public class CriarFicha extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    public void preencher(File file) {
+        
+    }
 
-    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+
+    private void jbAdcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdcionarActionPerformed
         DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
-        Object[] dados = {JcbAp.getSelectedItem(), jtxtExr.getText(), jSerieRep.getValue()};
+        Object[] dados = {JcbAp.getSelectedItem(), jtxtExr.getText(), jSerieRep.getText()};
         ficha.addRow(dados);
+
+        JcbAp.setSelectedIndex(0);
         jtxtExr.setText(null);
-        jSerieRep.setValue(null);
-    }//GEN-LAST:event_jbSalvarActionPerformed
+        jSerieRep.setText(null);
+        
+    }//GEN-LAST:event_jbAdcionarActionPerformed
 
     private void jbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbApagarActionPerformed
         if (jtableFicha.getSelectedRow() != -1) {
@@ -174,6 +218,50 @@ public class CriarFicha extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jbApagarActionPerformed
+
+    private void jBAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAttActionPerformed
+
+        if (jtableFicha.getSelectedRow() != -1) {
+            jtableFicha.setValueAt(JcbAp.getSelectedItem(), jtableFicha.getSelectedRow(), 0);
+            jtableFicha.setValueAt(jtxtExr.getText(), jtableFicha.getSelectedRow(), 1);
+            jtableFicha.setValueAt(jSerieRep.getText(), jtableFicha.getSelectedRow(), 2);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha para alterar");
+        }
+
+    }//GEN-LAST:event_jBAttActionPerformed
+
+    private void jtableFichaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableFichaMouseClicked
+        if (jtableFicha.getSelectedRow() != -1) {
+            JcbAp.setSelectedItem(jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 0));
+            jtxtExr.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 1));
+            jSerieRep.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 2));
+        }
+
+
+    }//GEN-LAST:event_jtableFichaMouseClicked
+
+    private void jtableFichaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFichaKeyPressed
+        // TODO add your handling code here:
+        if (jtableFicha.getSelectedRow() != -1) {
+            JcbAp.setSelectedItem(jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 0));
+            jtxtExr.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 1));
+            jSerieRep.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 2));
+        }
+    }//GEN-LAST:event_jtableFichaKeyPressed
+
+    private void jtableFichaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFichaKeyReleased
+        if (jtableFicha.getSelectedRow() != -1) {
+            JcbAp.setSelectedItem(jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 0));
+            jtxtExr.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 1));
+            jSerieRep.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 2));
+        }
+    }//GEN-LAST:event_jtableFichaKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,15 +298,16 @@ public class CriarFicha extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JcbAp;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jBAtt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JFormattedTextField jSerieRep;
+    private javax.swing.JTextField jSerieRep;
+    private javax.swing.JButton jbAdcionar;
     private javax.swing.JButton jbApagar;
-    private javax.swing.JButton jbSalvar;
     private javax.swing.JTable jtableFicha;
     private javax.swing.JTextField jtxtExr;
     // End of variables declaration//GEN-END:variables
