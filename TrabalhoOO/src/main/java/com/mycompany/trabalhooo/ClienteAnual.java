@@ -14,14 +14,13 @@ public class ClienteAnual extends Cliente{
         this.updateVencimento();
         this.setNumeroParcelas(0);
         this.setValorParcelado(0);
-        
-    }
+
     
     //Cliente já cadastrado
-    public ClienteAnual(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,
-            double mensalidade,String telefone) {
-        super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone);
-        this.setDuracaoPlano(12);
+    public ClienteAnual(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, int id,
+            Boolean statusMatricula, double mensalidade,String telefone,String sexo) {
+        super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
+       this.setNumeroParcelas(12);
         this.setDesconto(15);
       
     }
