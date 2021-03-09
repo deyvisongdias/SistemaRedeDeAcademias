@@ -13,12 +13,7 @@ import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
-import java.util.Objects;
-
-/**
- *
- * @author deive
- */
+import java.util.Objects; 
 public class Cliente {
     //falta a senha ou vai ser o cpf mesmo
     static int contId = 0; // usado pra achar a ficha 
