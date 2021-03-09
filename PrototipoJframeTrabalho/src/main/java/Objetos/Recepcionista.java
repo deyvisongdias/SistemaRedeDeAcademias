@@ -5,10 +5,6 @@
  */
 package Objetos;
 
-/**
- *
- * @author deive
- */
 import java.text.ParseException;
 import java.util.List;
 import java.util.ArrayList;
