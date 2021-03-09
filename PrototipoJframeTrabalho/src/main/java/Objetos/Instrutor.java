@@ -14,13 +14,12 @@ import java.util.List;
  */
 public class Instrutor {
 
-     private String nome;
+    private String nome;
     private String senha;
     private String cpf;
     private String data;
     private String sexo;
     private String contato;
-
     static List<Cliente> lista = new ArrayList<>();
 
     //construtores
