@@ -8,10 +8,6 @@ package Objetos;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author deive
- */
 public class Instrutor {
 
     private String nome;

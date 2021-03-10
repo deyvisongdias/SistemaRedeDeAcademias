@@ -8,10 +8,6 @@ package Objetos;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author deive
- */
 
 public class ClienteTrimestral extends Cliente{
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
