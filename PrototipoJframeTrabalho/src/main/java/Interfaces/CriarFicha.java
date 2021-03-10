@@ -5,7 +5,6 @@
  */
 package Interfaces;
 
-import java.awt.Dimension;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -200,7 +199,7 @@ public class CriarFicha extends javax.swing.JFrame {
 
     private void jbAdcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdcionarActionPerformed
         DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
-        Object[] dados = {JcbAp.getSelectedItem(), jtxtExr.getText(), jSerieRep.getText()};
+        Object[] dados = {JcbAp.getSelectedItem(), jtxtExr.getText(), jSerieRep.getText(),"___"};
         ficha.addRow(dados);
 
         JcbAp.setSelectedIndex(0);
@@ -209,6 +208,7 @@ public class CriarFicha extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbAdcionarActionPerformed
 
+    
     private void jbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbApagarActionPerformed
         if (jtableFicha.getSelectedRow() != -1) {
             DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
@@ -259,12 +259,14 @@ public class CriarFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_jtableFichaKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for (int i = 0; i < jtableFicha.getRowCount(); i++) {
-            Object[] dados ={jtableFicha.getValueAt(i, 0),jtableFicha.getValueAt(i, 1),jtableFicha.getValueAt(i, 2)};
+        if (JOptionPane.showConfirmDialog(this, "Confirme realizar Pagamento?", "Confirmar", JOptionPane.OK_CANCEL_OPTION)
+            == JOptionPane.OK_OPTION) {
             
+            for (int i = 0; i < jtableFicha.getRowCount(); i++) {
+                Object[] dados = {jtableFicha.getValueAt(i, 0), jtableFicha.getValueAt(i, 1), jtableFicha.getValueAt(i, 2)};
+                
+            }
         }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

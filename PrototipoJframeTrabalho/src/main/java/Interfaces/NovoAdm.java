@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Objetos.Recepcionista;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
@@ -125,7 +126,7 @@ public class NovoAdm extends javax.swing.JFrame {
 
         jLabel8.setText("Função:");
 
-        jcbFunc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Recepcionista", "Treinador" }));
+        jcbFunc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Recepcionista", "Instrutor" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -268,15 +269,16 @@ public class NovoAdm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Senha e confirmar senha diferentes");
             } else {
                 String funcao, s;
-                if (jcbFunc.getSelectedIndex() == 1) {
-                    funcao = "Recepcionista";
-                } else {
-                    funcao = "Treinador";
-                }
+
                 if (jCbSexo.getSelectedIndex() == 1) {
                     s = "FEminino";
                 } else {
                     s = "Masculino";
+                }
+                if (jcbFunc.getSelectedIndex() == 1) {
+                    funcao = "Recepcionista";
+                } else {
+                    funcao = "Treinador";
                 }
                 Objetos.Administrador.CriaFuncionario(funcao, jtxtnome.getText(), jFtxtCPF.getText(),
                         jftxtdata.getText(), jFtxtContato.getText(), s, jPasswordField1.getText());

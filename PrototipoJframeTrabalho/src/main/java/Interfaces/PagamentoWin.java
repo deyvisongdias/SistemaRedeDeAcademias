@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import Objetos.Recepcionista;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -102,7 +103,7 @@ public class PagamentoWin extends javax.swing.JFrame {
 
         lblcpf.setText("-----");
 
-        jButton4.setText("Pagamento realizado");
+        jButton4.setText("Realizar Pagamento");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -249,9 +250,11 @@ public class PagamentoWin extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Cliente cliente = map.get(jTable1.getSelectedRow());
-
-        Recepcionista rc = new Recepcionista();
-        rc.pagar(cliente);
+        if (JOptionPane.showConfirmDialog(this, "Confirme realizar Pagamento?", "Confirmar", JOptionPane.OK_CANCEL_OPTION)
+                == JOptionPane.OK_OPTION) {
+            Recepcionista rc = new Recepcionista();
+            rc.pagar(cliente);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

@@ -118,7 +118,7 @@ public class Login extends javax.swing.JFrame {
         String usuario = txtUser.getText();
         String senha = new String(txtSenha.getPassword());
 
-        if (((usuario.equals("")) || senha.equals("")) || ((usuario.equals("")) || senha.equals(""))) {
+        if (((usuario.equals("")) || senha.equals(""))) {
             JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
         } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
         {
@@ -126,12 +126,13 @@ public class Login extends javax.swing.JFrame {
             this.dispose();
         } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é treinador
         {
-            new Treinador().setVisible(true);
+            new Instrutor().setVisible(true);
             this.dispose();
         } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
+            
         } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
             JanelaDeCliente janela = new JanelaDeCliente();
@@ -159,7 +160,7 @@ public class Login extends javax.swing.JFrame {
                 this.dispose();
             } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é treinador
             {
-                new Treinador().setVisible(true);
+                new Instrutor().setVisible(true);
                 this.dispose();
             } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é recepcionista
             {

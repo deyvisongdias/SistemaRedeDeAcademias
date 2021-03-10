@@ -59,40 +59,20 @@ public class CadastroDeCliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jftxtdata.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jftxtdataActionPerformed(evt);
-            }
-        });
 
         try {
             jFtxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFtxtCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFtxtCPFActionPerformed(evt);
-            }
-        });
 
         jCsexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Feminino", "Masculino" }));
-        jCsexo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCsexoActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Nome:");
 
         jLabel2.setText("Data de Nascimento:");
 
         jCbPlano.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Mensal", "Trimestral", "Semestral", "Anual" }));
-        jCbPlano.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbPlanoActionPerformed(evt);
-            }
-        });
 
         jLabel20.setText("Plano:");
 
@@ -238,22 +218,6 @@ public class CadastroDeCliente extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(this, "Dados incompletos ou ja existentes no banco de dados ");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jCbPlanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbPlanoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCbPlanoActionPerformed
-
-    private void jCsexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCsexoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCsexoActionPerformed
-
-    private void jFtxtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFtxtCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFtxtCPFActionPerformed
-
-    private void jftxtdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jftxtdataActionPerformed
-
-    }//GEN-LAST:event_jftxtdataActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {

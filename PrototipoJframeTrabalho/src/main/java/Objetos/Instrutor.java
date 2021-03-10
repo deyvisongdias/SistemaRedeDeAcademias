@@ -62,13 +62,4 @@ public class Instrutor {
     public String getContato() {
         return contato;
     }
-    
-
-    static public  List<Cliente> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<Cliente> lista) {
-        this.lista = lista;
-    }
 }

@@ -20,9 +20,10 @@ import java.util.Objects;
  * @author deive
  */
 public class Cliente {
+
     //falta a senha ou vai ser o cpf mesmo
     static int contId = 0; // usado pra achar a ficha 
-    
+
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private String tipoPlano;
     private String nome;
@@ -37,16 +38,17 @@ public class Cliente {
     private String sexo;
     private double valorParcela = 0;
     private int numeroParcelas = 1;
-    
+    private Ficha ficha; //#########
+
     //Construtor de um cliente novo
-    public Cliente(String tipoPlano,String nome,String cpf, Date dataMatricula, String telefone,String sexo) {
+    public Cliente(String tipoPlano, String nome, String cpf, Date dataMatricula, String telefone, String sexo) throws IOException {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dataMatricula);
         cal.add(Calendar.MONTH, 1);
         this.tipoPlano = tipoPlano;
         this.nome = nome;
-        this.cpf = cpf;  
-        this.dataMatricula = dataMatricula; 
+        this.cpf = cpf;
+        this.dataMatricula = dataMatricula;
         this.telefone = telefone;
         vencimento = cal.getTime();
         contId++;
@@ -55,10 +57,12 @@ public class Cliente {
         valorPlano = 80;
         desconto = 0;
         this.sexo = sexo;
+        this.ficha = new Ficha(cpf); //##############
     }
-    
+
     //Construtor de um cliente já cadastrado
-    public Cliente(String tipoPlano,String nome, String cpf, Date dataMatricula, Date vencimento, int id, Boolean statusMatricula,double valorPlano, String telefone,String sexo){
+    public Cliente(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, 
+            int id, Boolean statusMatricula, double valorPlano, String telefone, String sexo) throws IOException {
         this.tipoPlano = tipoPlano;
         this.nome = nome;
         this.cpf = cpf;
@@ -70,7 +74,8 @@ public class Cliente {
         contId = id;
         this.telefone = telefone;
         desconto = 0;
-         this.sexo = sexo;
+        this.sexo = sexo;
+        this.ficha = new Ficha(cpf); //##############
     }
 
     public int getDesconto() {
@@ -84,12 +89,12 @@ public class Cliente {
     public String getTelefone() {
         return telefone;
     }
-    
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public String getTipoPlano(){
+    public String getTipoPlano() {
         return tipoPlano;
     }
 
@@ -108,11 +113,11 @@ public class Cliente {
     public void setNumeroParcelas(int numeroParcelas) {
         this.numeroParcelas = numeroParcelas;
     }
-    
+
     public int getId() {
         return id;
     }
-    
+
     public String getCpf() {
         return cpf;
     }
@@ -120,23 +125,23 @@ public class Cliente {
     public String getDataMatricula() {
         return sdf.format(dataMatricula);
     }
-    
+
     public double getValorPlano() {
         return valorPlano;
     }
-    
-     public void setValorPlano(double valorPlano){
+
+    public void setValorPlano(double valorPlano) {
         this.valorPlano = valorPlano;
-    }  
-    
+    }
+
     public String getNome() {
         return nome;
     }
-    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     public Boolean getStatusMatricula() {
         return statusMatricula;
     }
@@ -144,40 +149,40 @@ public class Cliente {
     public void setStatusMatricula(Boolean statusMatricula) {
         this.statusMatricula = statusMatricula;
     }
-      
+
     public String getVencimento() {
         return sdf.format(vencimento);
     }
-    
-    public void updateVencimento(){//atualiza data do pagamento
+
+    public void updateVencimento() {//atualiza data do pagamento
         Calendar cal = Calendar.getInstance();
-            try {
-                cal.setTime(sdf.parse(this.getDataMatricula()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+        try {
+            cal.setTime(sdf.parse(this.getDataMatricula()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         cal.add(Calendar.MONTH, numeroParcelas);
         vencimento = cal.getTime();
     }
-    
-    public void writeFile(File file){
+
+    public void writeFile(File file) {
         String dados = this.toString();
         String path = file.getAbsolutePath();
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path,true))){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
- 
+
     @Override
-    public String toString(){
-        return tipoPlano + "|" + nome + "|" + cpf + "|" + getDataMatricula() + "|" + getVencimento() + "|" + 
-               id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone;
+    public String toString() {
+        return tipoPlano + "|" + nome + "|" + cpf + "|" + getDataMatricula() + "|" + getVencimento() + "|"
+                + id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone;
     }
-     @Override
+
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 41 * hash + Objects.hashCode(this.cpf);
@@ -200,5 +205,9 @@ public class Cliente {
             return false;
         }
         return true;
+    }
+
+    private void CriarFicha(String cpf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

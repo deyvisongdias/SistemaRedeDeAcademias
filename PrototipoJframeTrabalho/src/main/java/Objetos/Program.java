@@ -27,6 +27,8 @@ public class Program {
     private static Scanner sc = new Scanner(System.in);
 
     public static Map<String, Cliente> clientes = new HashMap<>();
+    public static Map<String, Recepcionista> recepcionista = new HashMap<>();//##3
+    public static Map<String, Instrutor> instrutor = new HashMap<>();//#####
 
   
 
