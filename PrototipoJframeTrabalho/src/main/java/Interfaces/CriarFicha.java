@@ -5,7 +5,14 @@
  */
 package Interfaces;
 
+import Objetos.Cliente;
+import Objetos.Ficha;
 import java.io.File;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,6 +26,7 @@ public class CriarFicha extends javax.swing.JFrame {
      * Creates new form CriarFicha
      */
     public CriarFicha() {
+        this.ficha = (DefaultTableModel) jtableFicha.getModel();
         initComponents();
     }
 
@@ -195,11 +203,26 @@ public class CriarFicha extends javax.swing.JFrame {
     public void preencher(File file) {
 
     }
+    private Cliente cliente;
+    private final DefaultTableModel ficha;
 
+    private Object[] ConverteString(String st) {
+        Object[] dados = st.split(";");
+        return dados;
+    }
+
+    public void PreencherFicha(Cliente cliente) throws IOException {
+        this.cliente = cliente;
+        Ficha fichA = new Ficha(cliente.getCpf());
+        List<String> lista = new LinkedList<>();
+        fichA.addTabela(this.cliente.getCpf());
+        lista.forEach(string -> {
+            ficha.addRow(ConverteString(string));//########
+        }); 
+    }// colocar esse metodo na janela de cliente tbm
 
     private void jbAdcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdcionarActionPerformed
-        DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
-        Object[] dados = {JcbAp.getSelectedItem(), jtxtExr.getText(), jSerieRep.getText(),"___"};
+        Object[] dados = {JcbAp.getSelectedItem(), jtxtExr.getText(), jSerieRep.getText(), "___"};
         ficha.addRow(dados);
 
         JcbAp.setSelectedIndex(0);
@@ -208,7 +231,7 @@ public class CriarFicha extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbAdcionarActionPerformed
 
-    
+
     private void jbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbApagarActionPerformed
         if (jtableFicha.getSelectedRow() != -1) {
             DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
@@ -260,11 +283,19 @@ public class CriarFicha extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Confirme realizar Pagamento?", "Confirmar", JOptionPane.OK_CANCEL_OPTION)
-            == JOptionPane.OK_OPTION) {
-            
-            for (int i = 0; i < jtableFicha.getRowCount(); i++) {
-                Object[] dados = {jtableFicha.getValueAt(i, 0), jtableFicha.getValueAt(i, 1), jtableFicha.getValueAt(i, 2)};
-                
+                == JOptionPane.OK_OPTION) {
+            try {
+                List<String> lista = new LinkedList();
+                for (int i = 0; i < jtableFicha.getRowCount(); i++) {
+                    String dados = jtableFicha.getValueAt(i, 0) + ";" + jtableFicha.getValueAt(i, 1) + ";"
+                            + jtableFicha.getValueAt(i, 2) + ";" + jtableFicha.getValueAt(i, 3);
+                    lista.add(dados);
+                }
+                Objetos.Ficha ficha = new Ficha();
+                ficha.addArquivo(this.cliente.getCpf(), lista);
+                this.dispose();
+            } catch (IOException ex) {
+                Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -294,6 +325,9 @@ public class CriarFicha extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CriarFicha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

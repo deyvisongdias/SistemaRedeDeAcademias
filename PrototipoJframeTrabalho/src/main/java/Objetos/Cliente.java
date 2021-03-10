@@ -62,7 +62,7 @@ public class Cliente {
 
     //Construtor de um cliente já cadastrado
     public Cliente(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, 
-            int id, Boolean statusMatricula, double valorPlano, String telefone, String sexo) throws IOException {
+    int id, Boolean statusMatricula, double valorPlano, String telefone, String sexo) throws IOException {
         this.tipoPlano = tipoPlano;
         this.nome = nome;
         this.cpf = cpf;
@@ -208,6 +208,10 @@ public class Cliente {
     }
 
     private void CriarFicha(String cpf) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getcpf() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

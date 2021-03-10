@@ -25,9 +25,9 @@ public class Ficham {
 //    
     }
 
-    public Object RecriarFicha(int index) {
-        Object[] dados = {};
-
-        return dados;
-    }
+//    public Object RecriarFicha(int index) {
+//        Object[] dados = {};
+//
+//        return dados;
+//    }
 }

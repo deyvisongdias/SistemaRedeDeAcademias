@@ -10,7 +10,10 @@ import Objetos.ClienteAnual;
 import Objetos.ClienteSemestral;
 import Objetos.ClienteTrimestral;
 import Objetos.Program;
+import java.io.IOException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -201,17 +204,33 @@ public class CadastroDeCliente extends javax.swing.JFrame {
                 && jCbPlano.getSelectedIndex() != 0
                 && jCsexo.getSelectedIndex() != 0) {
             if (jCbPlano.getSelectedIndex() == 1) {
-                Cliente cliente = new Cliente("Mensal", jtxtnome.getText(), jFtxtCPF.getText(),
-                        new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                try {
+                    Cliente cliente = new Cliente("Mensal", jtxtnome.getText(), jFtxtCPF.getText(),
+                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (jCbPlano.getSelectedIndex() == 2) {
-                Cliente cliente = new ClienteTrimestral("Trimestral", jtxtnome.getText(), jFtxtCPF.getText(),
-                        new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                try {
+                    Cliente cliente = new ClienteTrimestral("Trimestral", jtxtnome.getText(), jFtxtCPF.getText(),
+                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (jCbPlano.getSelectedIndex() == 3) {
-                Cliente cliente = new ClienteSemestral("Semestral", jtxtnome.getText(), jFtxtCPF.getText(),
-                        new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                try {
+                    Cliente cliente = new ClienteSemestral("Semestral", jtxtnome.getText(), jFtxtCPF.getText(),
+                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else if (jCbPlano.getSelectedIndex() == 4) {
-                Cliente cliente = new ClienteAnual("Anual", jtxtnome.getText(), jFtxtCPF.getText(),
-                        new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                try {
+                    Cliente cliente = new ClienteAnual("Anual", jtxtnome.getText(), jFtxtCPF.getText(),
+                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         } else {

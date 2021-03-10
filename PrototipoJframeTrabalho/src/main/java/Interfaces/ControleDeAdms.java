@@ -111,14 +111,14 @@ public class ControleDeAdms extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new RemoverAdm().setVisible(true);
+        new RemoverAdmHHH().setVisible(true);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonSAIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSAIRActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
             this.dispose();
-            new Login().setVisible(true);
+            new LoginHHH().setVisible(true);
         }
     }//GEN-LAST:event_jButtonSAIRActionPerformed
 

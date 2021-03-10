@@ -27,12 +27,11 @@ public class Program {
     private static Scanner sc = new Scanner(System.in);
 
     public static Map<String, Cliente> clientes = new HashMap<>();
-    public static Map<String, Recepcionista> recepcionista = new HashMap<>();//##3
+    public static Map<String, String> cpfCliente = new HashMap<>();
+    public static Map<String, Recepcionista> recepcionista = new HashMap<>();//###
     public static Map<String, Instrutor> instrutor = new HashMap<>();//#####
 
-  
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int updatedId = 0;
         String sexo;
         File clientesBD = new File("clientes.txt");
@@ -62,7 +61,7 @@ public class Program {
                                             Double.parseDouble(fields[7]), //mensalidade       
                                             fields[8], //telefone
                                             fields[9]));                                       //sexo
-
+                            
                         } else if (fields[0].equals("trimestral")) {
                             clientes.put(fields[2], // cpf como chave
                                     new ClienteTrimestral(fields[0], //tipo plano
@@ -105,6 +104,7 @@ public class Program {
                     } catch (ParseException ex) {
                         Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    cpfCliente.put(fields[1],fields[2]);
                     Cliente.contId++;
                     line = br.readLine();
                 }

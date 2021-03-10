@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ import java.util.Date;
 public class ClienteTrimestral extends Cliente{
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     
-    public ClienteTrimestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo){
+    public ClienteTrimestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo) throws IOException{
         super(tipoPlano, nome, cpf, dataMatricula, telefone,sexo);
         this.setDesconto(5);
         this.updateVencimento();  
@@ -25,7 +26,7 @@ public class ClienteTrimestral extends Cliente{
     
     //Leitura do txt
     public ClienteTrimestral(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, int id,
-            Boolean statusMatricula, double mensalidade,String telefone,String sexo) {
+            Boolean statusMatricula, double mensalidade,String telefone,String sexo) throws IOException {
         super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
         this.setNumeroParcelas(3);
         this.setDesconto(5);

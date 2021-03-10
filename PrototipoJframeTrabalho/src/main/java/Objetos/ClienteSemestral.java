@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Date;
 
 public class ClienteSemestral extends Cliente{
     
-    public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo){
+    public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo) throws IOException{
         super(tipoPlano, nome, cpf, dataMatricula, telefone,sexo);
         this.setDesconto(10);
         this.updateVencimento();
@@ -25,7 +26,7 @@ public class ClienteSemestral extends Cliente{
     
     //Cliente já cadastrado
     public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, int id,
-            Boolean statusMatricula, double mensalidade,String telefone,String sexo) {
+            Boolean statusMatricula, double mensalidade,String telefone,String sexo) throws IOException {
         super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
         this.setNumeroParcelas(6);
         this.setDesconto(10);

@@ -5,7 +5,15 @@
  */
 package Interfaces;
 
+import Objetos.Cliente;
+import Objetos.Ficha;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,9 +24,24 @@ public class FichaDoCliente extends javax.swing.JFrame {
     /**
      * Creates new form FichaDoCliente
      */
-    public FichaDoCliente() {
-        initComponents();
+    private Object[] ConverteString(String st) {
+        Object[] dados = st.split(";");
+        return dados;
     }
+
+    public FichaDoCliente(Cliente cliente) throws IOException {
+        this.ficha = (javax.swing.table.DefaultTableModel) Ficha.getModel();
+        this.cliente = cliente;
+        initComponents();
+        Ficha fichA = new Ficha(cliente.getCpf());
+        List<String> lista = new LinkedList<>();
+        lista = fichA.addTabela(this.cliente.getCpf());
+        lista.forEach(string -> {
+            ficha.addRow(ConverteString(string));//########
+        });
+    }
+    static Cliente cliente;
+    private final DefaultTableModel ficha;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,12 +53,12 @@ public class FichaDoCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Ficha = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Ficha.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -51,7 +74,7 @@ public class FichaDoCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Ficha);
 
         jButton2.setText("Sair");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -88,10 +111,21 @@ public class FichaDoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int jt = JOptionPane.showConfirmDialog(this, "Salvar alteraçoes");
-        if (jt == JOptionPane.YES_OPTION) {
-            //salvar
-        } else {
+        if (JOptionPane.showConfirmDialog(this, "Confirme realizar Pagamento?", "Confirmar", JOptionPane.OK_CANCEL_OPTION)
+                == JOptionPane.OK_OPTION) {
+            try {
+                List<String> lista = new LinkedList();
+                for (int i = 0; i < Ficha.getRowCount(); i++) {
+                    String dados = Ficha.getValueAt(i, 0) + ";" + Ficha.getValueAt(i, 1) + ";"
+                            + Ficha.getValueAt(i, 2) + ";" + Ficha.getValueAt(i, 3);
+                    lista.add(dados);
+                }
+                Objetos.Ficha ficha = new Ficha();
+                ficha.addArquivo(this.cliente.getCpf(), lista);//add ao aquirvo da ficha
+                this.dispose();
+            } catch (IOException ex) {
+                Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -121,18 +155,25 @@ public class FichaDoCliente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FichaDoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FichaDoCliente().setVisible(true);
+                try {
+                    new FichaDoCliente(cliente).setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(FichaDoCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Ficha;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
