@@ -7,6 +7,12 @@ package Objetos;
 
 import java.util.Date;
 
+/**
+ *
+ * @author deive
+ */
+
+
 public class ClienteSemestral extends Cliente{
     
     public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo){

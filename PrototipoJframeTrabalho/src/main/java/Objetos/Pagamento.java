@@ -5,6 +5,10 @@
  */
 package Objetos;
 
+/**
+ *
+ * @author deive
+ */
  public interface Pagamento {
 
   public  abstract  double retornaValorPagamento(Cliente cliente);
