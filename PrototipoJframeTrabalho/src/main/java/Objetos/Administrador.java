@@ -42,4 +42,6 @@ public class Administrador {
             Recepcionista rc = new Recepcionista(nome, senha, cpf, dataMatricula, sexo, telefone);
         }
     }
+   //Criar funcao remover func
+   
 }

@@ -28,8 +28,11 @@ public class Program {
 
     public static Map<String, Cliente> clientes = new HashMap<>();
     public static Map<String, String> cpfCliente = new HashMap<>();
+    
+    
     public static Map<String, Recepcionista> recepcionista = new HashMap<>();//###
     public static Map<String, Instrutor> instrutor = new HashMap<>();//#####
+    public static Map<String, String> funcionarios = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         int updatedId = 0;
