@@ -8,8 +8,6 @@ package Interfaces;
 import Objetos.Cliente;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -222,7 +220,7 @@ public class InstrutorLLL extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
             this.dispose();
-            new LoginHHH().setVisible(true);
+            new Login().setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -21,12 +21,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FichaDoCliente extends javax.swing.JFrame {
 
+    FichaDoCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * Creates new form FichaDoCliente
      */
     private Object[] ConverteString(String st) {
         Object[] dados = st.split(";");
         return dados;
+    }
+
+    public void PreencherFicha(Cliente cliente) throws IOException {
+        this.cliente = cliente;
+        Ficha fichA = new Ficha(cliente.getCpf());
+        List<String> lista = new LinkedList<>();
+        fichA.addTabela(this.cliente.getCpf());
+        lista.forEach(string -> {
+            ficha.addRow(ConverteString(string));//########
+        });
     }
 
     public FichaDoCliente(Cliente cliente) throws IOException {

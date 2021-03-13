@@ -46,11 +46,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Senha :");
 
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
-            }
-        });
         txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSenhaKeyPressed(evt);
@@ -124,18 +119,20 @@ public class Login extends javax.swing.JFrame {
         {
             new ControleDeAdms().setVisible(true);
             this.dispose();
-        } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é treinador
+
+        } else if (Program.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
         {
-            new Instrutor().setVisible(true);
+            new InstrutorLLL().setVisible(true);
             this.dispose();
-        } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é recepcionista
+
+        } else if (Program.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
-            
+
         } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
-            JanelaDeCliente janela = new JanelaDeCliente();
+            JanelaDeClienteHHH janela = new JanelaDeClienteHHH();
             janela.setVisible(true);
             janela.enviarCliente(Program.clientes.get(senha));
             this.dispose();
@@ -143,32 +140,31 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
-
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String usuario = txtUser.getText();
             String senha = new String(txtSenha.getPassword());
 
-            if (((usuario.equals("")) || senha.equals("")) || ((usuario.equals("")) || senha.equals(""))) {
+            if (((usuario.equals("")) || senha.equals(""))) {
                 JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
             } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
             {
                 new ControleDeAdms().setVisible(true);
                 this.dispose();
-            } else if (usuario.equals("oo") && senha.equals("1234"))//Verificar se é treinador
+
+            } else if (Program.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
             {
-                new Instrutor().setVisible(true);
+                new InstrutorLLL().setVisible(true);
                 this.dispose();
-            } else if (usuario.equals("oo1") && senha.equals("1234"))//Verificar se é recepcionista
+
+            } else if (Program.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
             {
                 new Recepçao().setVisible(true);
                 this.dispose();
+
             } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
             {
-                JanelaDeCliente janela = new JanelaDeCliente();
+                JanelaDeClienteHHH janela = new JanelaDeClienteHHH();
                 janela.setVisible(true);
                 janela.enviarCliente(Program.clientes.get(senha));
                 this.dispose();
@@ -176,8 +172,6 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
             }
         }
-
-
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     /**
@@ -209,6 +203,9 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

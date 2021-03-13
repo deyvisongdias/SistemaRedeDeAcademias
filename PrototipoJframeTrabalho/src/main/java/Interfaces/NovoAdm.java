@@ -243,7 +243,8 @@ public class NovoAdm extends javax.swing.JFrame {
                 Objetos.Administrador.CriaFuncionario(funcao, jtxtnome.getText(), jFtxtCPF.getText(),
                         jftxtdata.getText(), jFtxtContato.getText(), s, jPasswordField1.getText());
             }
-        }
+        }else
+            JOptionPane.showMessageDialog(this,"Dados imcompletos");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

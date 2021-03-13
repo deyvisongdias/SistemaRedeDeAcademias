@@ -39,7 +39,7 @@ public class PagamentoWin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jtxtnome = new javax.swing.JTextField();
+        nomebusca = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -123,7 +123,7 @@ public class PagamentoWin extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel8)
                 .addGap(27, 27, 27)
-                .addComponent(jtxtnome, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomebusca, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -160,7 +160,7 @@ public class PagamentoWin extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jtxtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomebusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +204,7 @@ public class PagamentoWin extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        String nome = jtxtnome.getText();
+        String nome = nomebusca.getText();
         int i = 0;
         DefaultTableModel psq = (DefaultTableModel) jTable1.getModel();
         for (Cliente c : Objetos.Recepcionista.getLista()) {
@@ -304,10 +304,10 @@ public class PagamentoWin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jtxtnome;
     private javax.swing.JLabel lblbnome;
     private javax.swing.JLabel lblcpf;
     private javax.swing.JLabel lblvencimento;
     private javax.swing.JLabel lvlvalor;
+    private javax.swing.JTextField nomebusca;
     // End of variables declaration//GEN-END:variables
 }

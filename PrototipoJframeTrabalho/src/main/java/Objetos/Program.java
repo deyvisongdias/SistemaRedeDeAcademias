@@ -26,7 +26,7 @@ public class Program {
 
     public static Map<String, String> funcionarios = new HashMap<>();//usado pra fazer o login
 
-    public static void main(String[] args, Recepcionista New) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException {
         int updatedId = 0;
         String sexo;
         File clientesBD = new File("clientes.txt");

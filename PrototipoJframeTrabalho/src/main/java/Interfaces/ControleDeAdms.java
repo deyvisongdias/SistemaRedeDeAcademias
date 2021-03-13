@@ -118,7 +118,7 @@ public class ControleDeAdms extends javax.swing.JFrame {
     private void jButtonSAIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSAIRActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
             this.dispose();
-            new LoginHHH().setVisible(true);
+            new Login().setVisible(true);
         }
     }//GEN-LAST:event_jButtonSAIRActionPerformed
 
