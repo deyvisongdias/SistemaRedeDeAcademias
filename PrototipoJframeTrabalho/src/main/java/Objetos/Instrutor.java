@@ -5,6 +5,10 @@
  */
 package Objetos;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +18,7 @@ import java.util.List;
  */
 public class Instrutor {
 
+    private String funcao;
     private String nome;
     private String senha;
     private String cpf;
@@ -62,4 +67,15 @@ public class Instrutor {
     public String getContato() {
         return contato;
     }
+
+     public void writeFile(File file) {
+        String dados = this.toString();
+        String path = file.getAbsolutePath();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+            bw.write(dados);
+            bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+     }
 }

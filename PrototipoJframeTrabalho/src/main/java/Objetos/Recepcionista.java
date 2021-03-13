@@ -9,6 +9,10 @@ package Objetos;
  *
  * @author deive
  */
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.ArrayList;
@@ -23,6 +27,7 @@ public class Recepcionista implements Pagamento {
     //identificaçao
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+    
     private String nome;
     private String senha;
     private String cpf;
@@ -149,5 +154,16 @@ public class Recepcionista implements Pagamento {
 
         }
     }
+     
+ public void writeFile(File file) {
+        String dados = this.toString();
+        String path = file.getAbsolutePath();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+            bw.write(dados);
+            bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+ }
 
 }
