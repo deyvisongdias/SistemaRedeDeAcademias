@@ -83,4 +83,12 @@ public class Instrutor {
             e.printStackTrace();
         }
     }
+    
+    
+ 
+    public String ToString()
+    {
+        return ("Instrutor"+"|"+getNome()+"|"+getSenha()+"|"+getCpf()+"|"+getData()+"|"+getSexo()+"|"+getContato());
+    }
+    
 }

@@ -61,6 +61,7 @@ public class Cliente {
         this.ficha = new Ficha(cpf); //##############
         Recepcionista.lista.add(this);
         
+        
     }
 
     //Construtor de um cliente já cadastrado
@@ -169,9 +170,9 @@ public class Cliente {
         vencimento = cal.getTime();
     }
 
-    public void writeFile(File file) {
+    public void writeFile() {
         String dados = this.toString();
-        String path = file.getAbsolutePath();
+        String path =Recepcionista.clientesBD.getAbsolutePath();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();

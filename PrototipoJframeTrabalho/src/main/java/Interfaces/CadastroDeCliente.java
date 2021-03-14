@@ -196,6 +196,7 @@ public class CadastroDeCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Cliente cliente;     
         if (jtxtnome.getText() != null
                 && jftxtdata.getText() != null
                 && jFtxtCPF.getText() != null
@@ -205,33 +206,37 @@ public class CadastroDeCliente extends javax.swing.JFrame {
                 && jCsexo.getSelectedIndex() != 0) {
             if (jCbPlano.getSelectedIndex() == 1) {
                 try {
-                    Cliente cliente = new Cliente("Mensal", jtxtnome.getText(), jFtxtCPF.getText(),
+                    cliente = new Cliente("Mensal", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                
             } else if (jCbPlano.getSelectedIndex() == 2) {
                 try {
-                    Cliente cliente = new ClienteTrimestral("Trimestral", jtxtnome.getText(), jFtxtCPF.getText(),
+                    cliente = new ClienteTrimestral("Trimestral", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else if (jCbPlano.getSelectedIndex() == 3) {
                 try {
-                    Cliente cliente = new ClienteSemestral("Semestral", jtxtnome.getText(), jFtxtCPF.getText(),
+                   cliente = new ClienteSemestral("Semestral", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else if (jCbPlano.getSelectedIndex() == 4) {
                 try {
-                    Cliente cliente = new ClienteAnual("Anual", jtxtnome.getText(), jFtxtCPF.getText(),
+                   cliente = new ClienteAnual("Anual", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            
+            cliente.writeFile();
 
         } else {
             JOptionPane.showConfirmDialog(this, "Dados incompletos ou ja existentes no banco de dados ");

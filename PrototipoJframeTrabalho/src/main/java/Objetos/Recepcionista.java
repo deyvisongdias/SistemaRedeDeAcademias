@@ -10,8 +10,12 @@ package Objetos;
  * @author deive
  */
 import static Objetos.Administrador.listaRece;
+import static Objetos.Program.clientes;
+import static Objetos.Program.cpfCliente;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
@@ -19,10 +23,15 @@ import java.util.List;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Recepcionista implements Pagamento {
 
     static Scanner sc = new Scanner(System.in);
+    
+    public static File clientesBD = new File("clientes.txt");
+    public static String pathCliente = clientesBD.getAbsolutePath();
 
     //identificaçao
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -170,6 +179,100 @@ public class Recepcionista implements Pagamento {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    
+    public static void leTxtCliente()
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+         
+        
+         if (clientesBD.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(pathCliente))) {
+                String line = br.readLine();
+                while (line != null) {
+                    String[] fields = line.split("|");
+                    try {
+                        if (fields.equals("mensal")) {
+                            clientes.put(fields[2], //cpf como chave
+                                    new Cliente(fields[0], //tipo plano
+                                            fields[1], //nome
+                                            fields[2], //cpf
+                                            sdf.parse(fields[3]),//matrícula
+                                            sdf.parse(fields[4]), //vencimento
+                                            Integer.parseInt(fields[5]), //id
+                                            Boolean.parseBoolean(fields[6]), //status pagamento
+                                            Double.parseDouble(fields[7]), //mensalidade       
+                                            fields[8], //telefone
+                                            fields[9]));//sexo
+
+                        } else if (fields[0].equals("trimestral")) {
+                            clientes.put(fields[2], // cpf como chave
+                                    new ClienteTrimestral(fields[0], //tipo plano
+                                            fields[1], //nome
+                                            fields[2], //cpf
+                                            sdf.parse(fields[3]), //matrícula
+                                            sdf.parse(fields[4]), //vencimento
+                                            Integer.parseInt(fields[5]), //id
+                                            Boolean.parseBoolean(fields[6]), //status pagamento
+                                            Double.parseDouble(fields[7]), //mensalidade    
+                                            fields[8], //telefone
+                                            fields[9]));//sexo
+
+                        } else if (fields[0].equals("semestral")) {
+                            clientes.put(fields[2], // cpf como chave
+                                    new ClienteSemestral(fields[0], //tipo plano
+                                            fields[1], //nome
+                                            fields[2], //cpf
+                                            sdf.parse(fields[3]), //matrícula
+                                            sdf.parse(fields[4]), //vencimento
+                                            Integer.parseInt(fields[5]), //id
+                                            Boolean.parseBoolean(fields[6]), //status pagamento
+                                            Double.parseDouble(fields[7]), //mensalidade    
+                                            fields[8], //telefone
+                                            fields[9]));//sexo
+
+                        } else if (fields[0].equals("anual")) {
+                            clientes.put(fields[2], // cpf como chave
+                                    new ClienteAnual(fields[0], //tipo plano
+                                            fields[1], //nome
+                                            fields[2], //cpf
+                                            sdf.parse(fields[3]), //matrícula
+                                            sdf.parse(fields[4]), //vencimento
+                                            Integer.parseInt(fields[5]), //id
+                                            Boolean.parseBoolean(fields[6]), //status pagamento
+                                            Double.parseDouble(fields[7]), //mensalidade    
+                                            fields[8], //telefone
+                                            fields[9]));//sexo
+                        }
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    cpfCliente.put(fields[1], fields[2]);
+                    Cliente.contId++;
+                    line = br.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else { //cria o arquivo se não exister nenhum
+            try {
+                clientesBD.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    public String ToString()
+    {
+        return ("Recepcionista"+"|"+getNome()+"|"+getSenha()+"|"+getCpf()+"|"+getData()+"|"+getSexo()+"|"+getContato());
     }
 
 }

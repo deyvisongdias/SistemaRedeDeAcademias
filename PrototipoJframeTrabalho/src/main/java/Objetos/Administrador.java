@@ -9,6 +9,10 @@ package Objetos;
  *
  * @author deive
  */
+import static Objetos.Program.funcionarios;
+import static Objetos.Program.instrutor;
+import static Objetos.Program.recepcionista;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,14 +48,26 @@ public class Administrador {
 
     static public void CriaFuncionario(String tipoDeFuncao, String nome, String cpf,
             String dataMatricula, String telefone, String sexo, String senha) {
+        
+             File func = new File("Funcionarios.txt");
+             String pathFuncionarios = func.getAbsolutePath();
+             
         if (tipoDeFuncao == "Treinador") {
 
             Instrutor rc = new Instrutor(nome, senha, cpf, dataMatricula, sexo, telefone);
+  
+            
+             instrutor.put(cpf, rc);
+             funcionarios.put(nome,cpf);
+             rc.writeFile(func);
 
         } else {
             Recepcionista rc = new Recepcionista(nome, senha, cpf, dataMatricula, sexo, telefone);
+            
+            recepcionista.put(cpf, rc);
+            funcionarios.put(nome,cpf);
+            rc.writeFile(func);
         }
     }
-    //Criar funcao remover func
 
 }
