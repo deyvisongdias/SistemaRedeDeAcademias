@@ -170,9 +170,10 @@ public class Recepcionista implements Pagamento {
         }
     }
 
-    public void writeFile(File file) {
+    
+    public void writeFile() {
         String dados = this.toString();
-        String path = file.getAbsolutePath();
+        String path =Recepcionista.clientesBD.getAbsolutePath();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();

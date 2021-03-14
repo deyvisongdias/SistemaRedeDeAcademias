@@ -26,37 +26,45 @@ public class Program {
 
     public static Map<String, String> funcionarios = new HashMap<>();//usado pra fazer o login
     
+    
     public static void main(String[] args) throws IOException, ParseException {
-        
-        
-        
-        int updatedId = 0;
-        String sexo;
-        
+         
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        
-        String nome;
-        String cpf = "";
 
         
-        Recepcionista r=new rec
- 
+        Recepcionista r=new Recepcionista();
+        Instrutor i=new Instrutor();
+        Cliente c=new Cliente();
         
-        for (String key : clientes.keySet()) {
-         
-            
-         clientes.get(key).toString();
-            
+        for (String key : clientes.keySet()) {       
+            c=clientes.get(key);     
+            c.writeFile();
+        }
+      
+        for (String key : funcionarios.keySet()) {       
+            r=recepcionista.get(key);     
+             if(r.getNome()!=null)
+            {
+            r.writeFile();
+            }
+            }
+           
         }
         
+        for (String key : instrutor.keySet()) {       
+            i=instrutor.get(key); 
+            if(i.getNome()!=null)
+            {
+            i.writeFile();
+            }
+            }
+            
         new Login().setVisible(true);
+        
         
        
 
-        
-        
-        ///////////////////////////
         
     }
     
