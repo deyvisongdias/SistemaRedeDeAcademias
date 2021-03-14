@@ -122,7 +122,7 @@ public class Login extends javax.swing.JFrame {
 
         } else if (Program.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
         {
-            new InstrutorLLL().setVisible(true);
+            new Instrutor().setVisible(true);
             this.dispose();
 
         } else if (Program.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
@@ -132,7 +132,7 @@ public class Login extends javax.swing.JFrame {
 
         } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
-            JanelaDeClienteHHH janela = new JanelaDeClienteHHH();
+            JanelaDeCliente janela = new JanelaDeCliente();
             janela.setVisible(true);
             janela.enviarCliente(Program.clientes.get(senha));
             this.dispose();
@@ -154,7 +154,7 @@ public class Login extends javax.swing.JFrame {
 
             } else if (Program.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
             {
-                new InstrutorLLL().setVisible(true);
+                new Instrutor().setVisible(true);
                 this.dispose();
 
             } else if (Program.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
@@ -164,7 +164,7 @@ public class Login extends javax.swing.JFrame {
 
             } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
             {
-                JanelaDeClienteHHH janela = new JanelaDeClienteHHH();
+                JanelaDeCliente janela = new JanelaDeCliente();
                 janela.setVisible(true);
                 janela.enviarCliente(Program.clientes.get(senha));
                 this.dispose();

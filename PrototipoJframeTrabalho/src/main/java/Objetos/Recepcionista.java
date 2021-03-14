@@ -9,6 +9,7 @@ package Objetos;
  *
  * @author deive
  */
+import static Objetos.Administrador.listaRece;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -19,15 +20,13 @@ import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-
 public class Recepcionista implements Pagamento {
 
     static Scanner sc = new Scanner(System.in);
-   
+
     //identificaçao
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    
     private String nome;
     private String senha;
     private String cpf;
@@ -35,10 +34,9 @@ public class Recepcionista implements Pagamento {
     private String sexo;
     private String contato;
 
-    static List<Cliente> lista = new ArrayList<>();
+    static public List<Cliente> lista = new ArrayList<>();//achar a implementaçao;
 
     //construtores
-
     public Recepcionista(String nome, String senha, String cpf, String data, String sexo, String contato) {
         this.nome = nome;
         this.senha = senha;
@@ -46,14 +44,13 @@ public class Recepcionista implements Pagamento {
         this.data = data;
         this.sexo = sexo;
         this.contato = contato;
+        listaRece.add(this);
     }
-    
 
     public Recepcionista() {
     }
 
     //Getters e Setters
-
     public String getNome() {
         return nome;
     }
@@ -77,14 +74,23 @@ public class Recepcionista implements Pagamento {
     public String getContato() {
         return contato;
     }
-    
 
-    static public  List<Cliente> getLista() {
+    static public List<Cliente> getLista() {
         return lista;
     }
 
     public void setLista(List<Cliente> lista) {
         this.lista = lista;
+    }
+
+    public void setnull() {
+        this.nome = null;
+        this.senha = null;
+        this.cpf = null;
+        this.data = null;
+        this.sexo = null;
+        this.contato = null;
+
     }
 
     //implementaçao metodos interface
@@ -103,8 +109,8 @@ public class Recepcionista implements Pagamento {
      * @param cliente
      */
     @Override
-     public void pagar(Cliente cliente) {
-        
+    public void pagar(Cliente cliente) {
+
         if (cliente.getTipoPlano() == "Mensal" || cliente.getTipoPlano() == "mensal") {
             System.out.println("Forma de pagamento a vista ");
             //confirmar o pagamento do cliente
@@ -130,7 +136,7 @@ public class Recepcionista implements Pagamento {
                 System.out.println("Digite o numero de parcelas para pagamento (no maximo 4):");
                 int i = sc.nextInt();
                 cliente.setNumeroParcelas(i);
-                double d1 =cliente.getValorPlano() - (cliente.getValorPlano() * 0.10);
+                double d1 = cliente.getValorPlano() - (cliente.getValorPlano() * 0.10);
                 cliente.setValorParcela(d1 / i);
 
                 cliente.updateVencimento();
@@ -154,8 +160,8 @@ public class Recepcionista implements Pagamento {
 
         }
     }
-     
- public void writeFile(File file) {
+
+    public void writeFile(File file) {
         String dados = this.toString();
         String path = file.getAbsolutePath();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
@@ -164,6 +170,6 @@ public class Recepcionista implements Pagamento {
         } catch (IOException e) {
             e.printStackTrace();
         }
- }
+    }
 
 }

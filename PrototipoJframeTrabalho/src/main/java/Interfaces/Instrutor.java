@@ -5,7 +5,14 @@
  */
 package Interfaces;
 
+import Objetos.Cliente;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,8 +24,11 @@ public class Instrutor extends javax.swing.JFrame {
      * Creates new form Treinador
      */
     public Instrutor() {
+        this.tabel = (DefaultTableModel) tabela.getModel();
         initComponents();
     }
+    private final DefaultTableModel tabel;
+    private final Map<Integer, Cliente> map = new HashMap<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,17 +41,17 @@ public class Instrutor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        nomebusca = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel8.setText("Nome:");
+        jLabel8.setText("Nome");
 
         jButton3.setText("Procurar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +68,7 @@ public class Instrutor extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel8)
                 .addGap(27, 27, 27)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomebusca, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addComponent(jButton3)
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -69,12 +79,12 @@ public class Instrutor extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomebusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -93,7 +103,7 @@ public class Instrutor extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela);
 
         jButton1.setText("Sair");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +137,7 @@ public class Instrutor extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,29 +159,69 @@ public class Instrutor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//    private Cliente RetornaCliente(String nome) {
+//        int i = 0;
+//        Cliente client = Objetos.Program.clientes.get(Objetos.Program.cpfCliente.get(nome));
+//        for (Cliente c : Objetos.Recepcionista.getLista()) {
+//            String[] aux = c.getNome().trim().split(" ");
+//            if (aux[0].equals(nome)) {
+//                Object[] dados = {c.getNome(), c.getId()};
+//                tabel.addRow(dados);
+//                map.put(i, c);
+//                i++;
+//            }
+//        }
+//        return client;
+//    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-//pequisar ficha pelo cpf;
+        int i = 0;
+        Cliente client = Objetos.Program.clientes.get(Objetos.Program.cpfCliente.get((nomebusca.getText())));
+        for (Cliente c : Objetos.Recepcionista.getLista()) {
+            String[] aux = c.getNome().trim().split(" ");
+            if (aux[0].equals((nomebusca.getText()))) {
+                Object[] dados = {c.getNome(), c.getId()};
+                tabel.addRow(dados);
+                map.put(i, c);
+                i++;
+            }
+//        Cliente cliente;
+//        cliente = RetornaCliente(nomebusca.getText());//############33
+//
+//        Object[] dados = {cliente.getNome(), cliente.getId()};
+//        tabel.addRow(dados);
+//        // Listar os nomes
+//        lista.add(cliente);//
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new CriarFicha().setVisible(true);
+        int index = tabela.getSelectedRow();
+        if (index != -1) {
+            new CriarFicha().setVisible(true);
+            try {
+                new CriarFicha().PreencherFicha(map.get(index));
+            } catch (IOException ex) {
+                Logger.getLogger(Instrutor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha para excluir");
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
             this.dispose();
             new Login().setVisible(true);
-        }          
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -201,6 +251,20 @@ public class Instrutor extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -218,7 +282,7 @@ public class Instrutor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField nomebusca;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

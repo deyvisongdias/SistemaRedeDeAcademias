@@ -19,6 +19,7 @@ public class ClienteAnual extends Cliente{
         this.setDesconto(15);
         this.updateVencimento();
         this.setNumeroParcelas(12);
+        Recepcionista.lista.add(this);
     }
     
     //Cliente já cadastrado
@@ -27,6 +28,7 @@ public class ClienteAnual extends Cliente{
         super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
        this.setNumeroParcelas(12);
         this.setDesconto(15);
+        Recepcionista.lista.add(this);
       
     }
     

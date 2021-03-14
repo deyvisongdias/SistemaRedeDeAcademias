@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import static Objetos.Administrador.listaInstru;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -25,10 +26,8 @@ public class Instrutor {
     private String data;
     private String sexo;
     private String contato;
-    static List<Cliente> lista = new ArrayList<>();
 
     //construtores
-
     public Instrutor(String nome, String senha, String cpf, String data, String sexo, String contato) {
         this.nome = nome;
         this.senha = senha;
@@ -36,14 +35,10 @@ public class Instrutor {
         this.data = data;
         this.sexo = sexo;
         this.contato = contato;
-    }
-    
-
-    public Instrutor() {
-    }
+        listaInstru.add(this);
+}
 
     //Getters e Setters
-
     public String getNome() {
         return nome;
     }
@@ -68,7 +63,17 @@ public class Instrutor {
         return contato;
     }
 
-     public void writeFile(File file) {
+    public void setnull() {
+        this.nome = null;
+        this.senha = null;
+        this.cpf = null;
+        this.data = null;
+        this.sexo = null;
+        this.contato = null;
+
+    }
+
+    public void writeFile(File file) {
         String dados = this.toString();
         String path = file.getAbsolutePath();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
@@ -77,5 +82,5 @@ public class Instrutor {
         } catch (IOException e) {
             e.printStackTrace();
         }
-     }
+    }
 }

@@ -25,7 +25,7 @@ public class Program {
     public static Map<String, Instrutor> instrutor = new HashMap<>();//#####
 
     public static Map<String, String> funcionarios = new HashMap<>();//usado pra fazer o login
-
+    
     public static void main(String[] args) throws IOException, ParseException {
         int updatedId = 0;
         String sexo;
@@ -34,7 +34,7 @@ public class Program {
         String pathCliente = clientesBD.getAbsolutePath();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
+        
         String nome;
         String cpf = "";
 
@@ -113,11 +113,8 @@ public class Program {
                 e.printStackTrace();
             }
         }
-        
-        
+
         ///////////////////////////
-        
-         
         File func = new File("Funcionarios.txt");
         String pathFuncionarios = func.getAbsolutePath();
 
@@ -135,9 +132,8 @@ public class Program {
                         recepcionista.put(f[2], new Recepcionista(f[0], f[1], f[2], f[3], f[4], f[5]));
                     }
                 }
-            }
-                catch (IOException e) {
-                  System.out.println("Error: " + e.getMessage());
+            } catch (IOException e) {
+                System.out.println("Error: " + e.getMessage());
             }
         } else {
             try {
@@ -146,11 +142,10 @@ public class Program {
                 e.printStackTrace();
             }
         }
-        
-        new Login().setVisible(true);
-        
-        ////////////////
 
+        new Login().setVisible(true);
+
+        ////////////////
 //      Inserção de dados
         System.out.println("Informe tipo do plano: (mensal, trimestral, semestral ou anual)");
         plano = sc.next();
@@ -183,25 +178,13 @@ public class Program {
         }
         clientes.put(cpf, cliente);
         cliente.writeFile(clientesBD);
-        
 
         //adicionando na lista de funcionarios
-               
-        
-        
-       
-        
-        
-
         //criacao recepcionista
-        
-        
-        
         Recepcionista rec;
-        
-      
+
         nome = sc.next();
-     
+
         String senha = sc.next();
 
         cpf = sc.next();
@@ -216,12 +199,10 @@ public class Program {
         recepcionista.put(cpf, rec);//adicionando ao map recepcionisa
         funcionarios.put(cpf, nome);
         rec.writeFile(func);
-        
 
-        
         //criaçao instrutor
         Instrutor ins;
-        
+
         System.out.println("Digite o nome :");
         nome = sc.next();
         System.out.println("Digite a senha:");
@@ -240,11 +221,11 @@ public class Program {
         instrutor.put(cpf, ins);
         funcionarios.put(cpf, nome);
         ins.writeFile(func);
-        
+
         new Login().setVisible(true);
 
         sc.close();
-        
+
     }
 
     public static int verificaParcelas(String tipoPlano) {

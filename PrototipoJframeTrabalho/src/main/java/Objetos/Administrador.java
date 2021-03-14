@@ -10,14 +10,16 @@ package Objetos;
  * @author deive
  */
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Administrador {
 
     //identificação
-    private String nome = "adm";
-    private String senha = "adm";
+    private final String nome = "adm";
+    private final String senha = "adm";   
+    //Aux
+    static List<Instrutor> listaInstru = new ArrayList<>();
+    static List<Recepcionista> listaRece = new ArrayList<>();
 
     //construtores
     public Administrador() {
@@ -32,16 +34,24 @@ public class Administrador {
         return nome;
     }
 
-   static public void CriaFuncionario(String tipoDeFuncao, String nome, String cpf,
+    static public List<Instrutor> getListaInstu() {
+        return listaInstru;
+    }
+
+    static public List<Recepcionista> getListaRece() {
+        return listaRece;
+    }
+
+    static public void CriaFuncionario(String tipoDeFuncao, String nome, String cpf,
             String dataMatricula, String telefone, String sexo, String senha) {
         if (tipoDeFuncao == "Treinador") {
-            
+
             Instrutor rc = new Instrutor(nome, senha, cpf, dataMatricula, sexo, telefone);
-            
+
         } else {
             Recepcionista rc = new Recepcionista(nome, senha, cpf, dataMatricula, sexo, telefone);
         }
     }
-   //Criar funcao remover func
-   
+    //Criar funcao remover func
+
 }

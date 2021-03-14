@@ -22,6 +22,7 @@ public class ClienteTrimestral extends Cliente{
         this.setDesconto(5);
         this.updateVencimento();  
         this.setNumeroParcelas(3);
+        Recepcionista.lista.add(this);
     }
     
     //Leitura do txt
@@ -30,6 +31,7 @@ public class ClienteTrimestral extends Cliente{
         super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
         this.setNumeroParcelas(3);
         this.setDesconto(5);
+        Recepcionista.lista.add(this);
     }
     
     @Override

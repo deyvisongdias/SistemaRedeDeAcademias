@@ -39,6 +39,7 @@ public class Cliente {
     private double valorParcela = 0;
     private int numeroParcelas = 1;
     private Ficha ficha; //#########
+    
 
     //Construtor de um cliente novo
     public Cliente(String tipoPlano, String nome, String cpf, Date dataMatricula, String telefone, String sexo) throws IOException {
@@ -58,6 +59,8 @@ public class Cliente {
         desconto = 0;
         this.sexo = sexo;
         this.ficha = new Ficha(cpf); //##############
+        Recepcionista.lista.add(this);
+        
     }
 
     //Construtor de um cliente já cadastrado
@@ -76,6 +79,7 @@ public class Cliente {
         desconto = 0;
         this.sexo = sexo;
         this.ficha = new Ficha(cpf); //##############
+        Recepcionista.lista.add(this);
     }
 
     public int getDesconto() {

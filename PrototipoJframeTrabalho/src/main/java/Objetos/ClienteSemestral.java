@@ -12,28 +12,28 @@ import java.util.Date;
  *
  * @author deive
  */
+public class ClienteSemestral extends Cliente {
 
-
-public class ClienteSemestral extends Cliente{
-    
-    public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula,String telefone,String sexo) throws IOException{
-        super(tipoPlano, nome, cpf, dataMatricula, telefone,sexo);
+    public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula, String telefone, String sexo) throws IOException {
+        super(tipoPlano, nome, cpf, dataMatricula, telefone, sexo);
         this.setDesconto(10);
         this.updateVencimento();
         this.setNumeroParcelas(6);
-       
+        Recepcionista.lista.add(this);
+
     }
-    
+
     //Cliente já cadastrado
     public ClienteSemestral(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, int id,
-            Boolean statusMatricula, double mensalidade,String telefone,String sexo) throws IOException {
-        super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
+            Boolean statusMatricula, double mensalidade, String telefone, String sexo) throws IOException {
+        super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade, telefone, sexo);
         this.setNumeroParcelas(6);
         this.setDesconto(10);
+        Recepcionista.lista.add(this);
     }
-    
-   @Override
-    public String toString(){ 
+
+    @Override
+    public String toString() {
         return super.toString() + "|" + this.getDesconto();
     }
 }

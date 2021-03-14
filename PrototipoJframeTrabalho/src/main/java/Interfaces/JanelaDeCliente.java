@@ -6,10 +6,7 @@
 package Interfaces;
 
 import Objetos.Cliente;
-import Objetos.Ficha;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -31,6 +28,7 @@ public class JanelaDeCliente extends javax.swing.JFrame {
         lblVENCIMENTO.setText(this.cliente.getVencimento());
         LBLBV.setText("Bem indo(a) " + cliente.getNome());
     }
+    
 
     public JanelaDeCliente() {
         initComponents();
@@ -158,29 +156,35 @@ public class JanelaDeCliente extends javax.swing.JFrame {
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         try {
-            new FichaDoCliente(cliente).setVisible(true);
-//            Ficha fichA = new Ficha(cliente.getCpf());
-//            List<String> lista = new LinkedList<>();
-//            lista = fichA.addTabela(this.cliente.getCpf());
-//            lista.forEach(string -> {
-//                ficha.addRow(ConverteString(string));//########
-//            });
-//            //Copiar do criar ficha depois que estiver finalizado
-//            
-//            // TODO add your handling code here:
-
+            new FichaDoCliente().setVisible(true);
+            new FichaDoCliente().PreencherFicha(this.cliente);
         } catch (IOException ex) {
             Logger.getLogger(JanelaDeCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        try {
+//            new FichaDoCliente(cliente).setVisible(true);
+//            
+////            Ficha fichA = new Ficha(cliente.getCpf());
+////            List<String> lista = new LinkedList<>();
+////            lista = fichA.addTabela(this.cliente.getCpf());
+////            lista.forEach(string -> {
+////                ficha.addRow(ConverteString(string));//########
+////            });
+////            //Copiar do criar ficha depois que estiver finalizado
+////            
+////            // TODO add your handling code here:
+//
+//        } catch (IOException ex) {
+//            Logger.getLogger(JanelaDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
             this.dispose();
             LBLBV.setText(" ");
-            new LoginHHH().setVisible(true);
+            new Login().setVisible(true);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -209,6 +213,30 @@ public class JanelaDeCliente extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JanelaDeCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
