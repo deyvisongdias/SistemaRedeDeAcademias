@@ -69,7 +69,7 @@ public class Administrador {
         }
     }
 
-    public void anulaarq() {
+    public static void anulaarq() {
         func.delete();
         File func = new File("Funcionarios.txt");
     }

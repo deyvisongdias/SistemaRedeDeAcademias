@@ -30,36 +30,40 @@ public class Program {
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
-        Recepcionista r = new Recepcionista();
+        Administrador m = new Administrador();
+        Recepcionista r = null;
         Instrutor i = new Instrutor();
         Cliente c = new Cliente();
         
-        for (String key : clientes.keySet()) {
-            c = clientes.get(key);
-            c.writeFile();
-        }
+        LerTxtFuncionario();
+        r.LerTxtCliente();
         
-        for (String key : funcionarios.keySet()) {
-            r = recepcionista.get(key);
-            if (r.getNome() != null) {
-                r.writeFile();
-            }
-        }
         
-        for (String key
-                : instrutor.keySet()) {
-            i = instrutor.get(key);
-            if (i.getNome() != null) {
-                i.writeFile();
-            }
-        }
+//        for (String key : clientes.keySet()) {
+//            c = clientes.get(key);
+//            c.writeFile();
+//        }
+//        
+//        for (String key : funcionarios.keySet()) {
+//            r = recepcionista.get(key);
+//            if (r.getNome() != null) {
+//                r.writeFile();
+//            }
+//        }
+//        
+//        for (String key: instrutor.keySet()) {
+//            i = instrutor.get(key);
+//            if (i.getNome() != null) {
+//                i.writeFile();
+//            }
+//        }
         
-        new Login()
-                .setVisible(true);
+        new Login().setVisible(true);
+       
         
     }
     
-    public void LeTxtFuncionario() {
+   static public void LerTxtFuncionario() {
         File func = new File("Funcionarios.txt");
         String pathFuncionarios = func.getAbsolutePath();
         

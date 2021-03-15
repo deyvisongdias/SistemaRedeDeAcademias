@@ -198,6 +198,7 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) {
 
             this.dispose();
+            Objetos.Administrador.anulaarq();
 
             Recepcionista r = null;
             Objetos.Instrutor i = null;

@@ -77,7 +77,7 @@ public class Instrutor {
     }
 
    public void writeFile() {
-        String dados = this.toString();
+        String dados = this.ConverteEmString();
         String path =Administrador.func.getAbsolutePath();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
@@ -89,7 +89,7 @@ public class Instrutor {
     
     
  
-    public String ToString()
+    public String ConverteEmString()
     {
         return ("Instrutor"+"|"+getNome()+"|"+getSenha()+"|"+getCpf()+"|"+getData()+"|"+getSexo()+"|"+getContato());
     }

@@ -232,7 +232,7 @@ public class NovoAdm extends javax.swing.JFrame {
                 String funcao, s;
 
                 if (jCbSexo.getSelectedIndex() == 1) {
-                    s = "FEminino";
+                    s = "Feminino";
                 } else {
                     s = "Masculino";
                 }

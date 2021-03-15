@@ -172,7 +172,7 @@ public class Recepcionista implements Pagamento {
 
     
     public void writeFile() {
-        String dados = this.toString();
+        String dados = this.coverteEMString();
         String path =Administrador.func.getAbsolutePath();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
@@ -183,7 +183,7 @@ public class Recepcionista implements Pagamento {
     }
     
     
-    public static void leTxtCliente()
+    public  void LerTxtCliente()
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
          
@@ -270,8 +270,8 @@ public class Recepcionista implements Pagamento {
     
     
     
-    
-    public String ToString()
+  
+    public String coverteEMString()
     {
         return ("Recepcionista"+"|"+getNome()+"|"+getSenha()+"|"+getCpf()+"|"+getData()+"|"+getSexo()+"|"+getContato());
     }
