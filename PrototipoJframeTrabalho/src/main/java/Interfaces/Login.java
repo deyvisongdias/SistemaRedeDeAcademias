@@ -144,7 +144,7 @@ public class Login extends javax.swing.JFrame {
             new Instrutor().setVisible(true);
             this.dispose();
 
-        } else if (!(recepcionista.isEmpty()) && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+        } else if (/*!(recepcionista.isEmpty()) && */ recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
