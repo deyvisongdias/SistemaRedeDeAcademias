@@ -130,7 +130,7 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String usuario = txtUser.getText();
-        String senha = new String(txtSenha.getPassword());
+        String senha = txtSenha.getText();
 
         if (((usuario.equals("")) || senha.equals(""))) {
             JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
