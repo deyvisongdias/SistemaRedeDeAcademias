@@ -25,10 +25,9 @@ public class RemoverFuncionario extends javax.swing.JFrame {
 
         initComponents();
     }
-    private final DefaultTableModel tabel = (DefaultTableModel) Table.getModel();
     private final Map<Integer, Instrutor> mapI = new HashMap<>();
     private final Map<Integer, Recepcionista> mapR = new HashMap<>();
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -213,6 +212,8 @@ public class RemoverFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+ DefaultTableModel tabel = (DefaultTableModel) Table.getModel();
+
         int i = 0;
         Instrutor instr = Objetos.Program.instrutor.get(Objetos.Program.funcionarios.get((nomebusca.getText())));
         for (Instrutor c : Objetos.Administrador.getListaInstu()) {

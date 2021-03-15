@@ -196,7 +196,7 @@ public class CadastroDeCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cliente cliente;     
+        Cliente cliente = null;     
         if (jtxtnome.getText() != null
                 && jftxtdata.getText() != null
                 && jFtxtCPF.getText() != null
@@ -244,7 +244,9 @@ public class CadastroDeCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
+        String[] options={"Sim","Não"};
+        if (JOptionPane.showOptionDialog(this, "Finalizar", "Realmente deseja finalizar?", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options,options[0])==0){
             this.dispose();
         }
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -20,10 +20,11 @@ public class Administrador {
 
     //identificação
     private final String nome = "adm";
-    private final String senha = "adm";   
+    private final String senha = "adm";
     //Aux
     static List<Instrutor> listaInstru = new ArrayList<>();
     static List<Recepcionista> listaRece = new ArrayList<>();
+    static File func = new File("Funcionarios.txt");
 
     //construtores
     public Administrador() {
@@ -48,26 +49,29 @@ public class Administrador {
 
     static public void CriaFuncionario(String tipoDeFuncao, String nome, String cpf,
             String dataMatricula, String telefone, String sexo, String senha) {
-        
-             File func = new File("Funcionarios.txt");
-             String pathFuncionarios = func.getAbsolutePath();
-             
+
+        String pathFuncionarios = func.getAbsolutePath();
+
         if (tipoDeFuncao == "Treinador") {
 
             Instrutor rc = new Instrutor(nome, senha, cpf, dataMatricula, sexo, telefone);
-  
-            
-             instrutor.put(cpf, rc);
-             funcionarios.put(nome,cpf);
-             rc.writeFile(func);
+
+            instrutor.put(cpf, rc);
+            funcionarios.put(nome, cpf);
+            rc.writeFile();
 
         } else {
             Recepcionista rc = new Recepcionista(nome, senha, cpf, dataMatricula, sexo, telefone);
-            
+
             recepcionista.put(cpf, rc);
-            funcionarios.put(nome,cpf);
-            rc.writeFile(func);
+            funcionarios.put(nome, cpf);
+            rc.writeFile();
         }
+    }
+
+    public void anulaarq() {
+        func.delete();
+        File func = new File("Funcionarios.txt");
     }
 
 }

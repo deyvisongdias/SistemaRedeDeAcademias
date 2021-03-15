@@ -83,6 +83,9 @@ public class Cliente {
         Recepcionista.lista.add(this);
     }
 
+    public Cliente() {
+    }
+
     public int getDesconto() {
         return desconto;
     }
