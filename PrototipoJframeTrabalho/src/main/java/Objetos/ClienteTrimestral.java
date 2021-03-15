@@ -32,6 +32,8 @@ public class ClienteTrimestral extends Cliente{
         this.setNumeroParcelas(3);
         this.setDesconto(5);
         Recepcionista.lista.add(this);
+        if(id >contId)
+            contId = id;
     }
     
     @Override

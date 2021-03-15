@@ -47,13 +47,14 @@ public class Recepcionista implements Pagamento {
 
     //construtores
     public Recepcionista(String nome, String senha, String cpf, String data, String sexo, String contato) {
+        System.out.println("!!!!!!!!!!!!!!");
         this.nome = nome;
         this.senha = senha;
         this.cpf = cpf;
         this.data = data;
         this.sexo = sexo;
         this.contato = contato;
-        listaRece.add(this);
+      
     }
 
     public Recepcionista() {
@@ -195,8 +196,7 @@ public class Recepcionista implements Pagamento {
                     String[] fields = line.split("|");
                     try {
                         if (fields.equals("mensal")) {
-                            clientes.put(fields[2], //cpf como chave
-                                    new Cliente(fields[0], //tipo plano
+                            Cliente c=new Cliente(fields[0], //tipo plano
                                             fields[1], //nome
                                             fields[2], //cpf
                                             sdf.parse(fields[3]),//matrícula
@@ -205,11 +205,12 @@ public class Recepcionista implements Pagamento {
                                             Boolean.parseBoolean(fields[6]), //status pagamento
                                             Double.parseDouble(fields[7]), //mensalidade       
                                             fields[8], //telefone
-                                            fields[9]));//sexo
+                                            fields[9]);//sexo
+                            clientes.put(fields[2], c);
+                                    
 
                         } else if (fields[0].equals("trimestral")) {
-                            clientes.put(fields[2], // cpf como chave
-                                    new ClienteTrimestral(fields[0], //tipo plano
+                            Cliente c= new ClienteTrimestral(fields[0], //tipo plano
                                             fields[1], //nome
                                             fields[2], //cpf
                                             sdf.parse(fields[3]), //matrícula
@@ -218,11 +219,12 @@ public class Recepcionista implements Pagamento {
                                             Boolean.parseBoolean(fields[6]), //status pagamento
                                             Double.parseDouble(fields[7]), //mensalidade    
                                             fields[8], //telefone
-                                            fields[9]));//sexo
+                                            fields[9]);
+                            clientes.put(fields[2],c); // cpf como chave
+                                    //sexo
 
                         } else if (fields[0].equals("semestral")) {
-                            clientes.put(fields[2], // cpf como chave
-                                    new ClienteSemestral(fields[0], //tipo plano
+                            Cliente c= new ClienteSemestral(fields[0], //tipo plano
                                             fields[1], //nome
                                             fields[2], //cpf
                                             sdf.parse(fields[3]), //matrícula
@@ -231,11 +233,13 @@ public class Recepcionista implements Pagamento {
                                             Boolean.parseBoolean(fields[6]), //status pagamento
                                             Double.parseDouble(fields[7]), //mensalidade    
                                             fields[8], //telefone
-                                            fields[9]));//sexo
+                                            fields[9]);//sexo
+                            
+                            clientes.put(fields[2],c); // cpf como chave
+                                   
 
                         } else if (fields[0].equals("anual")) {
-                            clientes.put(fields[2], // cpf como chave
-                                    new ClienteAnual(fields[0], //tipo plano
+                            Cliente c= new ClienteAnual(fields[0], //tipo plano
                                             fields[1], //nome
                                             fields[2], //cpf
                                             sdf.parse(fields[3]), //matrícula
@@ -244,7 +248,10 @@ public class Recepcionista implements Pagamento {
                                             Boolean.parseBoolean(fields[6]), //status pagamento
                                             Double.parseDouble(fields[7]), //mensalidade    
                                             fields[8], //telefone
-                                            fields[9]));//sexo
+                                            fields[9]);//sexo
+                            
+                            clientes.put(fields[2],c); // cpf como chave
+                                   
                         }
                     } catch (ParseException ex) {
                         Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
@@ -262,14 +269,9 @@ public class Recepcionista implements Pagamento {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        
-        
+        }    
     }
-    
-    
-    
-    
+
   
     public String coverteEMString()
     {

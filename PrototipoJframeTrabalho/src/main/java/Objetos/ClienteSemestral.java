@@ -30,6 +30,8 @@ public class ClienteSemestral extends Cliente {
         this.setNumeroParcelas(6);
         this.setDesconto(10);
         Recepcionista.lista.add(this);
+        if(id >contId)
+            contId = id;
     }
 
     @Override

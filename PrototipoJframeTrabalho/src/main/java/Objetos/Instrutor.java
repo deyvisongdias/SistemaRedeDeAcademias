@@ -19,7 +19,6 @@ import java.util.List;
  */
 public class Instrutor {
 
-    private String funcao;
     private String nome;
     private String senha;
     private String cpf;
@@ -35,7 +34,7 @@ public class Instrutor {
         this.data = data;
         this.sexo = sexo;
         this.contato = contato;
-        listaInstru.add(this);
+       
 }
 
     public Instrutor() {

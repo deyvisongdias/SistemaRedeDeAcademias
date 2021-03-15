@@ -29,6 +29,8 @@ public class ClienteAnual extends Cliente{
        this.setNumeroParcelas(12);
         this.setDesconto(15);
         Recepcionista.lista.add(this);
+        if(id >contId)
+            contId = id;
       
     }
     

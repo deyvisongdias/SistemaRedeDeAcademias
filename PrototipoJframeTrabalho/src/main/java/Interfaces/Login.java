@@ -139,17 +139,17 @@ public class Login extends javax.swing.JFrame {
             new ControleDeAdms().setVisible(true);
             this.dispose();
 
-        } else if (!instrutor.isEmpty() && instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
+        } else if (!(instrutor.isEmpty())&& instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
         {
             new Instrutor().setVisible(true);
             this.dispose();
 
-        } else if (!recepcionista.isEmpty() && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+        } else if (!(recepcionista.isEmpty()) && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
 
-        } else if (!clientes.isEmpty() && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+        } else if (!(clientes.isEmpty()) && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
             JanelaDeCliente janela = new JanelaDeCliente();
             janela.setVisible(true);
@@ -171,17 +171,17 @@ public class Login extends javax.swing.JFrame {
             new ControleDeAdms().setVisible(true);
             this.dispose();
 
-        } else if (!instrutor.isEmpty() && instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
+        } else if (!(instrutor.isEmpty()) && instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
         {
             new Instrutor().setVisible(true);
             this.dispose();
 
-        } else if (!recepcionista.isEmpty() && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+        } else if (!(recepcionista.isEmpty()) && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
 
-        } else if (!clientes.isEmpty() && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+        } else if (!(clientes.isEmpty()) && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
             JanelaDeCliente janela = new JanelaDeCliente();
             janela.setVisible(true);

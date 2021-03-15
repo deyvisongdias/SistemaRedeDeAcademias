@@ -31,32 +31,12 @@ public class Program {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         
         Administrador m = new Administrador();
-        Recepcionista r = null;
-        Instrutor i = new Instrutor();
-        Cliente c = new Cliente();
+        Recepcionista r =new Recepcionista();
+      
         
         LerTxtFuncionario();
-        r.LerTxtCliente();
+      //  r.LerTxtCliente();
         
-        
-//        for (String key : clientes.keySet()) {
-//            c = clientes.get(key);
-//            c.writeFile();
-//        }
-//        
-//        for (String key : funcionarios.keySet()) {
-//            r = recepcionista.get(key);
-//            if (r.getNome() != null) {
-//                r.writeFile();
-//            }
-//        }
-//        
-//        for (String key: instrutor.keySet()) {
-//            i = instrutor.get(key);
-//            if (i.getNome() != null) {
-//                i.writeFile();
-//            }
-//        }
         
         new Login().setVisible(true);
        
@@ -68,19 +48,23 @@ public class Program {
         String pathFuncionarios = func.getAbsolutePath();
         
         if (func.exists()) {
-            String pathCliente;
+           
             try (BufferedReader br = new BufferedReader(new FileReader(pathFuncionarios))) {
                 String line = br.readLine();
                 while (line != null) {
                     
                     String[] f = line.split("|");
                     
-                    if (f[6].equals("Instrutor")) {
-                        instrutor.put(f[2], new Instrutor(f[0], f[1], f[2], f[3], f[4], f[5]));
-                    } else if (f[6].equals("Recepcionista")) {
-                        
-                        recepcionista.put(f[2], new Recepcionista(f[0], f[1], f[2], f[3], f[4], f[5]));
+                    if (f[0].equals("Instrutor")) {
+                        Instrutor i= new Instrutor(f[1], f[2], f[3], f[4], f[5],f[6]);
+                        instrutor.put(f[3],i);
+                        Administrador.listaInstru.add(i);
+                    } else if (f[0].equals("Recepcionista")) {
+                        Recepcionista rr= new Recepcionista(f[1], f[2], f[3], f[4], f[5],f[6]);
+                        recepcionista.put(f[3], rr);
+                         Administrador.listaRece.add(rr);
                     }
+                     line = br.readLine();
                 }
             } catch (IOException e) {
                 System.out.println("Error: " + e.getMessage());

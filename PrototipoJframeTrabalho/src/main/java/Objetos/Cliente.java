@@ -81,6 +81,9 @@ public class Cliente {
         this.sexo = sexo;
         this.ficha = new Ficha(cpf); //##############
         Recepcionista.lista.add(this);
+        if(id >contId)
+            contId = id;
+        
     }
 
     public Cliente() {

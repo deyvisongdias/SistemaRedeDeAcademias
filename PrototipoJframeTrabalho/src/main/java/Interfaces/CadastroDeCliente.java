@@ -200,23 +200,29 @@ public class CadastroDeCliente extends javax.swing.JFrame {
         if (jtxtnome.getText() != null
                 && jftxtdata.getText() != null
                 && jFtxtCPF.getText() != null
-                && Program.clientes.containsKey(jFtxtCPF.getText())
+                && (Program.clientes.isEmpty() || Program.clientes.containsKey(jFtxtCPF.getText()))
                 && jFtxtContato.getText() != null
                 && jCbPlano.getSelectedIndex() != 0
                 && jCsexo.getSelectedIndex() != 0) {
+            if(JOptionPane.showConfirmDialog(this, "concluir?")==(JOptionPane.OK_OPTION))
+            {
+                
+            
             if (jCbPlano.getSelectedIndex() == 1) {
                 try {
                     cliente = new Cliente("Mensal", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                    this.dispose();
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+            
                 
             } else if (jCbPlano.getSelectedIndex() == 2) {
                 try {
                     cliente = new ClienteTrimestral("Trimestral", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                      this.dispose();
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -224,6 +230,8 @@ public class CadastroDeCliente extends javax.swing.JFrame {
                 try {
                    cliente = new ClienteSemestral("Semestral", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                     this.dispose();
+                   
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -231,13 +239,14 @@ public class CadastroDeCliente extends javax.swing.JFrame {
                 try {
                    cliente = new ClienteAnual("Anual", jtxtnome.getText(), jFtxtCPF.getText(),
                             new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                     this.dispose();
                 } catch (IOException ex) {
                     Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
             cliente.writeFile();
-
+            }
         } else {
             JOptionPane.showConfirmDialog(this, "Dados incompletos ou ja existentes no banco de dados ");
         }
