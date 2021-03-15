@@ -139,17 +139,17 @@ public class Login extends javax.swing.JFrame {
             new ControleDeAdms().setVisible(true);
             this.dispose();
 
-        } else if (Program.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
+        } else if (!instrutor.isEmpty() && instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
         {
             new Instrutor().setVisible(true);
             this.dispose();
 
-        } else if (Program.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+        } else if (!recepcionista.isEmpty() && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
 
-        } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+        } else if (!clientes.isEmpty() && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
             JanelaDeCliente janela = new JanelaDeCliente();
             janela.setVisible(true);
@@ -161,35 +161,34 @@ public class Login extends javax.swing.JFrame {
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String usuario = txtUser.getText();
-            String senha = new String(txtSenha.getPassword());
+             String usuario = txtUser.getText();
+        String senha = new String(txtSenha.getPassword());
 
-            if (((usuario.equals("")) || senha.equals(""))) {
-                JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
-            } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
-            {
-                new ControleDeAdms().setVisible(true);
-                this.dispose();
+        if (((usuario.equals("")) || senha.equals(""))) {
+            JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
+        } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
+        {
+            new ControleDeAdms().setVisible(true);
+            this.dispose();
 
-            } else if (Program.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
-            {
-                new Instrutor().setVisible(true);
-                this.dispose();
+        } else if (!instrutor.isEmpty() && instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
+        {
+            new Instrutor().setVisible(true);
+            this.dispose();
 
-            } else if (Program.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
-            {
-                new Recepçao().setVisible(true);
-                this.dispose();
+        } else if (!recepcionista.isEmpty() && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+        {
+            new Recepçao().setVisible(true);
+            this.dispose();
 
-            } else if (Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
-            {
-                JanelaDeCliente janela = new JanelaDeCliente();
-                janela.setVisible(true);
-                janela.enviarCliente(Program.clientes.get(senha));
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
-            }
+        } else if (!clientes.isEmpty() && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+        {
+            JanelaDeCliente janela = new JanelaDeCliente();
+            janela.setVisible(true);
+            janela.enviarCliente(Program.clientes.get(senha));
+            this.dispose();
+        } else
+            JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
@@ -197,27 +196,26 @@ public class Login extends javax.swing.JFrame {
         String[] options = {"Sim", "Nao"};
         if (JOptionPane.showOptionDialog(this, "Deseja fechar?", "finalizar", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) {
-            
+
             this.dispose();
-            
-            Recepcionista r = new Recepcionista();
-            Objetos.Instrutor i = new Objetos.Instrutor();
-            Objetos.Cliente c = new Cliente();
+
+            Recepcionista r = null;
+            Objetos.Instrutor i = null;
+            Objetos.Cliente c = null;
 
             for (String key : clientes.keySet()) {
                 c = clientes.get(key);
                 c.writeFile();
             }
 
-            for (String key : funcionarios.keySet()) {
+            for (String key : recepcionista.keySet()) {
                 r = recepcionista.get(key);
                 if (r.getNome() != null) {
                     r.writeFile();
                 }
             }
 
-            for (String key
-                    : instrutor.keySet()) {
+            for (String key : instrutor.keySet()) {
                 i = instrutor.get(key);
                 if (i.getNome() != null) {
                     i.writeFile();

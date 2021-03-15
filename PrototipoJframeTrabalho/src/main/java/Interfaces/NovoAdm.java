@@ -41,9 +41,9 @@ public class NovoAdm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        senha = new javax.swing.JPasswordField();
         jtxtnome = new javax.swing.JTextField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        confirmasenha = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -131,13 +131,13 @@ public class NovoAdm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPasswordField1)
+                                    .addComponent(senha)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
                                     .addComponent(jFtxtContato, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(confirmasenha, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7)
                                     .addComponent(jButton2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -189,8 +189,8 @@ public class NovoAdm extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmasenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -216,16 +216,17 @@ public class NovoAdm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+      String password = senha.getText();
+      String confirmPassword = confirmasenha.getText();
         if (jCbSexo.getSelectedIndex() != 0
                 && jtxtnome.getText() != null
                 && jftxtdata.getText() != null
                 && jFtxtCPF.getText() != null
                 && jFtxtContato.getText() != null
-                && jPasswordField1.getPassword() != null
-                && jPasswordField2.getPassword() != null
+                && senha.getPassword() != null
+                && confirmasenha.getPassword() != null
                 && jcbFunc.getSelectedIndex() != 0) {
-            if (jPasswordField1.getPassword() != jPasswordField2.getPassword()) {
+            if (!password.equals(confirmPassword)) {
                 JOptionPane.showMessageDialog(this, "Senha e confirmar senha diferentes");
             } else {
                 String funcao, s;
@@ -241,7 +242,9 @@ public class NovoAdm extends javax.swing.JFrame {
                     funcao = "Treinador";
                 }
                 Objetos.Administrador.CriaFuncionario(funcao, jtxtnome.getText(), jFtxtCPF.getText(),
-                        jftxtdata.getText(), jFtxtContato.getText(), s, jPasswordField1.getText());
+                        jftxtdata.getText(), jFtxtContato.getText(), s, senha.getText());
+                this.dispose();
+                new ControleDeAdms().setVisible(true);
             }
         }else
             JOptionPane.showMessageDialog(this,"Dados imcompletos");
@@ -289,6 +292,7 @@ public class NovoAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField confirmasenha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jCbSexo;
@@ -303,11 +307,10 @@ public class NovoAdm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JComboBox<String> jcbFunc;
     private javax.swing.JFormattedTextField jftxtdata;
     private javax.swing.JTextField jtxtnome;
+    private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
 
 }
