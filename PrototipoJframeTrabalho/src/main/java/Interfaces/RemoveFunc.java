@@ -25,8 +25,8 @@ public class RemoveFunc extends javax.swing.JFrame {
      * Creates new form RemoveFunc
      */
     public RemoveFunc() {
-       DefaultTableModel tabel = (DefaultTableModel) Table.getModel();
         initComponents();
+      
     }
 
     /**

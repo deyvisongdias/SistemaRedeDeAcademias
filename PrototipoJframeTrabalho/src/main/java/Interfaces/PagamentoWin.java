@@ -207,17 +207,22 @@ public class PagamentoWin extends javax.swing.JFrame {
         String nome = nomebusca.getText();
         int i = 0;
         DefaultTableModel psq = (DefaultTableModel) jTable1.getModel();
+        
+        for (int j = 0; j <psq.getRowCount(); j++) {
+
+            psq.removeRow(j);
+        }
+        Cliente client = Objetos.Main.clientes.get(Objetos.Main.cpfCliente.get((nomebusca.getText())));
         for (Cliente c : Objetos.Recepcionista.getLista()) {
             String[] aux = c.getNome().trim().split(" ");
-            if (aux[0] == nome) {
-                Object[] dados = {c.getId(), c.getNome(), c.getStatusMatricula()};
+            if (aux[0].equals((nomebusca.getText()))) {
+               Object[] dados = {c.getId(), c.getNome(), c.getStatusMatricula()};
                 psq.addRow(dados);
                 map.put(i, c);
                 i++;
             }
-        }
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    }
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
         if (jTable1.getSelectedRow() != -1) {
             Cliente c = map.get(jTable1.getSelectedRow());

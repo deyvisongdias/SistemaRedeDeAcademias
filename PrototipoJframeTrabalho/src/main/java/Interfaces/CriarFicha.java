@@ -212,7 +212,7 @@ public class CriarFicha extends javax.swing.JFrame {
     public void PreencherFicha(Cliente cliente) throws IOException {
         this.cliente = cliente;
         DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
-        Ficha fichA = new Ficha(cliente.getCpf());
+        Ficha fichA = new Ficha(this.cliente.getCpf());
         List<String> lista = new LinkedList<>();
         fichA.addTabela(this.cliente.getCpf());
         lista.forEach(string -> {
@@ -282,7 +282,7 @@ public class CriarFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_jtableFichaKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Confirme realizar Pagamento?", "Confirmar", JOptionPane.OK_CANCEL_OPTION)
+        if (JOptionPane.showConfirmDialog(this, "Finalizar?", "Salvar", JOptionPane.OK_CANCEL_OPTION)
                 == JOptionPane.OK_OPTION) {
             try {
                 List<String> lista = new LinkedList();
