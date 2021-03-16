@@ -1,1 +1,4 @@
 Recepcionista|luiz|123|11111111111|11/11/1111|Feminino|(11)1111-1111
+Recepcionista|Deiverson Pedroso|1234|12365498896|01/08/1997|Masculino|(44)4444-4444
+Instrutor|Deyvison Gregorio|1234|31118666666|24/11/2000|Masculino|(32)4444-4444
+Instrutor|yuri|1234|31118666666|24/11/2000|Masculino|(32)4444-4444

@@ -58,7 +58,7 @@ public class Cliente {
         desconto = 0;
         this.ficha = new Ficha(cpf); //##############
         Recepcionista.lista.add(this);
-        if (sexo == "1") {
+        if (sexo == "2") {
             this.sexo = "Masculino";
         }else this.sexo="Feminimo";
 

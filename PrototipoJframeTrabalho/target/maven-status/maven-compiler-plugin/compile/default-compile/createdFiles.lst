@@ -2,10 +2,8 @@ Interfaces\JanelaDeCliente$3.class
 Interfaces\JanelaDeAdmn$8.class
 Interfaces\CadastroDeCliente$3.class
 Interfaces\Instrutor$4.class
-Interfaces\InstrutorLLL$5.class
 Interfaces\RemoveFunc.class
 Objetos\Recepcionista.class
-Interfaces\RemoverAdmHHH$1.class
 Interfaces\NovoAdm$3.class
 Interfaces\Instrutor$1.class
 Interfaces\JanelaDeAdmn$5.class
@@ -47,10 +45,8 @@ Interfaces\NovoAdm$1.class
 Interfaces\JanelaDeAdmn$11.class
 Interfaces\Instrutor.class
 Interfaces\RemoveFunc$4.class
-Interfaces\InstrutorLLL$3.class
 Interfaces\ControleDeAdms$2.class
 Interfaces\Instrutor$3.class
-Interfaces\RemoverAdmHHH.class
 Interfaces\PagamentoWin$4.class
 Interfaces\JanelaDeClienteHHH$1.class
 Interfaces\Recepçao$3.class
@@ -58,7 +54,6 @@ Interfaces\CadastroDeCliente$2.class
 Interfaces\JanelaDeAdmn$10.class
 Interfaces\JanelaDeAdmn$4.class
 Objetos\ClienteSemestral.class
-Interfaces\InstrutorLLL$2.class
 Interfaces\Login$4.class
 Interfaces\RemoveFunc$5.class
 Interfaces\JanelaDeAdmn$1.class
@@ -73,7 +68,6 @@ Objetos\ClienteTrimestral.class
 Interfaces\RemoverFuncionario$3.class
 Interfaces\Treinador$3.class
 Interfaces\CriarFicha$1.class
-Interfaces\InstrutorLLL.class
 Interfaces\RemoverAdm$2.class
 Objetos\Pagamento.class
 Interfaces\ControleDeAdms$3.class
@@ -81,13 +75,10 @@ Interfaces\PagamentoWin$3.class
 Interfaces\RemoverFuncionario.class
 Interfaces\JanelaDeCliente$2.class
 Objetos\Instrutor.class
-Interfaces\InstrutorLLL$1.class
 Interfaces\CriarFicha.class
 Interfaces\Instrutor$5.class
-Interfaces\InstrutorLLL$4.class
 Interfaces\CadastroDeCliente.class
 Interfaces\JanelaDeAdmn$9.class
-Interfaces\RemoverAdmHHH$2.class
 Interfaces\NovoAdm$2.class
 Interfaces\Recepçao$1.class
 Interfaces\JanelaDeAdmn$14.class
@@ -99,6 +90,7 @@ Interfaces\JanelaDeCliente$1.class
 Interfaces\Treinador$4.class
 Interfaces\PagamentoWin$1.class
 Interfaces\Login$2.class
+Objetos\Main.class
 Interfaces\CriarFicha$6.class
 Objetos\Ficha.class
 Interfaces\FichaDoCliente.class

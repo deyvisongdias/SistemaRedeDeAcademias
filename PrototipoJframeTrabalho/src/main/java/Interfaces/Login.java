@@ -139,12 +139,14 @@ public class Login extends javax.swing.JFrame {
             new ControleDeAdms().setVisible(true);
             this.dispose();
 
-        } else if (Main.instrutor.get(senha) != null && Main.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
+        } else if (Main.instrutor.get(usuario) != null && Main.instrutor.get(usuario).getNome().equals(usuario)
+                && Main.instrutor.get(usuario).getSenha().equals(senha))//Verificar se é treinador
         {
             new Instrutor().setVisible(true);
             this.dispose();
 
-        } else if (Main.recepcionista.get(senha) != null && Main.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+        } else if (Main.recepcionista.get(usuario) != null && Main.recepcionista.get(usuario).getNome().equals(usuario)
+                && Main.recepcionista.get(usuario).getSenha().equals(senha))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
@@ -164,31 +166,33 @@ public class Login extends javax.swing.JFrame {
             String usuario = txtUser.getText();
             String senha = new String(txtSenha.getPassword());
 
-           if (((usuario.equals(null)) || senha.equals(null))) {
-            JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
-        } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
-        {
-            new ControleDeAdms().setVisible(true);
-            this.dispose();
+            if (((usuario.equals(null)) || senha.equals(null))) {
+                JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
+            } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
+            {
+                new ControleDeAdms().setVisible(true);
+                this.dispose();
 
-        } else if (Main.instrutor.get(senha) != null && Main.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
-        {
-            new Instrutor().setVisible(true);
-            this.dispose();
+            } else if (Main.instrutor.get(usuario) != null && Main.instrutor.get(usuario).getNome().equals(usuario)
+                    && Main.instrutor.get(usuario).getSenha().equals(senha))//Verificar se é treinador
+            {
+                new Instrutor().setVisible(true);
+                this.dispose();
 
-        } else if (Main.recepcionista.get(senha) != null && Main.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
-        {
-            new Recepçao().setVisible(true);
-            this.dispose();
+            } else if (Main.recepcionista.get(usuario) != null && Main.recepcionista.get(usuario).getNome().equals(usuario)
+                    && Main.recepcionista.get(usuario).getSenha().equals(senha))//Verificar se é recepcionista
+            {
+                new Recepçao().setVisible(true);
+                this.dispose();
 
-        } else if (Main.clientes.get(senha) != null && Main.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
-        {
-            JanelaDeCliente janela = new JanelaDeCliente();
-            janela.setVisible(true);
-            janela.enviarCliente(Main.clientes.get(senha));
-            this.dispose();
-        } else
-            JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
+            } else if (Main.clientes.get(senha) != null && Main.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+            {
+                JanelaDeCliente janela = new JanelaDeCliente();
+                janela.setVisible(true);
+                janela.enviarCliente(Main.clientes.get(senha));
+                this.dispose();
+            } else
+                JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
@@ -199,6 +203,7 @@ public class Login extends javax.swing.JFrame {
 
             this.dispose();
             Objetos.Administrador.anulaarq();
+            Objetos.Recepcionista.anulaarq();
 
             Recepcionista r = null;
             Objetos.Instrutor i = null;

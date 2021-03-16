@@ -51,12 +51,12 @@ public class Main {
 
                     if (f[0].equals("Instrutor")) {
                         Instrutor i = new Instrutor(f[1], f[2], f[3], f[4], f[5], f[6]);
-                        instrutor.put(f[3], i);
+                        instrutor.put(f[1], i);
                         Administrador.listaInstru.add(i);
 
                     } else if (f[0].equals("Recepcionista")) {
                         Recepcionista rr = new Recepcionista(f[1], f[2], f[3], f[4], f[5], f[6]);
-                        recepcionista.put(f[3], rr);
+                        recepcionista.put(f[1], rr);
                         Administrador.listaRece.add(rr);
                     }
 

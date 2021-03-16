@@ -25,9 +25,8 @@ public class Instrutor extends javax.swing.JFrame {
      */
     public Instrutor() {
         initComponents();
-        this.tabel = (DefaultTableModel) tabela.getModel();
     }
-    private final DefaultTableModel tabel;
+
     private final Map<Integer, Cliente> map = new HashMap<>();
 
     /**
@@ -50,6 +49,7 @@ public class Instrutor extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Instrutor");
 
         jLabel8.setText("Nome");
 
@@ -86,10 +86,7 @@ public class Instrutor extends javax.swing.JFrame {
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Nome", "ID"
@@ -166,6 +163,7 @@ public class Instrutor extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 //    private Cliente RetornaCliente(String nome) {
 //        int i = 0;
@@ -183,6 +181,12 @@ public class Instrutor extends javax.swing.JFrame {
 //    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int i = 0;
+        DefaultTableModel tabel = (DefaultTableModel) tabela.getModel();
+
+        for (int j = 0; j <tabel.getRowCount(); j++) {
+
+            tabel.removeRow(j);
+        }
         Cliente client = Objetos.Main.clientes.get(Objetos.Main.cpfCliente.get((nomebusca.getText())));
         for (Cliente c : Objetos.Recepcionista.getLista()) {
             String[] aux = c.getNome().trim().split(" ");

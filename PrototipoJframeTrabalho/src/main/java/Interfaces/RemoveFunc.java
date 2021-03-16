@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RemoveFunc extends javax.swing.JFrame {
 
-    private final DefaultTableModel tabel;
     private final Map<Integer, Instrutor> mapI = new HashMap<>();
     private final Map<Integer, Recepcionista> mapR = new HashMap<>();
 
@@ -26,7 +25,7 @@ public class RemoveFunc extends javax.swing.JFrame {
      * Creates new form RemoveFunc
      */
     public RemoveFunc() {
-        this.tabel = (DefaultTableModel) Table.getModel();
+       DefaultTableModel tabel = (DefaultTableModel) Table.getModel();
         initComponents();
     }
 
@@ -198,6 +197,7 @@ public class RemoveFunc extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        DefaultTableModel tabel = (DefaultTableModel) Table.getModel();
         int i = 0;
         Instrutor instr = Objetos.Main.instrutor.get(Objetos.Main.funcionarios.get((nomebusca.getText())));
         for (Instrutor c : Objetos.Administrador.getListaInstu()) {

@@ -268,5 +268,9 @@ public class Recepcionista implements Pagamento {
         return ("Recepcionista" + "|" + getNome() + "|" + getSenha() + "|" + getCpf() + "|"
                 + getData() + "|" + getSexo() + "|" + getContato());
     }
+     public static void anulaarq() {
+        clientesBD.delete();
+        File func = new File("clientes.txt");
+    }
 
 }

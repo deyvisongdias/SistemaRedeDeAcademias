@@ -26,7 +26,6 @@ public class CriarFicha extends javax.swing.JFrame {
      * Creates new form CriarFicha
      */
     public CriarFicha() {
-        this.ficha = (DefaultTableModel) jtableFicha.getModel();
         initComponents();
     }
 
@@ -204,7 +203,6 @@ public class CriarFicha extends javax.swing.JFrame {
 
     }
     private Cliente cliente;
-    private final DefaultTableModel ficha;
 
     private Object[] ConverteString(String st) {
         Object[] dados = st.split(";");
@@ -213,15 +211,17 @@ public class CriarFicha extends javax.swing.JFrame {
 
     public void PreencherFicha(Cliente cliente) throws IOException {
         this.cliente = cliente;
+        DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
         Ficha fichA = new Ficha(cliente.getCpf());
         List<String> lista = new LinkedList<>();
         fichA.addTabela(this.cliente.getCpf());
         lista.forEach(string -> {
             ficha.addRow(ConverteString(string));//########
-        }); 
+        });
     }// colocar esse metodo na janela de cliente tbm
 
     private void jbAdcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdcionarActionPerformed
+        DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
         Object[] dados = {JcbAp.getSelectedItem(), jtxtExr.getText(), jSerieRep.getText(), "___"};
         ficha.addRow(dados);
 
