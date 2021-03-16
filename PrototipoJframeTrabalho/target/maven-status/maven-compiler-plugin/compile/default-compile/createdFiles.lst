@@ -33,7 +33,6 @@ Interfaces\NovoAdm.class
 Interfaces\PagamentoWin.class
 Interfaces\Instrutor$2.class
 Interfaces\Recepçao$2.class
-Objetos\Program.class
 Interfaces\CadastroDeCliente$1.class
 Interfaces\PagamentoWin$5.class
 Interfaces\RemoverFuncionario$1.class

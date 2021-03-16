@@ -169,7 +169,7 @@ public class InstrutorLLL extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 //    private Cliente RetornaCliente(String nome) {
 //        int i = 0;
-//        Cliente client = Objetos.Program.clientes.get(Objetos.Program.cpfCliente.get(nome));
+//        Cliente client = Objetos.Main.clientes.get(Objetos.Main.cpfCliente.get(nome));
 //        for (Cliente c : Objetos.Recepcionista.getLista()) {
 //            String[] aux = c.getNome().trim().split(" ");
 //            if (aux[0].equals(nome)) {
@@ -183,7 +183,7 @@ public class InstrutorLLL extends javax.swing.JFrame {
 //    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int i = 0;
-        Cliente client = Objetos.Program.clientes.get(Objetos.Program.cpfCliente.get((nomebusca.getText())));
+        Cliente client = Objetos.Main.clientes.get(Objetos.Main.cpfCliente.get((nomebusca.getText())));
         for (Cliente c : Objetos.Recepcionista.getLista()) {
             String[] aux = c.getNome().trim().split(" ");
             if (aux[0].equals((nomebusca.getText()))) {

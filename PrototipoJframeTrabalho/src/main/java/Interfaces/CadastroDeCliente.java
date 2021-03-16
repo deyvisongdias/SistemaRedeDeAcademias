@@ -9,7 +9,7 @@ import Objetos.Cliente;
 import Objetos.ClienteAnual;
 import Objetos.ClienteSemestral;
 import Objetos.ClienteTrimestral;
-import Objetos.Program;
+import Objetos.Main;
 import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -64,7 +64,7 @@ public class CadastroDeCliente extends javax.swing.JFrame {
         }
 
         try {
-            jFtxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            jFtxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -200,7 +200,7 @@ public class CadastroDeCliente extends javax.swing.JFrame {
         if (jtxtnome.getText() != null
                 && jftxtdata.getText() != null
                 && jFtxtCPF.getText() != null
-                && (Program.clientes.isEmpty() || Program.clientes.containsKey(jFtxtCPF.getText()))
+                && (Main.clientes.isEmpty() || Main.clientes.containsKey(jFtxtCPF.getText()))
                 && jFtxtContato.getText() != null
                 && jCbPlano.getSelectedIndex() != 0
                 && jCsexo.getSelectedIndex() != 0) {

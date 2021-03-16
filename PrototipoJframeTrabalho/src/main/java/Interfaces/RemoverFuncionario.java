@@ -215,7 +215,7 @@ public class RemoverFuncionario extends javax.swing.JFrame {
  DefaultTableModel tabel = (DefaultTableModel) Table.getModel();
 
         int i = 0;
-        Instrutor instr = Objetos.Program.instrutor.get(Objetos.Program.funcionarios.get((nomebusca.getText())));
+        Instrutor instr = Objetos.Main.instrutor.get(Objetos.Main.funcionarios.get((nomebusca.getText())));
         for (Instrutor c : Objetos.Administrador.getListaInstu()) {
             String[] aux = c.getNome().trim().split(" ");
             if (aux[0].equals((nomebusca.getText()))) {
@@ -225,7 +225,7 @@ public class RemoverFuncionario extends javax.swing.JFrame {
                 i++;
             }
         }
-        Recepcionista recep = Objetos.Program.recepcionista.get(Objetos.Program.funcionarios.get((nomebusca.getText())));
+        Recepcionista recep = Objetos.Main.recepcionista.get(Objetos.Main.funcionarios.get((nomebusca.getText())));
         for (Recepcionista r : Objetos.Administrador.getListaRece()) {
             String[] aux = r.getNome().trim().split(" ");
             if (aux[0].equals((nomebusca.getText()))) {

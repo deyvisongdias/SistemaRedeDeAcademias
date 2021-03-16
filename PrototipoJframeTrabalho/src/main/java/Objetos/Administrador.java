@@ -9,9 +9,9 @@ package Objetos;
  *
  * @author deive
  */
-import static Objetos.Program.funcionarios;
-import static Objetos.Program.instrutor;
-import static Objetos.Program.recepcionista;
+import static Objetos.Main.funcionarios;
+import static Objetos.Main.instrutor;
+import static Objetos.Main.recepcionista;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

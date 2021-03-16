@@ -10,8 +10,8 @@ package Objetos;
  * @author deive
  */
 import static Objetos.Administrador.listaRece;
-import static Objetos.Program.clientes;
-import static Objetos.Program.cpfCliente;
+import static Objetos.Main.clientes;
+import static Objetos.Main.cpfCliente;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -254,7 +254,7 @@ public class Recepcionista implements Pagamento {
                                    
                         }
                     } catch (ParseException ex) {
-                        Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     cpfCliente.put(fields[1], fields[2]);
                     Cliente.contId++;
