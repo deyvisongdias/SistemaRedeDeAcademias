@@ -128,28 +128,28 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
         String usuario = txtUser.getText();
         String senha = txtSenha.getText();
 
-        if (((usuario.equals("")) || senha.equals(""))) {
+        if (((usuario.equals(null)) || senha.equals(null))) {
             JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
         } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
         {
             new ControleDeAdms().setVisible(true);
             this.dispose();
 
-        } else if (!(instrutor.isEmpty())&& instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
+        } else if (Program.instrutor.get(senha) != null && Program.instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
         {
             new Instrutor().setVisible(true);
             this.dispose();
 
-        } else if (/*!(recepcionista.isEmpty()) && */ recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+        } else if (Program.recepcionista.get(senha) != null && Program.recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
         {
             new Recepçao().setVisible(true);
             this.dispose();
 
-        } else if (!(clientes.isEmpty()) && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+        } else if (Program.clientes.get(senha) != null && Program.clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
         {
             JanelaDeCliente janela = new JanelaDeCliente();
             janela.setVisible(true);
@@ -161,34 +161,35 @@ public class Login extends javax.swing.JFrame {
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-             String usuario = txtUser.getText();
-        String senha = new String(txtSenha.getPassword());
+            String usuario = txtUser.getText();
+            String senha = new String(txtSenha.getPassword());
 
-        if (((usuario.equals("")) || senha.equals(""))) {
-            JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
-        } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
-        {
-            new ControleDeAdms().setVisible(true);
-            this.dispose();
+            if (((usuario.equals("")) || senha.equals(""))) {
+                JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
+            } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
+            {
+                new ControleDeAdms().setVisible(true);
+                this.dispose();
 
-        } else if (!(instrutor.isEmpty()) && instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
-        {
-            new Instrutor().setVisible(true);
-            this.dispose();
+            } else if (!(instrutor.isEmpty()) && instrutor.get(senha).getNome().equals(usuario))//Verificar se é treinador
+            {
+                new Instrutor().setVisible(true);
+                this.dispose();
 
-        } else if (!(recepcionista.isEmpty()) && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
-        {
-            new Recepçao().setVisible(true);
-            this.dispose();
+            } else if (!(recepcionista.isEmpty()) && recepcionista.get(senha).getNome().equals(usuario))//Verificar se é recepcionista
+            {
+                new Recepçao().setVisible(true);
+                this.dispose();
 
-        } else if (!(clientes.isEmpty()) && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
-        {
-            JanelaDeCliente janela = new JanelaDeCliente();
-            janela.setVisible(true);
-            janela.enviarCliente(Program.clientes.get(senha));
-            this.dispose();
-        } else
-            JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
+            } else if (!(clientes.isEmpty()) && clientes.get(senha).getNome().equals(usuario))//verifica se é cliente 
+            {
+                JanelaDeCliente janela = new JanelaDeCliente();
+                janela.setVisible(true);
+                janela.enviarCliente(Program.clientes.get(senha));
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Nome de usuario ou senha invalidos.");
+            }
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 

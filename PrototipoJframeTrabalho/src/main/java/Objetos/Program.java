@@ -35,7 +35,7 @@ public class Program {
       
         
         LerTxtFuncionario();
-      //  r.LerTxtCliente();
+        r.LerTxtCliente();
         
         
         new Login().setVisible(true);
@@ -53,17 +53,23 @@ public class Program {
                 String line = br.readLine();
                 while (line != null) {
                     
-                    String[] f = line.split("|");
+                    String[] f = line.split("\\|");
+                    
+                    for (int i = 0; i < f.length; i++) {
+                        System.out.println(f[i]);
+                    }
                     
                     if (f[0].equals("Instrutor")) {
                         Instrutor i= new Instrutor(f[1], f[2], f[3], f[4], f[5],f[6]);
                         instrutor.put(f[3],i);
                         Administrador.listaInstru.add(i);
+                        
                     } else if (f[0].equals("Recepcionista")) {
                         Recepcionista rr= new Recepcionista(f[1], f[2], f[3], f[4], f[5],f[6]);
                         recepcionista.put(f[3], rr);
                          Administrador.listaRece.add(rr);
                     }
+                    
                      line = br.readLine();
                 }
             } catch (IOException e) {

@@ -24,8 +24,8 @@ public class Instrutor extends javax.swing.JFrame {
      * Creates new form Treinador
      */
     public Instrutor() {
-        this.tabel = (DefaultTableModel) tabela.getModel();
         initComponents();
+        this.tabel = (DefaultTableModel) tabela.getModel();
     }
     private final DefaultTableModel tabel;
     private final Map<Integer, Cliente> map = new HashMap<>();

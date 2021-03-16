@@ -193,7 +193,7 @@ public class Recepcionista implements Pagamento {
             try (BufferedReader br = new BufferedReader(new FileReader(pathCliente))) {
                 String line = br.readLine();
                 while (line != null) {
-                    String[] fields = line.split("|");
+                    String[] fields = line.split("\\|");
                     try {
                         if (fields.equals("mensal")) {
                             Cliente c=new Cliente(fields[0], //tipo plano
