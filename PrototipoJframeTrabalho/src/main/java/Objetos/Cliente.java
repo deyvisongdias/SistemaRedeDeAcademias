@@ -39,7 +39,6 @@ public class Cliente {
     private double valorParcela = 0;
     private int numeroParcelas = 1;
     private Ficha ficha; //#########
-    
 
     //Construtor de um cliente novo
     public Cliente(String tipoPlano, String nome, String cpf, Date dataMatricula, String telefone, String sexo) throws IOException {
@@ -57,16 +56,17 @@ public class Cliente {
         this.statusMatricula = true;
         valorPlano = 80;
         desconto = 0;
-        this.sexo = sexo;
         this.ficha = new Ficha(cpf); //##############
         Recepcionista.lista.add(this);
-        
-        
+        if (sexo == "1") {
+            this.sexo = "Masculino";
+        }else this.sexo="Feminimo";
+
     }
 
     //Construtor de um cliente já cadastrado
-    public Cliente(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento, 
-    int id, Boolean statusMatricula, double valorPlano, String telefone, String sexo) throws IOException {
+    public Cliente(String tipoPlano, String nome, String cpf, Date dataMatricula, Date vencimento,
+            int id, Boolean statusMatricula, double valorPlano, String telefone, String sexo) throws IOException {
         this.tipoPlano = tipoPlano;
         this.nome = nome;
         this.cpf = cpf;
@@ -81,9 +81,10 @@ public class Cliente {
         this.sexo = sexo;
         this.ficha = new Ficha(cpf); //##############
         Recepcionista.lista.add(this);
-        if(id >contId)
+        if (id > contId) {
             contId = id;
-        
+        }
+
     }
 
     public Cliente() {
@@ -178,7 +179,7 @@ public class Cliente {
 
     public void writeFile() {
         String dados = this.toString();
-        String path =Recepcionista.clientesBD.getAbsolutePath();
+        String path = Recepcionista.clientesBD.getAbsolutePath();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();
@@ -190,7 +191,7 @@ public class Cliente {
     @Override
     public String toString() {
         return tipoPlano + "|" + nome + "|" + cpf + "|" + getDataMatricula() + "|" + getVencimento() + "|"
-                + id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone;
+                + id + "|" + statusMatricula + "|" + this.valorPlano + "|" + telefone + "|" + sexo;
     }
 
     @Override

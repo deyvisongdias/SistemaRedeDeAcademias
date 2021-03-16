@@ -38,6 +38,6 @@ public class ClienteTrimestral extends Cliente{
     
     @Override
     public String toString(){ 
-        return super.toString() + "|" + this.getDesconto();
+        return super.toString();// + "|" + this.getDesconto();
     }
  }

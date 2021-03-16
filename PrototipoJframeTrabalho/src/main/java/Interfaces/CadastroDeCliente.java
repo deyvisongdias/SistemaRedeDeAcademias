@@ -196,7 +196,7 @@ public class CadastroDeCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cliente cliente = null;     
+        Cliente cliente = null;
         if (jtxtnome.getText() != null
                 && jftxtdata.getText() != null
                 && jFtxtCPF.getText() != null
@@ -204,48 +204,49 @@ public class CadastroDeCliente extends javax.swing.JFrame {
                 && jFtxtContato.getText() != null
                 && jCbPlano.getSelectedIndex() != 0
                 && jCsexo.getSelectedIndex() != 0) {
-            if(JOptionPane.showConfirmDialog(this, "concluir?")==(JOptionPane.OK_OPTION))
-            {
-                
-            
-            if (jCbPlano.getSelectedIndex() == 1) {
-                try {
-                    cliente = new Cliente("Mensal", jtxtnome.getText(), jFtxtCPF.getText(),
-                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
-                    this.dispose();
-                } catch (IOException ex) {
-                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+            if (JOptionPane.showConfirmDialog(this, "concluir?") == (JOptionPane.OK_OPTION)) {
+
+                if (jCbPlano.getSelectedIndex() == 1) {
+                    try {
+                        cliente = new Cliente("Mensal", jtxtnome.getText(), jFtxtCPF.getText(),
+                                new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                        Main.clientes.put(jFtxtCPF.getText(), cliente);
+                        this.dispose();
+                    } catch (IOException ex) {
+                        Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                } else if (jCbPlano.getSelectedIndex() == 2) {
+                    try {
+                        cliente = new ClienteTrimestral("Trimestral", jtxtnome.getText(), jFtxtCPF.getText(),
+                                new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                        Main.clientes.put(jFtxtCPF.getText(), cliente);
+                        this.dispose();
+                    } catch (IOException ex) {
+                        Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else if (jCbPlano.getSelectedIndex() == 3) {
+                    try {
+                        cliente = new ClienteSemestral("Semestral", jtxtnome.getText(), jFtxtCPF.getText(),
+                                new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                        Main.clientes.put(jFtxtCPF.getText(), cliente);
+                        this.dispose();
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else if (jCbPlano.getSelectedIndex() == 4) {
+                    try {
+                        cliente = new ClienteAnual("Anual", jtxtnome.getText(), jFtxtCPF.getText(),
+                                new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
+                        Main.clientes.put(jFtxtCPF.getText(), cliente);
+                        this.dispose();
+                    } catch (IOException ex) {
+                        Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            
-                
-            } else if (jCbPlano.getSelectedIndex() == 2) {
-                try {
-                    cliente = new ClienteTrimestral("Trimestral", jtxtnome.getText(), jFtxtCPF.getText(),
-                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
-                      this.dispose();
-                } catch (IOException ex) {
-                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else if (jCbPlano.getSelectedIndex() == 3) {
-                try {
-                   cliente = new ClienteSemestral("Semestral", jtxtnome.getText(), jFtxtCPF.getText(),
-                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
-                     this.dispose();
-                   
-                } catch (IOException ex) {
-                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else if (jCbPlano.getSelectedIndex() == 4) {
-                try {
-                   cliente = new ClienteAnual("Anual", jtxtnome.getText(), jFtxtCPF.getText(),
-                            new Date(), jFtxtContato.getText(), jCsexo.getSelectedItem().toString());
-                     this.dispose();
-                } catch (IOException ex) {
-                    Logger.getLogger(CadastroDeCliente.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-            cliente.writeFile();
+
+                cliente.writeFile();
             }
         } else {
             JOptionPane.showConfirmDialog(this, "Dados incompletos ou ja existentes no banco de dados ");
@@ -253,9 +254,9 @@ public class CadastroDeCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String[] options={"Sim","Não"};
+        String[] options = {"Sim", "Não"};
         if (JOptionPane.showOptionDialog(this, "Finalizar", "Realmente deseja finalizar?", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, options,options[0])==0){
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_jButton2ActionPerformed

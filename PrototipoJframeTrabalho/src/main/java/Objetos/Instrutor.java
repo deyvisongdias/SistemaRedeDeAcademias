@@ -90,7 +90,8 @@ public class Instrutor {
  
     public String ConverteEmString()
     {
-        return ("Instrutor"+"|"+getNome()+"|"+getSenha()+"|"+getCpf()+"|"+getData()+"|"+getSexo()+"|"+getContato());
+        return ("Instrutor"+"|"+getNome()+"|"+getSenha()+"|"
+                +getCpf()+"|"+getData()+"|"+getSexo()+"|"+getContato());
     }
     
 }
