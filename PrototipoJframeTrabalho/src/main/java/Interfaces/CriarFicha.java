@@ -214,10 +214,13 @@ public class CriarFicha extends javax.swing.JFrame {
         DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
         Ficha fichA = new Ficha(this.cliente.getCpf());
         List<String> lista = new LinkedList<>();
-        fichA.addTabela(this.cliente.getCpf());
-        lista.forEach(string -> {
-            ficha.addRow(ConverteString(string));//########
-        });
+        
+        
+        for (Object[] l : fichA.addTabela() ) {
+          ficha.addRow(l);
+            
+        }
+        
     }// colocar esse metodo na janela de cliente tbm
 
     private void jbAdcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdcionarActionPerformed
@@ -291,8 +294,10 @@ public class CriarFicha extends javax.swing.JFrame {
                             + jtableFicha.getValueAt(i, 2) + ";" + jtableFicha.getValueAt(i, 3);
                     lista.add(dados);
                 }
-                Objetos.Ficha ficha = new Ficha();
-                ficha.addArquivo(this.cliente.getCpf(), lista);
+             
+                
+                Ficha ficha = new Ficha(this.cliente.getCpf());
+                ficha.addArquivo( lista);
                 this.dispose();
             } catch (IOException ex) {
                 Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
