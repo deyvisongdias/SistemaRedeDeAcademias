@@ -22,7 +22,6 @@ public class ClienteTrimestral extends Cliente{
         this.setDesconto(5);
         this.updateVencimento();  
         this.setNumeroParcelas(3);
-        Recepcionista.lista.add(this);
     }
     
     //Leitura do txt

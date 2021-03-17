@@ -52,7 +52,7 @@ public class CriarFicha extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtableFicha = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("cadastra na ficha"));

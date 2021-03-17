@@ -67,10 +67,7 @@ public class PagamentoWin extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Id", "Nome", "Status"
@@ -207,16 +204,16 @@ public class PagamentoWin extends javax.swing.JFrame {
         String nome = nomebusca.getText();
         int i = 0;
         DefaultTableModel psq = (DefaultTableModel) jTable1.getModel();
-        
-        for (int j = 0; j <psq.getRowCount(); j++) {
+
+        for (int j = 0; j < psq.getRowCount(); j++) {
 
             psq.removeRow(j);
         }
         Cliente client = Objetos.Main.clientes.get(Objetos.Main.cpfCliente.get((nomebusca.getText())));
         for (Cliente c : Objetos.Recepcionista.getLista()) {
             String[] aux = c.getNome().trim().split(" ");
-            if (aux[0].equals((nomebusca.getText()))) {
-               Object[] dados = {c.getId(), c.getNome(), c.getStatusMatricula()};
+            if ((nomebusca.getText()).equals(aux[0])) {
+                Object[] dados = {c.getId(), c.getNome(), c.getStatusMatricula()};
                 psq.addRow(dados);
                 map.put(i, c);
                 i++;
@@ -229,7 +226,7 @@ public class PagamentoWin extends javax.swing.JFrame {
             lblbnome.setText(c.getNome());
             lblcpf.setText(c.getCpf());
             lblvencimento.setText(c.getVencimento());
-
+            lvlvalor.setText(Double.toString(c.getValorParcela() - c.getDesconto()));
         }
     }//GEN-LAST:event_jTable1KeyPressed
 
@@ -239,7 +236,7 @@ public class PagamentoWin extends javax.swing.JFrame {
             lblbnome.setText(c.getNome());
             lblcpf.setText(c.getCpf());
             lblvencimento.setText(c.getVencimento());
-
+            lvlvalor.setText(Double.toString(c.getValorParcela() - c.getDesconto()));
         }
     }//GEN-LAST:event_jTable1KeyReleased
 
@@ -249,14 +246,16 @@ public class PagamentoWin extends javax.swing.JFrame {
             lblbnome.setText(c.getNome());
             lblcpf.setText(c.getCpf());
             lblvencimento.setText(c.getVencimento());
+            lvlvalor.setText(Double.toString(c.getValorParcela() - c.getDesconto()));
 
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Cliente cliente = map.get(jTable1.getSelectedRow());
-        if (JOptionPane.showConfirmDialog(this, "Confirme realizar Pagamento?", "Confirmar", JOptionPane.OK_CANCEL_OPTION)
-                == JOptionPane.OK_OPTION) {
+         String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Finalizar pagamento?", "Confirmação", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
             Recepcionista rc = new Recepcionista();
             rc.pagar(cliente);
         }

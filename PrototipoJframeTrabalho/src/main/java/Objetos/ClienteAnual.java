@@ -19,7 +19,6 @@ public class ClienteAnual extends Cliente{
         this.setDesconto(15);
         this.updateVencimento();
         this.setNumeroParcelas(12);
-        Recepcionista.lista.add(this);
     }
     
     //Cliente já cadastrado

@@ -69,7 +69,7 @@ public class FichaDoCliente extends javax.swing.JFrame {
         Ficha = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         Ficha.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

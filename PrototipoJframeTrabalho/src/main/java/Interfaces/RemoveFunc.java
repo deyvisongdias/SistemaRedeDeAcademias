@@ -54,7 +54,7 @@ public class RemoveFunc extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         funcao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel8.setText("Nome:");
 
@@ -67,10 +67,7 @@ public class RemoveFunc extends javax.swing.JFrame {
 
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "CPF", "Nome"
@@ -194,6 +191,7 @@ public class RemoveFunc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -273,8 +271,9 @@ public class RemoveFunc extends javax.swing.JFrame {
     }//GEN-LAST:event_TableKeyReleased
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(this, "Tem certeza de que quer remover?") == JOptionPane.OK_OPTION) {
+        String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Deseja realmente remover?", "Remover funcionario", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
             if (mapR.containsKey(Table.getSelectedRow())) {//recepcionista
                 Recepcionista rcp = mapR.get(Table.getSelectedRow());
                 rcp.setnull();

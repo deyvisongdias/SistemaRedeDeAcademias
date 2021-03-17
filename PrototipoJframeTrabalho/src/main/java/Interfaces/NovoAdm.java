@@ -241,10 +241,13 @@ public class NovoAdm extends javax.swing.JFrame {
                 } else {
                     funcao = "Treinador";
                 }
+                 String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "concluir cadrastro?", "Confirmaçao de cadastro", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ){
                 Objetos.Administrador.CriaFuncionario(funcao, jtxtnome.getText(), jFtxtCPF.getText(),
                         jftxtdata.getText(), jFtxtContato.getText(), s, senha.getText());
                 this.dispose();
-                new ControleDeAdms().setVisible(true);
+                new ControleDeAdms().setVisible(true);}
             }
         }else
             JOptionPane.showMessageDialog(this,"Dados imcompletos");

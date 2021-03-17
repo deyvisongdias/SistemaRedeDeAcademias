@@ -19,7 +19,6 @@ public class ClienteSemestral extends Cliente {
         this.setDesconto(10);
         this.updateVencimento();
         this.setNumeroParcelas(6);
-        Recepcionista.lista.add(this);
 
     }
 
@@ -29,7 +28,6 @@ public class ClienteSemestral extends Cliente {
         super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade, telefone, sexo);
         this.setNumeroParcelas(6);
         this.setDesconto(10);
-        Recepcionista.lista.add(this);
         if(id >contId)
             contId = id;
     }

@@ -8,7 +8,6 @@ Interfaces\NovoAdm$3.class
 Interfaces\Instrutor$1.class
 Interfaces\JanelaDeAdmn$5.class
 Objetos\Cliente.class
-Interfaces\JanelaDeClienteHHH$3.class
 Interfaces\CriarFicha$5.class
 Interfaces\FichaDoCliente$2.class
 Interfaces\RemoveFunc$6.class
@@ -48,7 +47,6 @@ Interfaces\RemoveFunc$4.class
 Interfaces\ControleDeAdms$2.class
 Interfaces\Instrutor$3.class
 Interfaces\PagamentoWin$4.class
-Interfaces\JanelaDeClienteHHH$1.class
 Interfaces\Recepçao$3.class
 Interfaces\CadastroDeCliente$2.class
 Interfaces\JanelaDeAdmn$10.class
@@ -60,7 +58,6 @@ Interfaces\JanelaDeAdmn$1.class
 Interfaces\FichaDoCliente$1.class
 Interfaces\JanelaDeCliente.class
 Interfaces\Recepçao$4.class
-Interfaces\JanelaDeClienteHHH$2.class
 Interfaces\CriarFicha$4.class
 Interfaces\RemoveFunc$2.class
 Objetos\ClienteAnual.class
@@ -82,7 +79,6 @@ Interfaces\JanelaDeAdmn$9.class
 Interfaces\NovoAdm$2.class
 Interfaces\Recepçao$1.class
 Interfaces\JanelaDeAdmn$14.class
-Interfaces\JanelaDeClienteHHH.class
 Interfaces\JanelaDeAdmn$6.class
 Interfaces\RemoverFuncionario$4.class
 Interfaces\FichaDoCliente$3.class

@@ -199,8 +199,9 @@ public class RemoverFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(this, "Tem certeza de que quer remover?") == JOptionPane.OK_OPTION) {
+        String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Deseja realmente remover?", "Remover", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
             if (mapR.containsKey(Table.getSelectedRow())) {//recepcionista
                 Recepcionista rcp = mapR.get(Table.getSelectedRow());
                 rcp.setnull();

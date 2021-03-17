@@ -34,7 +34,7 @@ public class ControleDeAdms extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButtonSAIR = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Controle de Adm");
         setResizable(false);
 
@@ -118,7 +118,9 @@ public class ControleDeAdms extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonSAIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSAIRActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
+        String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Deseja voltar á tela de login??", "Sair", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
             new Login().setVisible(true);
             this.dispose();
         }

@@ -181,7 +181,9 @@ public class JanelaDeCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
+         String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Deseja voltar a tela de login?", "Sair", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ){
             this.dispose();
             LBLBV.setText(" ");
             new Login().setVisible(true);
