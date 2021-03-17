@@ -24,39 +24,22 @@
 * Github: [@PHenriqueCEC](https://github.com/PHenriqueCEC)
 * LinkedIn: [Pedro Henrique](https://www.linkedin.com/in/pedro-henrique-77baa01a9/)
 
-👤 **Yuri**
-
-* Github: [@Yuri-1525](https://github.com/Yuri-1525)
-* LinkedIn: [Yuri de Oliveira](https://www.linkedin.com/in/yuri-oliveira-635843204/)
 
 
+# Como rodar o projeto
+**Certifique-se de ter o Maven instalado**
 
-
-
-
-# Como rodar o projeto em ambiente linux
-**Certifique-se de ...**
-
-1. Navegue até a pasta ...
+1. Navegue até a pasta PrototipoJframeTrabalho
 ```
-cd (nome da pasta)
+cd PrototipoJframeTrabalho
 ```
 
-2. Digite o comando ...
+2. Vá ate a pasta target
 ```
-chmod ...
-```
-
-# Como rodar o projeto no Windows
-**Certifique-se de ...**
-
-1. Navegue até a pasta blablabla
-```
-cd (nome da pasta)
+cd target
 ```
 
-2. Digite o comando ... 
-```
-chmod ...
-```
-
+3. Digite o comando para compilar
+'''
+java - jar PrototipoJframeTrabalho-1.0-SNAPSHOT-jar-with-dependencies.jar
+'''
