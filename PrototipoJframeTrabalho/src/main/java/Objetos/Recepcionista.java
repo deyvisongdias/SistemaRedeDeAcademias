@@ -247,7 +247,6 @@ public class Recepcionista implements Pagamento {
                     }
 
                     Main.cpfCliente.put(fields[1], fields[2]);
-                    // Cliente.contId++;
                     line = br.readLine();
                 }
             } catch (IOException e) {

@@ -196,15 +196,18 @@ public class CadastroDeCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String[] options = {"Sim", "Nao"};
         Cliente cliente = null;
         if (jtxtnome.getText() != null
                 && jftxtdata.getText() != null
                 && jFtxtCPF.getText() != null
-                && (Main.clientes.isEmpty() || Main.clientes.containsKey(jFtxtCPF.getText()))
+                && (Main.clientes.isEmpty() || !Main.clientes.containsKey(jFtxtCPF.getText()))
                 && jFtxtContato.getText() != null
                 && jCbPlano.getSelectedIndex() != 0
                 && jCsexo.getSelectedIndex() != 0) {
-            if (JOptionPane.showConfirmDialog(this, "concluir?") == (JOptionPane.OK_OPTION)) {
+
+            if ((JOptionPane.showOptionDialog(this, "Cadastrar?", "Sair", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0)) {
 
                 if (jCbPlano.getSelectedIndex() == 1) {
                     try {
@@ -249,7 +252,7 @@ public class CadastroDeCliente extends javax.swing.JFrame {
                 cliente.writeFile();
             }
         } else {
-            JOptionPane.showConfirmDialog(this, "Dados incompletos ou ja existentes no banco de dados ");
+            JOptionPane.showMessageDialog(this, "Dados incompletos ou ja existentes no banco de dados ");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

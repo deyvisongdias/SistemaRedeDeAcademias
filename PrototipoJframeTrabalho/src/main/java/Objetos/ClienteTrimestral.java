@@ -30,7 +30,6 @@ public class ClienteTrimestral extends Cliente{
         super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
         this.setNumeroParcelas(3);
         this.setDesconto(5);
-        Recepcionista.lista.add(this);
         if(id >contId)
             contId = id;
     }

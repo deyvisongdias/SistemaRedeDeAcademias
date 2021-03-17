@@ -27,7 +27,6 @@ public class ClienteAnual extends Cliente{
         super(tipoPlano, nome, cpf, dataMatricula, vencimento, id, statusMatricula, mensalidade,telefone,sexo);
        this.setNumeroParcelas(12);
         this.setDesconto(15);
-        Recepcionista.lista.add(this);
         if(id >contId)
             contId = id;
       

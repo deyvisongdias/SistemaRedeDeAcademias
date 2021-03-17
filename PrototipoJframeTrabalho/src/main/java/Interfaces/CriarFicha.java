@@ -285,8 +285,9 @@ public class CriarFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_jtableFichaKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Finalizar?", "Salvar", JOptionPane.OK_CANCEL_OPTION)
-                == JOptionPane.OK_OPTION) {
+         String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Sair e salvar?", "Salvar e sair", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ){
             try {
                 List<String> lista = new LinkedList();
                 for (int i = 0; i < jtableFicha.getRowCount(); i++) {

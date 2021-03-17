@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -60,7 +60,9 @@ public class Cliente {
         Recepcionista.lista.add(this);
         if (sexo == "2") {
             this.sexo = "Masculino";
-        }else this.sexo="Feminimo";
+        } else {
+            this.sexo = "Feminimo";
+        }
 
     }
 
@@ -75,7 +77,6 @@ public class Cliente {
         this.id = id;
         this.statusMatricula = statusMatricula;
         this.valorPlano = valorPlano;
-        contId = id;
         this.telefone = telefone;
         desconto = 0;
         this.sexo = sexo;

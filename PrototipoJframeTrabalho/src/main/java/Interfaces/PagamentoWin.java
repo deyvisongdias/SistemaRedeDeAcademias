@@ -209,6 +209,7 @@ public class PagamentoWin extends javax.swing.JFrame {
 
             psq.removeRow(j);
         }
+
         Cliente client = Objetos.Main.clientes.get(Objetos.Main.cpfCliente.get((nomebusca.getText())));
         for (Cliente c : Objetos.Recepcionista.getLista()) {
             String[] aux = c.getNome().trim().split(" ");
@@ -226,7 +227,7 @@ public class PagamentoWin extends javax.swing.JFrame {
             lblbnome.setText(c.getNome());
             lblcpf.setText(c.getCpf());
             lblvencimento.setText(c.getVencimento());
-            lvlvalor.setText(Double.toString(c.getValorParcela() - c.getDesconto()));
+            lvlvalor.setText(Double.toString(c.getValorPlano() - c.getDesconto()));
         }
     }//GEN-LAST:event_jTable1KeyPressed
 
@@ -236,7 +237,7 @@ public class PagamentoWin extends javax.swing.JFrame {
             lblbnome.setText(c.getNome());
             lblcpf.setText(c.getCpf());
             lblvencimento.setText(c.getVencimento());
-            lvlvalor.setText(Double.toString(c.getValorParcela() - c.getDesconto()));
+            lvlvalor.setText(Double.toString(c.getValorPlano() - c.getDesconto()));
         }
     }//GEN-LAST:event_jTable1KeyReleased
 
@@ -246,16 +247,16 @@ public class PagamentoWin extends javax.swing.JFrame {
             lblbnome.setText(c.getNome());
             lblcpf.setText(c.getCpf());
             lblvencimento.setText(c.getVencimento());
-            lvlvalor.setText(Double.toString(c.getValorParcela() - c.getDesconto()));
+            lvlvalor.setText(Double.toString(c.getValorPlano() - c.getDesconto()));
 
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Cliente cliente = map.get(jTable1.getSelectedRow());
-         String[] options = {"Sim", "Nao"};
+        String[] options = {"Sim", "Nao"};
         if ((JOptionPane.showOptionDialog(this, "Finalizar pagamento?", "Confirmação", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0)) {
             Recepcionista rc = new Recepcionista();
             rc.pagar(cliente);
         }

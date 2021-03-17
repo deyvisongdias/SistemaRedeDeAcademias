@@ -107,7 +107,9 @@ public class Recepçao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Tem certeza que quer sair?") == JOptionPane.OK_OPTION) {
+        String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Deseja voltar?", "Sair", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
             this.dispose();
             new Login().setVisible(true);
         }

@@ -115,7 +115,7 @@ public class FichaDoCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -124,8 +124,9 @@ public class FichaDoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "Confirme realizar Pagamento?", "Confirmar", JOptionPane.OK_CANCEL_OPTION)
-                == JOptionPane.OK_OPTION) {
+         String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Deseja salvar alteraçoes realizadas na ficha?", "Sair", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
             try {
                 List<String> lista = new LinkedList();
                 for (int i = 0; i < Ficha.getRowCount(); i++) {
@@ -139,7 +140,7 @@ public class FichaDoCliente extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
