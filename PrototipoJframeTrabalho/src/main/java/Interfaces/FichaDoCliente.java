@@ -36,23 +36,22 @@ public class FichaDoCliente extends javax.swing.JFrame {
     public void PreencherFicha(Cliente cliente) throws IOException {
         this.cliente = cliente;
         Ficha fichA = new Ficha(cliente.getCpf());
-        List<String> lista = new LinkedList<>();
-        fichA.addTabela(this.cliente.getCpf());
-        lista.forEach(string -> {
-            ficha.addRow(ConverteString(string));//########
-        });
+        
+        
+        
+        
+         for (Object[] l : fichA.addTabela() ) {
+          ficha.addRow(l);
+            
+        }
     }
 
     public FichaDoCliente(Cliente cliente) throws IOException {
         this.ficha = (javax.swing.table.DefaultTableModel) Ficha.getModel();
         this.cliente = cliente;
         initComponents();
-        Ficha fichA = new Ficha(cliente.getCpf());
-        List<String> lista = new LinkedList<>();
-        lista = fichA.addTabela(this.cliente.getCpf());
-        lista.forEach(string -> {
-            ficha.addRow(ConverteString(string));//########
-        });
+   
+ 
     }
     static Cliente cliente;
     private final DefaultTableModel ficha;
@@ -135,7 +134,7 @@ public class FichaDoCliente extends javax.swing.JFrame {
                     lista.add(dados);
                 }
                 Objetos.Ficha ficha = new Ficha();
-                ficha.addArquivo(this.cliente.getCpf(), lista);//add ao aquirvo da ficha
+                ficha.addArquivo( lista);//add ao aquirvo da ficha
                 this.dispose();
             } catch (IOException ex) {
                 Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);

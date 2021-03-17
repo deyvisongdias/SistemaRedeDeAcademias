@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Objetos;
 
-/**
- *
- * @author deive
- */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -25,34 +16,31 @@ import javax.swing.text.StyledEditorKit;
 
 public class Ficha {
 
-    File file;
-    Path caminho = Paths.get("C:\\temp\\in.txt");
-    String texto;
-    Scanner sc = null;
-    List<File> listficha = new LinkedList<>();
+    private String texto;
+    private String cpf;
+    File ficha;
 
     // construtores
     public Ficha() {
+         
 
     }
 
     public Ficha(String cpf) throws IOException {
-        //
-        if (!verificaFicha(cpf)) {
-            File ficha = new File((cpf + ".txt"));
+        this.cpf=cpf;
+        if (!verificaFicha()) {
+            ficha = new File((cpf + ".txt"));
+            ficha.createNewFile();
         }
-//		FileWriter wfile;
-//		String path = "C:\\temp\\in.txt";// MUDAR CAMINHO
-//		wfile = new FileWriter(new File(cpf + ".txt"));
 
     }
-
-    // metodos
-    public void addArquivo(String cpf, List<String> linhas) throws IOException {
-        this.texto = cpf;
-        String path = "C:\\temp\\in.txt";// MUDAR CAMINHO
-
-        FileWriter fileWriter = new FileWriter(new File(path));
+    
+    public void addArquivo( List<String> linhas) throws IOException {
+        
+        
+        File file=new File(cpf+".txt");
+        
+        FileWriter fileWriter = new FileWriter(new File(file.getAbsolutePath()));
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
         for (String linha : linhas) {
@@ -60,64 +48,47 @@ public class Ficha {
         }
 
     }
+    
 
-    private Boolean verificaFicha(String m) {
+    public void writeFile() {
+        String dados = this.toString();
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(ficha.getAbsolutePath(), true))) {
+            bw.write(dados);
+            bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-        for (File f : listficha) {
-            if (f.getName() == (m + ".txt")) {
-                return true;
-            }
-
+    private Boolean verificaFicha() {
+        
+        File file=new File(cpf+".txt");
+        if(file.exists())
+        {
+           return true;
         }
         return false;
 
-//		String path = "C:\\temp\\in.txt";
-//
-//		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-//			String line = br.readLine();
-//			if (line == m) {
-//				return true;
-//
-//			}
-//		}
-//		 catch (IOException e) {
-//			System.out.println("Error: " + e.getMessage());
-//		}
-//		return false;
     }
 
-    public List<String> addTabela(String cpf) throws FileNotFoundException {
-      
-        String path = "C:\\temp\\in.txt";
-        List<String> list = new LinkedList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+    public List<Object[]> addTabela() throws FileNotFoundException {
+
+       
+        List<Object[]> list = new LinkedList<>();
+        try ( BufferedReader br = new BufferedReader(new FileReader(ficha.getAbsolutePath()))) {
             String line = br.readLine();
+            
+          
             while (line != null) {
-                System.out.println(line);
+                String[] l = line.split("\\|");
+                Object []o ={l[0],l[1],l[2],l[3]};
+                list.add(o);
                 line = br.readLine();
-                list.add(line);
             }
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
         return list;
     }
-    
-    
-    
-    
-    
-    
-//        for (File f : listficha) {
-//            if (f.getName() == (cpf + ".txt")) {
-//            break;
-//            }
-//        List<String> leitura=new LinkedList<>();
-//        FileReader reader= new FileReader(f);        
-//                
-//        
-//        }
-
-
 
 }
