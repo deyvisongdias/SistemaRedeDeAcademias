@@ -127,19 +127,15 @@ public class FichaDoCliente extends javax.swing.JFrame {
          String[] options = {"Sim", "Nao"};
         if ((JOptionPane.showOptionDialog(this, "Deseja salvar alteraçoes realizadas na ficha?", "Sair", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
-            try {
-                List<String> lista = new LinkedList();
-                for (int i = 0; i < Ficha.getRowCount(); i++) {
-                    String dados = Ficha.getValueAt(i, 0) + ";" + Ficha.getValueAt(i, 1) + ";"
-                            + Ficha.getValueAt(i, 2) + ";" + Ficha.getValueAt(i, 3);
-                    lista.add(dados);
-                }
-                Objetos.Ficha ficha = new Ficha();
-                ficha.addArquivo( lista);//add ao aquirvo da ficha
-                this.dispose();
-            } catch (IOException ex) {
-                Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
+            List<String> lista = new LinkedList();
+            for (int i = 0; i < Ficha.getRowCount(); i++) {
+                String dados = Ficha.getValueAt(i, 0) + ";" + Ficha.getValueAt(i, 1) + ";"
+                        + Ficha.getValueAt(i, 2) + ";" + Ficha.getValueAt(i, 3);
+                lista.add(dados);
             }
+            Objetos.Ficha ficha = new Ficha();
+            ficha.addArquivo( lista);//add ao aquirvo da ficha
+            this.dispose();
         }this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

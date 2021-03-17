@@ -33,29 +33,32 @@ public class Ficha {
             ficha.createNewFile();
             path = ficha.getAbsolutePath();
         }
-            ficha = new File((cpf + ".txt"));
-            path = ficha.getAbsolutePath();
+        ficha = new File((cpf + ".txt"));
+        path = ficha.getAbsolutePath();
 
     }
 
-    public void addArquivo(List<String> linhas) throws IOException {
-
+//    public void addArquivo(List<String> linhas) throws IOException {
+//
+//        File file = new File(cpf + ".txt");
+//
+//        FileWriter fileWriter = new FileWriter(new File(file.getAbsolutePath()));
+//        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+//
+//        for (String linha : linhas) {
+//            bufferedWriter.write(linha);
+//        }
+    //   }
+    public void addArquivo(List<String> linhas) {
+        this.ficha.delete();
         File file = new File(cpf + ".txt");
 
-        FileWriter fileWriter = new FileWriter(new File(file.getAbsolutePath()));
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-        for (String linha : linhas) {
-            bufferedWriter.write(linha);
-        }
-
-    }
-
-    public void writeFile() {
         String dados = this.toString();
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
-            bw.write(dados);
-            bw.newLine();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsolutePath(), true))) {
+            for (String linha : linhas) {
+                bw.write(linha);
+                bw.newLine();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,9 +78,8 @@ public class Ficha {
 
         List<Object[]> list = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            if (br.readLine() != null) {
-                String line = br.readLine();
-
+            String line = br.readLine();
+            if (line != null) {
                 while (line != null) {
                     String[] l = line.split("\\|");
                     Object[] o = {l[0], l[1], l[2], l[3]};

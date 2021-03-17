@@ -197,7 +197,6 @@ public class Instrutor extends javax.swing.JFrame {
         DefaultTableModel tabel = (DefaultTableModel) tabela.getModel();
 
         for (int j = 0; j <tabel.getRowCount(); j++) {
-
             tabel.removeRow(j);
         }
         Cliente client = Objetos.Main.clientes.get(Objetos.Main.cpfCliente.get((nomebusca.getText())));
@@ -222,9 +221,10 @@ public class Instrutor extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int index = tabela.getSelectedRow();
         if (index != -1) {
-            new CriarFicha().setVisible(true);
+            CriarFicha f=new CriarFicha();
+            f.setVisible(true);
             try {
-                new CriarFicha().PreencherFicha(map.get(index));
+                f.PreencherFicha(map.get(index));
             } catch (IOException ex) {
                 Logger.getLogger(Instrutor.class.getName()).log(Level.SEVERE, null, ex);
             }

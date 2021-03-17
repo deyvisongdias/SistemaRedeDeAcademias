@@ -206,7 +206,7 @@ public class CriarFicha extends javax.swing.JFrame {
     private Cliente cliente ; 
 
     private Object[] ConverteString(String st) {
-        Object[] dados = st.split(";");
+        Object[] dados = st.split("\\|");
         return dados;
     }
     private DefaultTableModel ficha = null;
@@ -294,14 +294,14 @@ public class CriarFicha extends javax.swing.JFrame {
                             + ficha.getValueAt(i, 2) + "|" + ficha.getValueAt(i, 3);
                     lista.add(dados);
                 }
-
-                Ficha ficha = new Ficha(this.cliente.get());
+                
+                Ficha ficha = new Ficha(this.cliente.getCpf());
                 ficha.addArquivo(lista);
                 this.dispose();
             } catch (IOException ex) {
                 Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
