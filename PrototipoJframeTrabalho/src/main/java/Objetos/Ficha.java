@@ -18,28 +18,28 @@ public class Ficha {
 
     private String texto;
     private String cpf;
-    File ficha;
+    private File ficha;
+    private String path = null;
 
     // construtores
     public Ficha() {
-         
 
     }
 
     public Ficha(String cpf) throws IOException {
-        this.cpf=cpf;
+        this.cpf = cpf;
         if (!verificaFicha()) {
             ficha = new File((cpf + ".txt"));
             ficha.createNewFile();
+            path = ficha.getAbsolutePath();
         }
 
     }
-    
-    public void addArquivo( List<String> linhas) throws IOException {
-        
-        
-        File file=new File(cpf+".txt");
-        
+
+    public void addArquivo(List<String> linhas) throws IOException {
+
+        File file = new File(cpf + ".txt");
+
         FileWriter fileWriter = new FileWriter(new File(file.getAbsolutePath()));
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
@@ -48,11 +48,10 @@ public class Ficha {
         }
 
     }
-    
 
     public void writeFile() {
         String dados = this.toString();
-        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(ficha.getAbsolutePath(), true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();
         } catch (IOException e) {
@@ -61,11 +60,10 @@ public class Ficha {
     }
 
     private Boolean verificaFicha() {
-        
-        File file=new File(cpf+".txt");
-        if(file.exists())
-        {
-           return true;
+
+        File file = new File(cpf + ".txt");
+        if (file.exists()) {
+            return true;
         }
         return false;
 
@@ -73,22 +71,23 @@ public class Ficha {
 
     public List<Object[]> addTabela() throws FileNotFoundException {
 
-       
         List<Object[]> list = new LinkedList<>();
-        try ( BufferedReader br = new BufferedReader(new FileReader(ficha.getAbsolutePath()))) {
-            String line = br.readLine();
-            
-          
-            while (line != null) {
-                String[] l = line.split("\\|");
-                Object []o ={l[0],l[1],l[2],l[3]};
-                list.add(o);
-                line = br.readLine();
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            if (br.readLine() != null) {
+                String line = br.readLine();
+
+                while (line != null) {
+                    String[] l = line.split("\\|");
+                    Object[] o = {l[0], l[1], l[2], l[3]};
+                    list.add(o);
+                    line = br.readLine();
+                }
             }
+            return list;
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
-        return list;
+        return null;
     }
 
 }

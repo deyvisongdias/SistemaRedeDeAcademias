@@ -100,6 +100,19 @@ public class Instrutor extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
+        tabela.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tabelaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tabelaKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
 
         jButton1.setText("Sair");
@@ -216,7 +229,7 @@ public class Instrutor extends javax.swing.JFrame {
                 Logger.getLogger(Instrutor.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione uma linha para excluir");
+            JOptionPane.showMessageDialog(this, "Selecione uma aluno");
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -229,6 +242,17 @@ public class Instrutor extends javax.swing.JFrame {
             new Login().setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+       
+    }//GEN-LAST:event_tabelaMouseClicked
+
+    private void tabelaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaKeyPressed
+
+    private void tabelaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelaKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaKeyReleased
 
     /**
      * @param args the command line arguments

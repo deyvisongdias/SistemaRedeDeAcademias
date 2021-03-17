@@ -27,6 +27,7 @@ public class CriarFicha extends javax.swing.JFrame {
      */
     public CriarFicha() {
         initComponents();
+       this.ficha = (DefaultTableModel) jtableFicha.getModel();
     }
 
     /**
@@ -208,19 +209,18 @@ public class CriarFicha extends javax.swing.JFrame {
         Object[] dados = st.split(";");
         return dados;
     }
+    private  DefaultTableModel ficha = null;
 
     public void PreencherFicha(Cliente cliente) throws IOException {
         this.cliente = cliente;
-        DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
         Ficha fichA = new Ficha(this.cliente.getCpf());
         List<String> lista = new LinkedList<>();
-        
-        
-        for (Object[] l : fichA.addTabela() ) {
-          ficha.addRow(l);
-            
+
+        for (Object[] l : fichA.addTabela()) {
+            ficha.addRow(l);
+
         }
-        
+
     }// colocar esse metodo na janela de cliente tbm
 
     private void jbAdcionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdcionarActionPerformed
@@ -237,7 +237,6 @@ public class CriarFicha extends javax.swing.JFrame {
 
     private void jbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbApagarActionPerformed
         if (jtableFicha.getSelectedRow() != -1) {
-            DefaultTableModel ficha = (DefaultTableModel) jtableFicha.getModel();
             ficha.removeRow(jtableFicha.getSelectedRow());
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha para excluir");
@@ -259,9 +258,9 @@ public class CriarFicha extends javax.swing.JFrame {
 
     private void jtableFichaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableFichaMouseClicked
         if (jtableFicha.getSelectedRow() != -1) {
-            JcbAp.setSelectedItem(jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 0));
-            jtxtExr.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 1));
-            jSerieRep.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 2));
+            JcbAp.setSelectedItem(ficha.getValueAt(jtableFicha.getSelectedRow(), 0));
+            jtxtExr.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 1));
+            jSerieRep.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 2));
         }
 
 
@@ -269,36 +268,35 @@ public class CriarFicha extends javax.swing.JFrame {
 
     private void jtableFichaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFichaKeyPressed
         // TODO add your handling code here:
-        if (jtableFicha.getSelectedRow() != -1) {
-            JcbAp.setSelectedItem(jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 0));
-            jtxtExr.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 1));
-            jSerieRep.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 2));
+         if (jtableFicha.getSelectedRow() != -1) {
+            JcbAp.setSelectedItem(ficha.getValueAt(jtableFicha.getSelectedRow(), 0));
+            jtxtExr.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 1));
+            jSerieRep.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 2));
         }
     }//GEN-LAST:event_jtableFichaKeyPressed
 
     private void jtableFichaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFichaKeyReleased
         if (jtableFicha.getSelectedRow() != -1) {
-            JcbAp.setSelectedItem(jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 0));
-            jtxtExr.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 1));
-            jSerieRep.setText((String) jtableFicha.getValueAt(jtableFicha.getSelectedRow(), 2));
+            JcbAp.setSelectedItem(ficha.getValueAt(jtableFicha.getSelectedRow(), 0));
+            jtxtExr.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 1));
+            jSerieRep.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 2));
         }
     }//GEN-LAST:event_jtableFichaKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String[] options = {"Sim", "Nao"};
+        String[] options = {"Sim", "Nao"};
         if ((JOptionPane.showOptionDialog(this, "Sair e salvar?", "Salvar e sair", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ){
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0)) {
             try {
                 List<String> lista = new LinkedList();
-                for (int i = 0; i < jtableFicha.getRowCount(); i++) {
-                    String dados = jtableFicha.getValueAt(i, 0) + ";" + jtableFicha.getValueAt(i, 1) + ";"
-                            + jtableFicha.getValueAt(i, 2) + ";" + jtableFicha.getValueAt(i, 3);
+                for (int i = 0; i < ficha.getRowCount(); i++) {
+                    String dados = ficha.getValueAt(i, 0) + ";" + ficha.getValueAt(i, 1) + ";"
+                            + ficha.getValueAt(i, 2) + ";" + ficha.getValueAt(i, 3);
                     lista.add(dados);
                 }
-             
-                
+
                 Ficha ficha = new Ficha(this.cliente.getCpf());
-                ficha.addArquivo( lista);
+                ficha.addArquivo(lista);
                 this.dispose();
             } catch (IOException ex) {
                 Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
