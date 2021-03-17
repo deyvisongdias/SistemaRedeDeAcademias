@@ -40,6 +40,6 @@ cd target
 ```
 
 3. Digite o comando para compilar
-'''
+```
 java - jar PrototipoJframeTrabalho-1.0-SNAPSHOT-jar-with-dependencies.jar
-'''
+```
