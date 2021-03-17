@@ -27,7 +27,7 @@ public class CriarFicha extends javax.swing.JFrame {
      */
     public CriarFicha() {
         initComponents();
-       this.ficha = (DefaultTableModel) jtableFicha.getModel();
+        this.ficha = (DefaultTableModel) jtableFicha.getModel();
     }
 
     /**
@@ -203,13 +203,13 @@ public class CriarFicha extends javax.swing.JFrame {
     public void preencher(File file) {
 
     }
-    private Cliente cliente;
+    private Cliente cliente ; 
 
     private Object[] ConverteString(String st) {
         Object[] dados = st.split(";");
         return dados;
     }
-    private  DefaultTableModel ficha = null;
+    private DefaultTableModel ficha = null;
 
     public void PreencherFicha(Cliente cliente) throws IOException {
         this.cliente = cliente;
@@ -268,7 +268,7 @@ public class CriarFicha extends javax.swing.JFrame {
 
     private void jtableFichaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableFichaKeyPressed
         // TODO add your handling code here:
-         if (jtableFicha.getSelectedRow() != -1) {
+        if (jtableFicha.getSelectedRow() != -1) {
             JcbAp.setSelectedItem(ficha.getValueAt(jtableFicha.getSelectedRow(), 0));
             jtxtExr.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 1));
             jSerieRep.setText((String) ficha.getValueAt(jtableFicha.getSelectedRow(), 2));
@@ -290,12 +290,12 @@ public class CriarFicha extends javax.swing.JFrame {
             try {
                 List<String> lista = new LinkedList();
                 for (int i = 0; i < ficha.getRowCount(); i++) {
-                    String dados = ficha.getValueAt(i, 0) + ";" + ficha.getValueAt(i, 1) + ";"
-                            + ficha.getValueAt(i, 2) + ";" + ficha.getValueAt(i, 3);
+                    String dados = ficha.getValueAt(i, 0) + "|" + ficha.getValueAt(i, 1) + "|"
+                            + ficha.getValueAt(i, 2) + "|" + ficha.getValueAt(i, 3);
                     lista.add(dados);
                 }
 
-                Ficha ficha = new Ficha(this.cliente.getCpf());
+                Ficha ficha = new Ficha(this.cliente.get());
                 ficha.addArquivo(lista);
                 this.dispose();
             } catch (IOException ex) {

@@ -33,6 +33,8 @@ public class Ficha {
             ficha.createNewFile();
             path = ficha.getAbsolutePath();
         }
+            ficha = new File((cpf + ".txt"));
+            path = ficha.getAbsolutePath();
 
     }
 
