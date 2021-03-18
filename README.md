@@ -29,9 +29,9 @@
 # Como rodar o projeto
 **Certifique-se de ter o Maven instalado**
 
-1. Navegue até a pasta PrototipoJframeTrabalho
+1. Navegue até a pasta SistemaDeAcademia
 ```
-cd PrototipoJframeTrabalho
+cd SistemaDeAcademia
 ```
 
 2. Vá ate a pasta target
@@ -41,5 +41,5 @@ cd target
 
 3. Digite o comando para compilar
 ```
-java -jar PrototipoJframeTrabalho-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar ControleDeAcademia-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
