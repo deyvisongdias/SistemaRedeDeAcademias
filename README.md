@@ -41,5 +41,5 @@ cd target
 
 3. Digite o comando para compilar
 ```
-java -jar ControleDeAcademia-1.0-SNAPSHOT-jar-with-dependencies.jar
+java -jar target\ControleDeAcademia-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
