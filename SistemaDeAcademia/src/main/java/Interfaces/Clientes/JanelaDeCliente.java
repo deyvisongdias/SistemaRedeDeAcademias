@@ -28,7 +28,7 @@ public class JanelaDeCliente extends javax.swing.JFrame {
         this.cliente = cliente;
         LBLMENSALIDADE.setText((String.format("%.2f", this.cliente.getValorPlano())));
         lblVENCIMENTO.setText(this.cliente.getVencimento());
-        LBLBV.setText("Bem indo(a) " + cliente.getNome());
+        LBLBV.setText("Bem Vindo(a) " + cliente.getNome());
     }
     
 

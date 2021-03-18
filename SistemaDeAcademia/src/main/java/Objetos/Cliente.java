@@ -19,7 +19,7 @@ import java.util.Objects;
 Deyvison Gregório Dias 201835017
 Deiverson Mourão Alves Pedroso 201965123A
 Pedro Henrique Almeida Cardoso Reis 201835039
-*/
+ */
 public class Cliente {
 
     //falta a senha ou vai ser o cpf mesmo
@@ -55,7 +55,7 @@ public class Cliente {
         vencimento = cal.getTime();
         contId++;
         this.id = contId;
-        this.statusMatricula = true;
+        this.statusMatricula = statusatt(vencimento);
         valorPlano = 80;
         desconto = 0;
         this.ficha = new Ficha(cpf); //##############
@@ -91,6 +91,10 @@ public class Cliente {
     }
 
     public Cliente() {
+    }
+    private boolean statusatt(Date data) {
+        Calendar cal = Calendar.getInstance();
+        return cal.getTime().equals(data);
     }
 
     public int getDesconto() {
@@ -187,7 +191,7 @@ public class Cliente {
     public void writeFile() {
         String dados = this.toString();
         String path = Recepcionista.clientesBD.getAbsolutePath();
-        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();
         } catch (IOException e) {
