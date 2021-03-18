@@ -5,6 +5,10 @@
  */
 package Interfaces;
 
+import Interfaces.Funcionarios.Recepcionista.Recepçao;
+import Interfaces.Funcionarios.Instrutor.Instrutor;
+import Interfaces.Clientes.JanelaDeCliente;
+import Interfaces.Adiministrador.ControleDeFunc;
 import Objetos.Cliente;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -136,7 +140,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
         } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
         {
-            new ControleDeAdms().setVisible(true);
+            new ControleDeFunc().setVisible(true);
             this.dispose();
 
         } else if (Main.instrutor.get(usuario) != null && Main.instrutor.get(usuario).getNome().equals(usuario)
@@ -170,7 +174,7 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Campo de usuario ou senha em branco.");
             } else if (usuario.equals("adm") && senha.equals("adm")) //Primeiro verifico se é a chave mestre
             {
-                new ControleDeAdms().setVisible(true);
+                new ControleDeFunc().setVisible(true);
                 this.dispose();
 
             } else if (Main.instrutor.get(usuario) != null && Main.instrutor.get(usuario).getNome().equals(usuario)
