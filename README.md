@@ -17,7 +17,7 @@
 👤 **Deyvison**
 
 * Github:[@deyvisongdias](https://github.com/deyvisongdias)
-* LinkedIn: [deyvison gregorio](https://www.linkedin.com/in/deyvison-gregorio-435301207/)
+* LinkedIn: 
 
 👤 **Pedro Henrique**
 
@@ -34,12 +34,8 @@
 cd SistemaDeAcademia
 ```
 
-2. Vá ate a pasta target
-```
-cd target
+2. Digite o comando para compilar
 ```
 
-3. Digite o comando para compilar
-```
 java -jar target\ControleDeAcademia-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
