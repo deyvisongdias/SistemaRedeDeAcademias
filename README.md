@@ -17,7 +17,7 @@
 👤 **Deyvison**
 
 * Github:[@deyvisongdias](https://github.com/deyvisongdias)
-* LinkedIn: [deyvison gregorio](https://www.linkedin.com/in/deyvison-gregorio-435301207/)
+* LinkedIn: 
 
 👤 **Pedro Henrique**
 
