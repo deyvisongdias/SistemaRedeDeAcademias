@@ -156,28 +156,13 @@ public class JanelaDeCliente extends javax.swing.JFrame {
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            new FichaDoCliente().setVisible(true);
-            new FichaDoCliente().PreencherFicha(this.cliente);
+       try {
+            FichaDoCliente fc=new FichaDoCliente();
+            fc.setVisible(true);
+            fc.PreencherFicha(this.cliente);
         } catch (IOException ex) {
             Logger.getLogger(JanelaDeCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        try {
-//            new FichaDoCliente(cliente).setVisible(true);
-//            
-////            Ficha fichA = new Ficha(cliente.getCpf());
-////            List<String> lista = new LinkedList<>();
-////            lista = fichA.addTabela(this.cliente.getCpf());
-////            lista.forEach(string -> {
-////                ficha.addRow(ConverteString(string));//########
-////            });
-////            //Copiar do criar ficha depois que estiver finalizado
-////            
-////            // TODO add your handling code here:
-//
-//        } catch (IOException ex) {
-//            Logger.getLogger(JanelaDeCliente.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

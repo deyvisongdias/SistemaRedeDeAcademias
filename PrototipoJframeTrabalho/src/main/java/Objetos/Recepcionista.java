@@ -121,60 +121,14 @@ public class Recepcionista implements Pagamento {
     @Override
     public void pagar(Cliente cliente) {
 
-        if (cliente.getTipoPlano() == "Mensal" || cliente.getTipoPlano() == "mensal") {
-            System.out.println("Forma de pagamento a vista ");
-            //confirmar o pagamento do cliente
-            cliente.updateVencimento();
+        cliente.updateVencimento();
 
-        }
-
-        if (cliente.getTipoPlano() == "Trimestral" || cliente.getTipoPlano() == "trimestral") {
-            if (cliente.getNumeroParcelas() == 0) {
-                System.out.println("Digite o numero de parcelas para pagamento :");
-                int i = sc.nextInt();
-                cliente.setNumeroParcelas(i);
-                double d = cliente.getValorPlano() - (cliente.getValorPlano() * 0.05);
-                cliente.setValorParcela(d / i);
-
-                cliente.updateVencimento();
-
-            }
-        }
-        if (cliente.getTipoPlano() == "Semestral" || cliente.getTipoPlano() == "semestral") {
-
-            if (cliente.getNumeroParcelas() == 0) {
-                System.out.println("Digite o numero de parcelas para pagamento (no maximo 4):");
-                int i = sc.nextInt();
-                cliente.setNumeroParcelas(i);
-                double d1 = cliente.getValorPlano() - (cliente.getValorPlano() * 0.10);
-                cliente.setValorParcela(d1 / i);
-
-                cliente.updateVencimento();
-
-            }
-
-        }
-
-        if (cliente.getTipoPlano() == "Anual" || cliente.getTipoPlano() == "anual") {
-
-            if (cliente.getNumeroParcelas() == 0) {
-                System.out.println("Digite o numero de parcelas para pagamento (no maximo 6):");
-                int i = sc.nextInt();
-                cliente.setNumeroParcelas(i);
-                double d2 = cliente.getValorPlano() - (cliente.getValorPlano() * 0.15);
-                cliente.setValorParcela(d2 / i);
-
-                cliente.updateVencimento();
-
-            }
-
-        }
     }
 
     public void writeFile() {
         String dados = this.coverteEMString();
         String path = Administrador.func.getAbsolutePath();
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();
         } catch (IOException e) {
@@ -186,7 +140,7 @@ public class Recepcionista implements Pagamento {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         if (clientesBD.exists()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(pathCliente))) {
+            try ( BufferedReader br = new BufferedReader(new FileReader(pathCliente))) {
                 String line = br.readLine();
                 while (line != null) {
                     String[] fields = line.split("\\|");
@@ -267,7 +221,8 @@ public class Recepcionista implements Pagamento {
         return ("Recepcionista" + "|" + getNome() + "|" + getSenha() + "|" + getCpf() + "|"
                 + getData() + "|" + getSexo() + "|" + getContato());
     }
-     public static void anulaarq() {
+
+    public static void anulaarq() {
         clientesBD.delete();
         File func = new File("clientes.txt");
     }

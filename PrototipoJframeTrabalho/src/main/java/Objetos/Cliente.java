@@ -25,6 +25,7 @@ public class Cliente {
     static int contId = 0; // usado pra achar a ficha 
 
     private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
     private String tipoPlano;
     private String nome;
     private String cpf;
@@ -167,21 +168,25 @@ public class Cliente {
         return sdf.format(vencimento);
     }
 
+    public void setVencimento(Date vencimento) {
+        this.vencimento = vencimento;
+    }
+
     public void updateVencimento() {//atualiza data do pagamento
         Calendar cal = Calendar.getInstance();
         try {
-            cal.setTime(sdf.parse(this.getDataMatricula()));
+            cal.setTime(sdf.parse(this.getVencimento()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        cal.add(Calendar.MONTH, numeroParcelas);
-        vencimento = cal.getTime();
+        cal.add(Calendar.MONTH, 1);
+        this.vencimento = cal.getTime();
     }
 
     public void writeFile() {
         String dados = this.toString();
         String path = Recepcionista.clientesBD.getAbsolutePath();
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();
         } catch (IOException e) {

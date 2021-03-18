@@ -34,8 +34,8 @@ public class Instrutor {
         this.data = data;
         this.sexo = sexo;
         this.contato = contato;
-       
-}
+
+    }
 
     public Instrutor() {
     }
@@ -75,23 +75,20 @@ public class Instrutor {
 
     }
 
-   public void writeFile() {
+    public void writeFile() {
         String dados = this.ConverteEmString();
-        String path =Administrador.func.getAbsolutePath();
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+        String path = Administrador.func.getAbsolutePath();
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             bw.write(dados);
             bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    
- 
-    public String ConverteEmString()
-    {
-        return ("Instrutor"+"|"+getNome()+"|"+getSenha()+"|"
-                +getCpf()+"|"+getData()+"|"+getSexo()+"|"+getContato());
+
+    public String ConverteEmString() {
+        return ("Instrutor" + "|" + getNome() + "|" + getSenha() + "|"
+                + getCpf() + "|" + getData() + "|" + getSexo() + "|" + getContato());
     }
-    
+
 }

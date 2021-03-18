@@ -38,23 +38,12 @@ public class Ficha {
 
     }
 
-//    public void addArquivo(List<String> linhas) throws IOException {
-//
-//        File file = new File(cpf + ".txt");
-//
-//        FileWriter fileWriter = new FileWriter(new File(file.getAbsolutePath()));
-//        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//
-//        for (String linha : linhas) {
-//            bufferedWriter.write(linha);
-//        }
-    //   }
     public void addArquivo(List<String> linhas) {
         this.ficha.delete();
         File file = new File(cpf + ".txt");
 
         String dados = this.toString();
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsolutePath(), true))) {
+        try ( BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsolutePath(), true))) {
             for (String linha : linhas) {
                 bw.write(linha);
                 bw.newLine();
@@ -77,7 +66,7 @@ public class Ficha {
     public List<Object[]> addTabela() throws FileNotFoundException {
 
         List<Object[]> list = new LinkedList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+        try ( BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
             if (line != null) {
                 while (line != null) {

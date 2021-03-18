@@ -22,39 +22,38 @@ import javax.swing.table.DefaultTableModel;
 public class FichaDoCliente extends javax.swing.JFrame {
 
     FichaDoCliente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.ficha = (DefaultTableModel) Ficha.getModel();
     }
+    static Cliente cliente;
+    private DefaultTableModel ficha;
 
     /**
      * Creates new form FichaDoCliente
      */
     private Object[] ConverteString(String st) {
-        Object[] dados = st.split(";");
+        Object[] dados = st.split("\\|");
         return dados;
     }
 
     public void PreencherFicha(Cliente cliente) throws IOException {
+
         this.cliente = cliente;
         Ficha fichA = new Ficha(cliente.getCpf());
-        
-        
-        
-        
-         for (Object[] l : fichA.addTabela() ) {
-          ficha.addRow(l);
-            
+        for (Object[] l : fichA.addTabela()) {
+            ficha.addRow(l);
+
         }
+
     }
 
     public FichaDoCliente(Cliente cliente) throws IOException {
         this.ficha = (javax.swing.table.DefaultTableModel) Ficha.getModel();
         this.cliente = cliente;
         initComponents();
-   
- 
+
     }
-    static Cliente cliente;
-    private final DefaultTableModel ficha;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,19 +123,25 @@ public class FichaDoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         String[] options = {"Sim", "Nao"};
-        if ((JOptionPane.showOptionDialog(this, "Deseja salvar alteraçoes realizadas na ficha?", "Sair", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0) ) {
-            List<String> lista = new LinkedList();
-            for (int i = 0; i < Ficha.getRowCount(); i++) {
-                String dados = Ficha.getValueAt(i, 0) + ";" + Ficha.getValueAt(i, 1) + ";"
-                        + Ficha.getValueAt(i, 2) + ";" + Ficha.getValueAt(i, 3);
-                lista.add(dados);
+       String[] options = {"Sim", "Nao"};
+        if ((JOptionPane.showOptionDialog(this, "Sair e salvar?", "Salvar e sair", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0)) {
+            try {
+                List<String> lista = new LinkedList();
+                for (int i = 0; i < ficha.getRowCount(); i++) {
+                    String dados = ficha.getValueAt(i, 0) + "|" + ficha.getValueAt(i, 1) + "|"
+                            + ficha.getValueAt(i, 2) + "|" + ficha.getValueAt(i, 3);
+                    lista.add(dados);
+                }
+
+                Ficha ficha = new Ficha(this.cliente.getCpf());
+                ficha.addArquivo(lista);
+                this.dispose();
+            } catch (IOException ex) {
+                Logger.getLogger(CriarFicha.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Objetos.Ficha ficha = new Ficha();
-            ficha.addArquivo( lista);//add ao aquirvo da ficha
-            this.dispose();
-        }this.dispose();
+        }
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
