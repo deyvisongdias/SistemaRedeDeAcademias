@@ -1,6 +1,0 @@
-Recepcionista|Josiane|123|12345678912|01/05/1999|Feminino|(12)3456-8799
-Recepcionista|Recepcionista|1|12312312323|11/11/2000|Feminino|(12)3123-1233
-Recepcionista|Deiverson Pedroso|1234|12365498896|01/08/1997|Masculino|(44)4444-4444
-Instrutor|Deyvison Gregorio|1234|31118666666|24/11/2000|Masculino|(32)4444-4444
-Instrutor|yuri|1234|31118666666|24/11/2000|Masculino|(32)4444-4444
-Instrutor|Instrutor|1|11111111111|01/01/1999|Masculino|(16)9484-6312
